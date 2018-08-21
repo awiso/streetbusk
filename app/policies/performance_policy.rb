@@ -1,6 +1,6 @@
 class PerformancePolicy < ApplicationPolicy
   def new?
-    record.user == user
+    true
   end
 
   def create?
