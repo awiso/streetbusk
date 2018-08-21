@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :artist_genres
-  has_many :performances
+  has_many :performances, dependent: :destroy
 
   validates :email, presence: true, uniqueness: true
 end
