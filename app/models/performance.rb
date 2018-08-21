@@ -13,4 +13,6 @@ class Performance < ApplicationRecord
   after_validation :geocode, if: :will_save_change_to_location?
   # Cloudinary
   mount_uploader :photo, PhotoUploader
+  # Stripe & Ruby Money
+  monetize :contribution_cents
 end
