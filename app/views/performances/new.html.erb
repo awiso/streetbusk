@@ -4,7 +4,7 @@
   <%= f.input :start_time %>
   <%= f.input :end_time %>
   <%= f.input :description %>
-  <%= f.input :genre_id %>
+  <%= f.input :genre_id, collection: Genre.all %>
   <%= f.input :photo %>
   <%= f.button :submit %>
   <% end %>
