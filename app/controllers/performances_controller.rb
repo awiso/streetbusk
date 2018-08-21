@@ -21,6 +21,15 @@ class PerformancesController < ApplicationController
   def index
     @performances = Performance.all
     policy_scope(Performance)
+    @performances = Performance.where.not(latitude: nil, longitude: nil)
+
+    @markers = @performances.map do |performance|
+      {
+        lat: performance.latitude,
+        lng: performance.longitude#,
+        # infoWindow: { content: render_to_string(partial: "/performances/map_box", locals: { performance: performance }) }
+      }
+    end
   end
 
   def show
