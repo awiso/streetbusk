@@ -1,0 +1,8 @@
+<div class="container">
+  <h1>Performances (<%= @performances.length %>)</h1>
+  <ul>
+  <% @performances.each do |performance| %>
+    <li><%=link_to performance.user.name, performance_path(performance) %> - <%= performance.location %></li>
+  <% end %>
+  </ul>
+</div>
