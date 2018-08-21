@@ -1,6 +1,6 @@
 class PerformancesController < ApplicationController
   before_action :authenticate_user!, except: [ :index, :show ]
-  before_action :set_performance, except: [ :index, :new ]
+  before_action :set_performance, except: [ :index, :new, :create ]
 
   def new
     @performance = Performance.new
@@ -8,6 +8,13 @@ class PerformancesController < ApplicationController
   end
 
   def create
+    @performance = Performance.new(performance_params)
+    @performance.user = current_user
+    if @performance.save
+      redirect_to artist_dashboard_path
+    else
+      render :new
+    end
     authorize @performance
   end
 

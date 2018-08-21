@@ -1,6 +1,7 @@
-class UserPolicy < ApplicationPolicy
+class ArtistPolicy < ApplicationPolicy
+
   def show?
-    true
+    user.artist
   end
 
   class Scope < Scope
