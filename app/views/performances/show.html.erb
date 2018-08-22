@@ -1,6 +1,7 @@
 <div class="container">
   <h1><%= @performance.user.name %></h1>
   <ul>
+    <%= cl_image_tag @performance.photo, height: 300, width: 400, crop: :fill %>
     <li><%= @performance.location %></li>
     <li><%= @performance.start_time %></li>
     <li><%= @performance.end_time %></li>

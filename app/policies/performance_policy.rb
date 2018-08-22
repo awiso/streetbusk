@@ -1,6 +1,6 @@
 class PerformancePolicy < ApplicationPolicy
   def new?
-    record.user == user
+    true
   end
 
   def create?
@@ -26,10 +26,10 @@ class PerformancePolicy < ApplicationPolicy
   def destroy?
     edit?
   end
-  
+
   class Scope < Scope
     def resolve
-      scope.all
+      scope.where.not(latitude: nil, longitude: nil)
     end
   end
 end
