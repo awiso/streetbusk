@@ -6,6 +6,19 @@
     <li><%= @performance.start_time %></li>
     <li><%= @performance.end_time %></li>
     <li><%= @performance.description %></li>
+
+    <%= simple_form_for(@contribution) do |f| %>
+      <%= f.input :amount %>
+      <%= f.input :artist_id, as: :hidden, input_html: { value: @performance.user.id } %>
+      <%= f.submit 'contribute', class: 'btn btn-primary' %>
+    <% end %>
+
+    <%#= form_tag contributions_path do %>
+    <%#= text_field :amount, :post %>
+    <%#= hidden_field_tag 'performance_id', @performance.id %>
+    <%#= submit_tag 'Contribute', class: 'btn btn-primary' %>
+    <%# end %>
+
   </ul>
   <%= link_to 'Back', performances_path %>
 </div>

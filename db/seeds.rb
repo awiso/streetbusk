@@ -43,3 +43,10 @@ ringosPerf.save!
 
 puts "Done!"
 
+
+puts "generate performances"
+bruce_performance = Performance.create!(location: "Kottbusser Damm 95, 10967 Berlin", start_time: DateTime.new(2018,9,8,14,5,6), end_time: DateTime.new(2018,9,8,15,5,6), description: "Hey guys! I'm playing at the corner of Kottsbusser street, come join!", genre: rock, photo: bruce.default_performance_photo, user: bruce)
+adam_performance = Performance.create!(location: "10178 Berlin", start_time: DateTime.new(2018,9,8,18,5,6), end_time: DateTime.new(2019,9,8,15,5,6), description: "I'm dancing for a whole year underneath the World Time Clock. Viva la dance!", genre: breakdance, photo: "https://farm8.static.flickr.com/7076/7384070338_899d94847c_b.jpg", user: adam)
+
+contributions = [1,2,3,4,5,10,15,20,50]
+
