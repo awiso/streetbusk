@@ -19,9 +19,8 @@ class PerformancesController < ApplicationController
   end
 
   def index
-    @performances = Performance.all
-    policy_scope(Performance)
-    @performances = Performance.where.not(latitude: nil, longitude: nil)
+    @performances = policy_scope(Performance)
+   
 
     @markers = @performances.map do |performance|
       {
