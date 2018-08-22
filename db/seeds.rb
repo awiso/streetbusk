@@ -23,5 +23,7 @@ bob_genres = ArtistGenre.new(user: bob, genre: rock)
 adam_genres = ArtistGenre.new(user: adam, genre: breakdance)
 
 puts "generate performances"
-bruce_performance = Performance.create!(location: "Kottbusser Damm 95, 10967 Berlin", start_time: DateTime.new(2018,9,8,14,5,6), end_time: DateTime.new(2018,9,8,15,5,6), description: "Hey guys! I'm playing at the corner of Kottsbusser street, come join!", genre: rock, photo: bruce.default_performance_photo, user: bruce)
+puts 'first'
+bruce_performance = Performance.create!(location: "Kottbusser Damm 95, 10967 Berlin", start_time: DateTime.new(2018,9,8,14,5,6), end_time: DateTime.new(2018,9,8,15,5,6), description: "Hey guys! I'm playing at the corner of Kottsbusser street, come join!", genre: rock, photo: "https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwiOmcKU2P3cAhUwxIUKHV3uDm4QjRx6BAgBEAU&url=https%3A%2F%2Fwww.nme.com%2Fblogs%2Fnme-blogs%2Fbeginners-guide-bruce-springsteen-2151682&psig=AOvVaw0aHZKTkG-HBXoSO9ke06m1&ust=1534925174359829", user: bruce)
+puts 'second'
 adam_performance = Performance.create!(location: "10178 Berlin", start_time: DateTime.new(2018,9,8,18,5,6), end_time: DateTime.new(2019,9,8,15,5,6), description: "I'm dancing for a whole year underneath the World Time Clock. Viva la dance!", genre: breakdance, photo: "https://farm8.static.flickr.com/7076/7384070338_899d94847c_b.jpg", user: adam)
