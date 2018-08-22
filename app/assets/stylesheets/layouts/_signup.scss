@@ -1,0 +1,77 @@
+.signup{
+  .signup-view{
+  position: fixed;
+  top: 0%;
+  width: 100%;
+  margin: auto;
+  height: 100vh;
+  z-index: -1;
+  background: white;
+  display: none;
+  }
+
+  .signup-show{
+    display: block;
+    z-index: 10;
+  }
+
+
+  .signup-content{
+    transform: translate(-50%, -50%);
+    width: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transition: opacity 1s ease;
+    label{
+      margin-bottom: 20px;
+    }
+  }
+
+.signup-error{
+  color:red;
+  font-style: italic;
+  font-size: 12px;
+  display: inline-block;
+}
+
+.form-control{
+  border: none;
+  border-bottom: 1px solid rgba(66, 134, 244, 0.4);
+  box-shadow: none;
+  transition: border-bottom 0.5s ease;
+  background: none;
+    &:focus{
+      border-bottom: 2px solid rgba(66, 134, 244, 0.7);
+    }
+  }
+
+
+  .signup-transition-out{
+    opacity: 0;
+  }
+
+  .signup-transition-in{
+    animation-name: leftFadeIn;
+    animation-duration: 1.2s;
+  }
+
+  @keyframes leftFadeIn{
+    from{
+      margin-left: -150px;
+      opacity: 0;
+    }
+    to{
+      margin-left: 0px;
+      opacity: 1;
+    }
+  }
+
+
+
+@media (min-width: 700px){
+  .signup-content{
+    width: 60%;
+  }
+}
+}

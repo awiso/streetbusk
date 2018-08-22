@@ -21,6 +21,13 @@ class PerformancesController < ApplicationController
   def index
     @performances = policy_scope(Performance)
 
+    policy_scope(Performance)
+    if params[:query].present?
+      sql_query = "location ILIKE :query"
+      @performances = Performance.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @performances = Performance.all
+    end
 
     @markers = @performances.map do |performance|
       {
