@@ -3,6 +3,7 @@ class ContributionsController < ApplicationController
 
   def create
     @performance = Performance.find(params[:performance_id])
+    # @contribution = Contribution.new(contributions_params)
     @contribution = Contribution.new(amount: @amount, user: @user, artist: @artist)
     @contribution.amount = params[:amount][:post]
     @contribution.artist = @performance.user
@@ -10,10 +11,16 @@ class ContributionsController < ApplicationController
     @contribution.state = 'pending'
     authorize @contribution
     if @contribution.save
-      redirect_to performances_path
+      redirect_to new_contribution_payment_path(@contribution)
     else
       render 'performances/show'
     end
+
+    def show
+      @contribution = current_user.sent_contributions.where(state: 'paid').find(params[:id])
+      authorize @contribution
+    end
+
   end
 
   private

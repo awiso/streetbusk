@@ -1,10 +1,10 @@
-class ContributionPolicy < ApplicationPolicy
+class PaymentPolicy < ApplicationPolicy
 
-  def create?
+  def new?
     true
   end
 
-  def show?
+  def create?
     true
   end
 
