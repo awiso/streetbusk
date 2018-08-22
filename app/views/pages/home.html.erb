@@ -3,6 +3,14 @@
   <div class="banner-content">
     <%= image_tag '', class: 'logo-img' %>
     <h1>Live performance now.</h1><br>
+      <%= form_tag performances_path, method: :get do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Find a movie"
+        %>
+      <% end %>
+      <br>
     <%=link_to "Discover", performances_path, class: 'btn btn-primary' %>
   </div>
 

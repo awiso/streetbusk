@@ -9,7 +9,7 @@
   <h1>Performances (<%= @performances.length %>)</h1>
   <ul>
   <% @performances.each do |performance| %>
-    <%= cl_image_tag performance.photo, height: 300, width: 400, crop: :fill %>
+    <%= cl_image_tag performance.photo_url, height: 300, crop: :fill %>
     <li><%=link_to performance.user.name, performance_path(performance) %> - <%= performance.location %></li>
   <% end %>
   </ul>
