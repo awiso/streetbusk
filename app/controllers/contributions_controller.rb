@@ -7,6 +7,7 @@ class ContributionsController < ApplicationController
     @contribution.amount = params[:amount][:post]
     @contribution.artist = @performance.user
     @contribution.user = current_user
+    @contribution.state = 'pending'
     authorize @contribution
     if @contribution.save
       redirect_to performances_path
@@ -18,7 +19,7 @@ class ContributionsController < ApplicationController
   private
 
   def contributions_params
-    params.require(:contribution).permit(:amount, :user, :artist)
+    params.require(:contribution).permit(:amount, :user, :artist, :state)
   end
 
 end
