@@ -9,7 +9,7 @@
   </ul>
   <ul class="attendance">
     <% @attendance.each do |a| %>
-    <li> <%= a.user.photo %></li>
+    <li> <%= a.user.email %></li>
     <% end %>
   </ul>
   <%= link_to 'Back', performances_path %>

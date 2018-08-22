@@ -8,4 +8,6 @@ class User < ApplicationRecord
   has_many :attendances
 
   validates :email, presence: true, uniqueness: true
+  mount_uploader :avatar, PhotoUploader
+
 end

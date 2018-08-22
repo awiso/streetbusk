@@ -1,11 +1,19 @@
 <div class="signup">
   <% user = User.new %>
+  <ul id="signup-nav">
+    <li data-index=0 >Email</li>
+    <li data-index=1 >Password</li>
+    <li data-index=2 >Avatar</li>
+    <li data-index=3 >Are You An Artist?</li>
+    <li data-index=4 >Artist Name</li>
+    <li data-index=5 >Genre</li>
+    <li data-index=6 >Done</li>
+  </ul>
   <%= simple_form_for user, url: registration_path(user)   do |f| %>
   <div class="signup-view">
     <div class="signup-content">
       <%= label_tag("user[email]", "What's your email?") %>
       <%= text_field_tag("user[email]", nil, :class => 'form-control', :autocomplete => 'off') %>
-      <p class="signup-error"></p>
       <%= submit_tag("Continue", :class => "btn btn-danger signup-continue") %>
     </div>
   </div>
@@ -15,7 +23,36 @@
       <%= password_field_tag("user[password]", nil, :class => 'form-control', :autocomplete => 'off') %>
       <%= label_tag("user[password_confirmation]", "Confirm Password") %>
       <%= password_field_tag("user[password_confirmation]", nil, :class => 'form-control', :autocomplete => 'off') %>
-      <p class="signup-error"></p>
+      <%= f.button :submit, "Continue", class: "btn-danger signup-continue" %>
+    </div>
+  </div>
+  <div class="signup-view">
+    <div class="signup-content">
+      <%= f.input :avatar, label: "Upload an avatar (optional)" %>
+      <%= f.input :avatar_cache, as: :hidden %>
+      <%= f.button :submit, "Continue", class: "btn-danger signup-continue" %>
+    </div>
+  </div>
+  <div class="signup-view">
+    <div class="signup-content">
+      <p>Are you an artist?</p>
+      <%= hidden_field_tag "user[artist]", "", :class => 'signup-artist-hidden' %>
+      <%= f.button :submit, "Yes", class: "btn-danger signup-continue signup-split" %>
+      <%= f.button :submit, "No", class: "btn-danger signup-continue signup-split" %>
+    </div>
+  </div>
+
+  <div class="signup-view">
+    <div class="signup-content">
+      <%= label_tag("user[artist_name]", "What's your artist alias?") %>
+      <%= text_field_tag("user[artist_name]", nil, :class => 'form-control', :autocomplete => 'off') %>
+      <%= f.button :submit, "Continue", class: "btn-danger signup-continue" %>
+    </div>
+  </div>
+  <div class="signup-view">
+    <div class="signup-content">
+      <%= label_tag("user[genre]", "What's the genre?") %>
+      <%= text_field_tag("user[genre]", nil, :class => 'form-control', :autocomplete => 'off') %>
       <%= f.button :submit, "Continue", class: "btn-danger signup-continue" %>
     </div>
   </div>
@@ -26,4 +63,5 @@
     </div>
   </div>
   <% end %>
+
 </div>
