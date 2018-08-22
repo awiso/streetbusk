@@ -33,5 +33,4 @@ rescue Stripe::CardError => e
     @contribution = current_user.sent_contributions.where(state: 'pending').find(params[:contribution_id])
   end
 
-
 end

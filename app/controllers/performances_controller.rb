@@ -20,7 +20,7 @@ class PerformancesController < ApplicationController
 
   def index
     @performances = policy_scope(Performance)
-   
+
 
     @markers = @performances.map do |performance|
       {
@@ -33,6 +33,7 @@ class PerformancesController < ApplicationController
 
   def show
     authorize @performance
+    @contribution = Contribution.new
   end
 
   def edit
