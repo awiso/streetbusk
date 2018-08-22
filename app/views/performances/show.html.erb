@@ -7,6 +7,13 @@
     <li><%= @performance.end_time %></li>
     <li><%= @performance.description %></li>
 
+
+    <%= form_tag contributions_path do %>
+    <%= text_field :amount, :post %>
+    <%= hidden_field_tag 'performance_id', @performance.id %>
+    <%= submit_tag 'Contribute', class: 'btn btn-primary' %>
+    <% end %>
+
   </ul>
   <%= link_to 'Back', performances_path %>
 </div>
