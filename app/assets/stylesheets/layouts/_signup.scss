@@ -3,6 +3,17 @@
   z-index: 0 !important;
 }
 
+.input[type="submit"]{
+  margin-top: 20px;
+}
+
+.signup-back{
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  z-index: 11;
+}
+
 .signup{
   opacity: 0;
   z-index: -1;
@@ -17,6 +28,11 @@
   z-index: -1;
   background: white;
   display: none;
+    i{
+      position: absolute;
+      top: 10%;
+      left: 10%;
+    }
   }
 
   .signup-show{

@@ -30,9 +30,19 @@ function signupfunction(e){
         message: "^Your confirmation password and password must match"
       }
   }
-
+},
+{},//empty object, as no validation needed
+{},//empty object, as no validation needed
+{
+  "user[artist_name]": {
+  presence: true
 }
-
+},
+{
+  "genre": {
+  presence: true
+}
+}
 ];
 
   const views = document.querySelectorAll('.signup-view');
@@ -44,11 +54,20 @@ function signupfunction(e){
   document.querySelector('.signup').classList.add('show-signup');
   showSignupView(counter);
 
-  signupNavItems.forEach( li => {
-    li.addEventListener('click', function(e){
-      movetoSignupView(e.currentTarget.dataset.index);
-    })
+  // signupNavItems.forEach( li => {
+  //   li.addEventListener('click', function(e){
+  //     movetoSignupView(e.currentTarget.dataset.index);
+  //   })
+  // })
+
+  const backButton = document.querySelector('.signup-back');
+  backButton.addEventListener('click', function(e){
+    counter -= 1;
+    hideSignupView(counter + 1);
+    showSignupView(counter);
   })
+
+
 
   continueButtons.forEach( button => {
     button.addEventListener('click', function(e){
@@ -106,23 +125,27 @@ function signupfunction(e){
   }
 
   function showSignupView(counter){
+    console.log(counter)
     signupNavItems[counter].classList.add('show-signup-navitem');
     signupNavItems[counter].classList.add('signup-navitem-active');
     views[counter].classList.add('signup-show');
     content[counter].classList.add('signup-transition-in');
     let viewInputFirst = views[counter].querySelector('input');
     if(viewInputFirst.type == "text" || viewInputFirst.type == "password"){ viewInputFirst.focus();}
+    setTimeout(function(){
+      content[counter].classList.remove('signup-transition-in');
+    }, 1000);
   }
 
   function hideSignupView(counter){
     signupNavItems[counter].classList.remove('signup-navitem-active');
-    content[counter].classList.remove('signup-transition-in');
-    const transitionInTime = 1200;
+    const transitionTime = 1200;
+    content[counter].classList.add('signup-transition-out');
     setTimeout(function(){
-      content[counter].classList.add('signup-transition-out');
-    }, 1200);
-    views[counter].classList.remove('signup-show');
-    content[counter].classList.remove('signup-transition-out');
+    //  content[counter + 1].classList.remove('signup-transition-in');
+      content[counter].classList.remove('signup-transition-out');
+      views[counter].classList.remove('signup-show');
+    }, transitionTime);
   }
 
   function setUserArtistField(boolean){
@@ -130,12 +153,9 @@ function signupfunction(e){
   }
 
   function movetoSignupView(index){
-    views[index].classList.add('signup-show');
-    showSignupView(index);
     hideSignupView(counter);
-    console.log(index);
-    console.log(counter);
-    counter = index;
+    showSignupView(index);
+    counter = parseInt(index);
     // for (i = 0; i < views.length; i++){
     //   if i == index{
     //

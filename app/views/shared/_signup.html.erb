@@ -1,4 +1,5 @@
 <div class="signup">
+  <i class="fas fa-arrow-left signup-back"></i>
   <% user = User.new %>
   <ul id="signup-nav">
     <li data-index=0 >Email</li>
@@ -51,8 +52,8 @@
   </div>
   <div class="signup-view">
     <div class="signup-content">
-      <%= label_tag("user[genre]", "What's the genre?") %>
-      <%= text_field_tag("user[genre]", nil, :class => 'form-control', :autocomplete => 'off') %>
+      <%= label_tag("genre", "What's the genre?") %>
+      <%= text_field_tag("genre", nil, :class => 'form-control', :autocomplete => 'off') %>
       <%= f.button :submit, "Continue", class: "btn-danger signup-continue" %>
     </div>
   </div>
