@@ -6,11 +6,30 @@
   data-markers="<%= @markers.to_json %>">
   </div>
 
+
+  <div class="cards-container">
+
+    <div class="row">
+
   <h1>Performances (<%= @performances.length %>)</h1>
-  <ul>
-  <% @performances.each do |performance| %>
-    <%= cl_image_tag performance.photo, height: 300, width: 400, crop: :fill %>
-    <li><%=link_to performance.user.name, performance_path(performance) %> - <%= performance.location %></li>
-  <% end %>
-  </ul>
-</div>
+      <% @performances.each do |performance| %>
+      <div class="col-xs-12 col-sm-4">
+
+        <%= link_to performance_path(performance) do %>
+
+        <div class="card">
+          <%= cl_image_tag performance.photo, height: 300, width: 350, crop: :fill %>
+
+          <div class="card-description">
+             <h2> <%= performance.user.name %></h2>
+              <p><i class="fas fa-map-pin"></i><%= performance.location %></p>
+          </div>
+        </div>
+
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+
