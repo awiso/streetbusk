@@ -41,6 +41,7 @@
     <% else %>
       <!-- Login link (when logged out) -->
       <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <a href="#" id="signup-button" class= "navbar-wagon-item navbar-wagon-link">Sign Up</a>
     <% end %>
   </div>
 
@@ -72,4 +73,3 @@
   <% end %>
   </div>
 </div>
-
