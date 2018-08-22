@@ -1,0 +1,29 @@
+<div class="signup">
+  <% user = User.new %>
+  <%= simple_form_for user, url: registration_path(user)   do |f| %>
+  <div class="signup-view">
+    <div class="signup-content">
+      <%= label_tag("user[email]", "What's your email?") %>
+      <%= text_field_tag("user[email]", nil, :class => 'form-control', :autocomplete => 'off') %>
+      <p class="signup-error"></p>
+      <%= submit_tag("Continue", :class => "btn btn-danger signup-continue") %>
+    </div>
+  </div>
+  <div class="signup-view">
+    <div class="signup-content">
+      <%= label_tag("user[password]", "Password") %>
+      <%= password_field_tag("user[password]", nil, :class => 'form-control', :autocomplete => 'off') %>
+      <%= label_tag("user[password_confirmation]", "Confirm Password") %>
+      <%= password_field_tag("user[password_confirmation]", nil, :class => 'form-control', :autocomplete => 'off') %>
+      <p class="signup-error"></p>
+      <%= f.button :submit, "Continue", class: "btn-danger signup-continue" %>
+    </div>
+  </div>
+  <div class="signup-view">
+    <div class="signup-content">
+      <p>You're all done!</p>
+      <%= f.button :submit, "Continue", class: "btn-danger" %>
+    </div>
+  </div>
+  <% end %>
+</div>
