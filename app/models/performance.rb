@@ -1,6 +1,7 @@
 class Performance < ApplicationRecord
   belongs_to :user
   belongs_to :genre
+  has_many :attendances
   # Validations
   validates :location, presence: true
   validates :start_time, presence: true

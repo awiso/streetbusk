@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :artist_genres
   has_many :performances, dependent: :destroy
+  has_many :attendances
 
   validates :email, presence: true, uniqueness: true
 end
