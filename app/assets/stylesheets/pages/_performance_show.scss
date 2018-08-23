@@ -34,8 +34,14 @@
     position: relative;
     display: flex;
     flex-wrap: wrap;
+    margin-top: 20px;
     @media(max-width: 600px){
-      display: block;
+    }
+    .artist-avatar{
+      margin-right: 20px;
+    }
+    h2{
+      margin-top: 0px;
     }
     img{
       height: 35vh;
@@ -46,7 +52,12 @@
       }
     }
     ul{
-      flex: 1 0 300px;
+      margin-left: 0px;
+      padding: 0;
+    }
+
+    i{
+      width: 30px;
     }
   }
 
@@ -60,8 +71,9 @@
     height: 50vh;
   }
   .performance-avatar{
-    height: 35px;
-    width: 35px;
+    margin: 0px auto 20px auto;
+    height: 100px;
+    width: 100px;
     background-position: center center;
     background-size: cover;
     border-radius: 50%;

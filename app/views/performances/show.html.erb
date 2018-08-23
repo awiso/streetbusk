@@ -11,20 +11,40 @@
         Contribute
       </button>
 
-    <div class="container performance-photo-cont">
+    <!-- PERFORMANCE INFO -->
+    <div class="container">
+      <h2><%= @performance.user.artist_name %></h2>
+      <div class="performance-photo-cont">
 
-      <!-- <%= cl_image_tag @performance.photo_url, crop: :fill %> -->
-      <div class="performance-avatar" style="background-image: url('<%= cl_image_path @performance.user.avatar, crop: :fill %>')"></div>
+        <!-- <%= cl_image_tag @performance.photo_url, crop: :fill %> -->
+        <div class="artist-avatar">
+          <div class="performance-avatar" style="background-image: url('<%= cl_image_path @performance.user.avatar, crop: :fill %>')"></div>
+        </div>
+        <ul>
+          <li><i class="fas fa-map-pin"></i><%= @performance.location %></li>
+          <% if @playing_now %>
+          <li><i class="far fa-clock"></i><span class="playing_now">
+            <% if @performance.genre.performance_type == "Music" %>
+            Playing now
+            <% else %>
+            Performing now
+            <% end %>
+          </span> until<%= @performance.end_time.to_formatted_s(:short)  %></li>
+          <% else %>
+          <li><i class="far fa-clock"></i>
+            <% if @performance.genre.performance_type == "Music" %>
+            Played at
+            <% else %>
+            Performed at
+            <% end %> <%= @performance.start_time.to_formatted_s(:short)  %></li>
+            <% end %>
+            <li><i class="far fa-comment"></i><%= @performance.description %></li>
+            <li><i class="fas fa-music"></i><%= @performance.genre.name %></li>
+          </ul>
+        </div>
 
-      <ul>
-        <li><h2><%= @performance.user.artist_name %></h2></li>
-        <li><i class="fas fa-map-pin"></i> <%= @performance.location %></li>
-        <li><i class="far fa-clock"></i> Started at <%= @performance.start_time.to_formatted_s(:short)  %> for <%= @duration %></li>
-        <li><i class="far fa-clock"></i> Finish time is at <%= @performance.end_time.to_formatted_s(:short)  %></li>
-        <li><i class="far fa-comment"></i> <%= @performance.description %></li>
-        <li><i class="fas fa-music"></i> <%= @performance.genre.name %></li>
-      </ul>
     </div>
+
 
     <div class="attending-header-container">
       <h3>Attending</h3>
