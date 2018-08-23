@@ -10,11 +10,11 @@ class AttendanceController < ApplicationController
         format.html { redirect_to performance_path(@performance) }
         format.js
       end
+      authorize @attendance
   #  else
   #    flash[:alert] = "You're already attending this event"
   #    redirect_to performance_path(@performance)
   #  end
-    authorize @attendance
   end
 
   private

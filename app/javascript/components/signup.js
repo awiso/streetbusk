@@ -63,8 +63,11 @@ function signupfunction(e){
   const backButton = document.querySelector('.signup-back');
   backButton.addEventListener('click', function(e){
     counter -= 1;
-    hideSignupView(counter + 1);
     showSignupView(counter);
+    hideSignupView(counter + 1);
+    if(counter == -1){
+      document.querySelector('.signup').classList.remove('show-signup');
+    }
   })
 
 
@@ -141,7 +144,6 @@ function signupfunction(e){
 
   function hideSignupView(counter){
     if(counter >= 0){
-      document.querySelector('.signup').classList.remove('show-signup');
       signupNavItems[counter].classList.remove('signup-navitem-active');
       const transitionTime = 1200;
       content[counter].classList.add('signup-transition-out');

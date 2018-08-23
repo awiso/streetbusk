@@ -44,6 +44,11 @@ class PerformancesController < ApplicationController
     @attendance = Attendance.new
     authorize @performance
     @contribution = Contribution.new
+    @markers = [{
+        lat: @performance.latitude,
+        lng: @performance.longitude
+          }]
+    @duration = duration(@performance)
   end
 
   def edit
@@ -66,5 +71,12 @@ class PerformancesController < ApplicationController
 
   def performance_params
     params.require(:performance).permit(:location, :start_time, :end_time, :description, :photo, :genre_id)
+  end
+
+  def duration(performance)
+    sec_in_hours = 60 * 60
+    minutes = (@performance.end_time - @performance.start_time)%sec_in_hours.to_i
+    hours = ((@performance.end_time - @performance.start_time)/sec_in_hours).floor
+    "#{hours} hours#{minutes > 0 ? " and #{minutes} minutes." : ""}"
   end
 end

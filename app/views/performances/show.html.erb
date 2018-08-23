@@ -1,36 +1,79 @@
-<div class="container performance-show">
-  <h1><%= @performance.user.name %></h1>
-  <ul>
-    <%= cl_image_tag @performance.photo_url, height: 300, crop: :fill %>
-    <li><%= @performance.location %></li>
-    <li><%= @performance.start_time %></li>
-    <li><%= @performance.end_time %></li>
-    <li><%= @performance.description %></li>
+<div class="performance-show">
+  <div class="performance-photo-bg" style="background-image: url('<%= cl_image_path @performance.photo_url, crop: :fill %>')"></div>
+  <div class="overlay">
 
-    <%= simple_form_for(@contribution) do |f| %>
-      <%= f.input :amount %>
-      <%= f.input :artist_id, as: :hidden, input_html: { value: @performance.user.id } %>
-      <%= f.submit 'contribute', class: 'btn btn-primary' %>
+      <%= link_to performances_path do %>
+      <i class="fas fa-arrow-left performance-back"></i>
+      <% end %>
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#contribute-modal" id="contribute-button">
+        Contribute
+      </button>
+
+    <div class="container performance-photo-cont">
+
+      <!-- <%= cl_image_tag @performance.photo_url, crop: :fill %> -->
+      <div class="performance-avatar" style="background-image: url('<%= cl_image_path @performance.user.avatar, crop: :fill %>')"></div>
+
+      <ul>
+        <li><h2><%= @performance.user.artist_name %></h2></li>
+        <li><i class="fas fa-map-pin"></i> <%= @performance.location %></li>
+        <li><i class="far fa-clock"></i> Started at <%= @performance.start_time.to_formatted_s(:short)  %> for <%= @duration %></li>
+        <li><i class="far fa-clock"></i> Finish time is at <%= @performance.end_time.to_formatted_s(:short)  %></li>
+        <li><i class="far fa-comment"></i> <%= @performance.description %></li>
+        <li><i class="fas fa-music"></i> <%= @performance.genre.name %></li>
+      </ul>
+    </div>
+
+    <div class="attending-header-container">
+      <h3>Attending</h3>
+    </div>
+    <ul class="attendance">
+      <% @attendances.take(10).each do |a| %>
+      <!-- <li> <%= a.user.avatar %></li> -->
+      <%= render "attendance/attend", user: a.user %>
+      <% end %>
+    </ul>
+    <%= simple_form_for [ @performance, @attendance ], url: performance_attendance_index_path(@performance.id), remote: true do |form| %>
+      <%= form.hidden_field :performance_id, :value => @performance.id %>
+      <%= form.button :submit, "Attend", class:"btn btn-primary" %>
     <% end %>
 
-    <%#= form_tag contributions_path do %>
-    <%#= text_field :amount, :post %>
-    <%#= hidden_field_tag 'performance_id', @performance.id %>
-    <%#= submit_tag 'Contribute', class: 'btn btn-primary' %>
-    <%# end %>
 
-  </ul>
-  <div class="attending-header-container">
-    <h3>Attending</h3>    
+    <div
+      id="map"
+      style="width: 100%;
+      height: 600px;"
+      data-markers="<%= @markers.to_json %>">
+    </div>
+
   </div>
-  <ul class="attendance">
-    <% @attendances.each do |a| %>
-    <li> <%= a.user.email %></li>
-    <% end %>
-  </ul>
-  <%= simple_form_for [ @performance, @attendance ], url: performance_attendance_index_path(@performance.id), remote: true do |form| %>
-    <%= form.hidden_field :performance_id, :value => @performance.id %>
-    <%= form.button :submit, "Attend", class:"btn btn primary" %>
-  <% end %>
-  <%= link_to 'Back', performances_path %>
+
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="contribute-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Make a Contribution</h4>
+      </div>
+      <%= simple_form_for(@contribution) do |f| %>
+      <div class="modal-body">
+        <p>Select an amount:</p>
+        <%= select_tag "credit_card", options_for_select([ "€1", "€2", "€5", "€10", "Other" ], "€1"), class: "contribute_options" %>
+        <div class="performance-other-amount">
+          <%= f.input :amount, label: "Other Amount", html: { autocomplete: 'off' } %>
+        </div>
+        <%= f.input :artist_id, as: :hidden, input_html: { value: @performance.user.id } %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <%= f.submit 'Contribute', class: 'btn btn-primary' %>
+      </div>
+      <% end %>
+    </div>
+  </div>
 </div>
