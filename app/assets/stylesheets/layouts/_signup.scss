@@ -1,4 +1,24 @@
+.show-signup{
+  opacity: 1 !important;
+  z-index: 0 !important;
+}
+
+.input[type="submit"]{
+  margin-top: 20px;
+}
+
+.signup-back{
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  z-index: 11;
+}
+
 .signup{
+  opacity: 0;
+  z-index: -1;
+
+
   .signup-view{
   position: fixed;
   top: 0%;
@@ -8,6 +28,11 @@
   z-index: -1;
   background: white;
   display: none;
+    i{
+      position: absolute;
+      top: 10%;
+      left: 10%;
+    }
   }
 
   .signup-show{
@@ -15,6 +40,26 @@
     z-index: 10;
   }
 
+  #signup-nav{
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translate(-50%, -50%);
+    z-index: 11;
+    li{
+      opacity: 0;
+      font-size: 12px;
+      color: rgba(0,0,0,0.4);
+      transition: all 0.7s ease;
+      cursor: pointer;
+    }
+    .show-signup-navitem{
+      opacity: 1;
+    }
+    .signup-navitem-active{
+      color: black;
+    }
+  }
 
   .signup-content{
     transform: translate(-50%, -50%);
