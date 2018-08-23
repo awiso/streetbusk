@@ -125,27 +125,30 @@ function signupfunction(e){
   }
 
   function showSignupView(counter){
-    console.log(counter)
-    signupNavItems[counter].classList.add('show-signup-navitem');
-    signupNavItems[counter].classList.add('signup-navitem-active');
-    views[counter].classList.add('signup-show');
-    content[counter].classList.add('signup-transition-in');
-    let viewInputFirst = views[counter].querySelector('input');
-    if(viewInputFirst.type == "text" || viewInputFirst.type == "password"){ viewInputFirst.focus();}
-    setTimeout(function(){
-      content[counter].classList.remove('signup-transition-in');
-    }, 1000);
+    if(counter >= 0){
+      signupNavItems[counter].classList.add('show-signup-navitem');
+      signupNavItems[counter].classList.add('signup-navitem-active');
+      views[counter].classList.add('signup-show');
+      content[counter].classList.add('signup-transition-in');
+      let viewInputFirst = views[counter].querySelector('input');
+      if(viewInputFirst.type == "text" || viewInputFirst.type == "password"){ viewInputFirst.focus();}
+      setTimeout(function(){
+        content[counter].classList.remove('signup-transition-in');
+      }, 1000);
+    }
   }
 
   function hideSignupView(counter){
-    signupNavItems[counter].classList.remove('signup-navitem-active');
-    const transitionTime = 1200;
-    content[counter].classList.add('signup-transition-out');
-    setTimeout(function(){
-    //  content[counter + 1].classList.remove('signup-transition-in');
-      content[counter].classList.remove('signup-transition-out');
-      views[counter].classList.remove('signup-show');
-    }, transitionTime);
+    if(counter >= 0){
+      signupNavItems[counter].classList.remove('signup-navitem-active');
+      const transitionTime = 1200;
+      content[counter].classList.add('signup-transition-out');
+      setTimeout(function(){
+        //  content[counter + 1].classList.remove('signup-transition-in');
+        content[counter].classList.remove('signup-transition-out');
+        views[counter].classList.remove('signup-show');
+      }, transitionTime);      
+    }
   }
 
   function setUserArtistField(boolean){
