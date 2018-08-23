@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container performance-show">
   <h1><%= @performance.user.name %></h1>
   <ul>
     <%= cl_image_tag @performance.photo_url, height: 300, crop: :fill %>
@@ -20,7 +20,9 @@
     <%# end %>
 
   </ul>
-  <h3>Attending</h3>
+  <div class="attending-header-container">
+    <h3>Attending</h3>    
+  </div>
   <ul class="attendance">
     <% @attendances.each do |a| %>
     <li> <%= a.user.email %></li>
