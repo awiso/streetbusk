@@ -20,14 +20,15 @@
     <%# end %>
 
   </ul>
+  <h3>Attending</h3>
   <ul class="attendance">
-    <h3>Attending</h3>
-    <% @attendance.each do |a| %>
+    <% @attendances.each do |a| %>
     <li> <%= a.user.email %></li>
     <% end %>
   </ul>
-  <%= simple_form_for([ @performance, @attendance ], remote: true) do |form| %>
-    <%= form.button :submit, "Attend" %>
+  <%= simple_form_for [ @performance, @attendance ], url: performance_attendance_index_path(@performance.id), remote: true do |form| %>
+    <%= form.hidden_field :performance_id, :value => @performance.id %>
+    <%= form.button :submit, "Attend", class:"btn btn primary" %>
   <% end %>
   <%= link_to 'Back', performances_path %>
 </div>

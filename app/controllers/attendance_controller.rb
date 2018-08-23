@@ -1,8 +1,20 @@
 class AttendanceController < ApplicationController
   def create
-    @user = User.find params[:user_id]
-    @attendance = Attendance.new
-    raise
+    @performance = Performance.find(params_attendance[:performance_id])
+    @attendance = Attendance.new(params_attendance)
+    @attendance.user = current_user
+    @attendance.save
+    @user_detail = @attendance.user.email
+    #if @attendance.save
+      respond_to do |format|
+        format.html { redirect_to performance_path(@performance) }
+        format.js
+      end
+  #  else
+  #    flash[:alert] = "You're already attending this event"
+  #    redirect_to performance_path(@performance)
+  #  end
+    authorize @attendance
   end
 
   private
