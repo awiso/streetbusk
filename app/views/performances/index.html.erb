@@ -15,13 +15,17 @@
     <%= text_field_tag :query,
     params[:query],
     class: "form-control",
+      params[:query],
+      class: "form-control-index",
       placeholder: "Search by city"
       %>
       <% end %>
   </div>
 
       <h1>Performances (<%= @performances.length %>)</h1>
-
+  <div class="performance">
+  <h1>Performances (<%= @performances.length %>)</h1>
+  </div>
       <div class="scrolling-wrapper">
 
         <% @performances.each do |performance| %>
