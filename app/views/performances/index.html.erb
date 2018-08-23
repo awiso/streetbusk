@@ -27,11 +27,11 @@
         <%= link_to performance_path(performance) do %>
 
         <div class="card">
-          <%= cl_image_tag performance.photo_url, width: 350, crop: :fill %>
+          <%= cl_image_tag performance.photo_url, height: 300, width: 350, crop: :fill %>
 
           <div class="card-description">
              <h2> <%= performance.user.name %></h2>
-              <p><i class="fas fa-map-pin"></i><%= performance.location %></p>
+              <p><i class="fas fa-map-pin"></i> &nbsp; <%= performance.location %></p>
           </div>
         </div>
 
