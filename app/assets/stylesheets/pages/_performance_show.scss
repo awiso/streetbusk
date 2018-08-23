@@ -1,0 +1,100 @@
+.performance-show{
+  position: relative;
+
+  .overlay{
+    z-index: 1;
+  }
+  h3{
+    display: inline-block;
+  }
+  .attending-header-container{
+    display: block;
+    p{
+      color:red;
+      font-style: italic;
+      font-size: 12px;
+      display: inline-block;
+    }
+  }
+  .performance-back{
+    font-size: 32px;
+    position: absolute;
+    left: 10%;
+    top: 5%;
+  }
+
+  #contribute-button{
+    position: absolute;
+    right: 10%;
+    top: 5%;
+  }
+
+
+  .performance-photo-cont{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    @media(max-width: 600px){
+      display: block;
+    }
+    img{
+      height: 35vh;
+      width: auto;
+      @media (max-width: 600px){
+        height: auto;
+        width: 100%;
+      }
+    }
+    ul{
+      flex: 1 0 300px;
+    }
+  }
+
+  .performance-photo-bg{
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 100vw;
+    min-height: 600px;
+    height: 50vh;
+  }
+  .performance-avatar{
+    height: 35px;
+    width: 35px;
+    background-position: center center;
+    background-size: cover;
+    border-radius: 50%;
+  }
+
+
+  .attendance{
+    li{
+      list-style: none;
+      display: inline-block;
+      height: 35px;
+      width: 35px;
+      background-position: center center;
+      background-size: cover;
+      border-radius: 50%;
+    }
+  }
+
+}
+
+.performance-other-amount{
+  #contribution_amount{
+    display: none;
+  }
+  .show-contribution_amount{
+    display: block !important;
+  }
+  opacity: 0;
+  max-height: 0;
+  transition: all 0.4s ease;
+}
+.show-other-amount{
+  margin-top: 15px;
+  opacity: 1 !important;
+  max-height: 150px;
+}

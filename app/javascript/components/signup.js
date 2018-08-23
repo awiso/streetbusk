@@ -63,8 +63,11 @@ function signupfunction(e){
   const backButton = document.querySelector('.signup-back');
   backButton.addEventListener('click', function(e){
     counter -= 1;
-    hideSignupView(counter + 1);
     showSignupView(counter);
+    hideSignupView(counter + 1);
+    if(counter == -1){
+      document.querySelector('.signup').classList.remove('show-signup');
+    }
   })
 
 
@@ -136,6 +139,7 @@ function signupfunction(e){
         content[counter].classList.remove('signup-transition-in');
       }, 1000);
     }
+
   }
 
   function hideSignupView(counter){
@@ -147,7 +151,7 @@ function signupfunction(e){
         //  content[counter + 1].classList.remove('signup-transition-in');
         content[counter].classList.remove('signup-transition-out');
         views[counter].classList.remove('signup-show');
-      }, transitionTime);      
+      }, transitionTime);
     }
   }
 
@@ -159,14 +163,6 @@ function signupfunction(e){
     hideSignupView(counter);
     showSignupView(index);
     counter = parseInt(index);
-    // for (i = 0; i < views.length; i++){
-    //   if i == index{
-    //
-    //   }
-    //   else{
-    //     signupNavItems[counter].classList.remove('signup-navitem-active');
-    //   }
-    // }
   }
 }
 
