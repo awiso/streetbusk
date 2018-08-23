@@ -14,12 +14,14 @@
   <%= form_tag performances_path, method: :get do %>
     <%= text_field_tag :query,
       params[:query],
-      class: "form-control",
+      class: "form-control-index",
       placeholder: "Search by city"
     %>
   <% end %>
 
+  <div class="performance">
   <h1>Performances (<%= @performances.length %>)</h1>
+  </div>
 
       <% @performances.each do |performance| %>
       <div class="col-xs-12 col-sm-4">
