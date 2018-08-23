@@ -1,6 +1,7 @@
 <div class="banner" style="background-image: linear-gradient(-190deg, rgba(76,51,35,-0.5) 0%, rgba(0,0,10, 0.5) 100%), url('<%= image_path 'banner.jpg' %>');">
 
   <div class="banner-content">
+
     <%= image_tag '', class: 'logo-img' %>
     <h1>Live performance now.</h1><br>
       <%= form_tag performances_path, method: :get do %>
@@ -11,7 +12,37 @@
         %>
       <% end %>
       <br>
-    <%=link_to "Discover", performances_path, class: 'btn btn-primary' %>
+    <%=link_to "Discover", performances_path, class: 'btn btn-home btn-warning' %>
   </div>
 
+</div>
+
+<div class="wrapper">
+  <div class="container">
+      <%= image_tag '1.jpg', width: '100%', class: "left" %>
+     <div class="desc-left">
+      <h1>Hello World</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi eaque sint, consequatur tenetur aliquid, incidunt libero qui possimus dolores ullam tempore, officiis animi. Optio est provident at, aspernatur! Quisquam, sequi.</p>
+    </div>
+ </div>
+</div>
+
+<div class="wrapper">
+  <div class="container">
+      <%= image_tag '1.jpg', width: '100%', class: "right" %>
+     <div class="desc-right">
+      <h1>Hello World</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae vitae dolores temporibus dolor provident, at nesciunt hic voluptate. Consequuntur reiciendis, voluptatum soluta ea numquam totam pariatur tenetur voluptates saepe deleniti.</p>
+    </div>
+ </div>
+</div>
+
+<div class="wrapper">
+  <div class="container">
+      <%= image_tag '1.jpg', width: '100%', class: "left" %>
+     <div class="desc-left">
+      <h1>Hello World</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. In hic eum assumenda corporis cumque sed provident dolore, ratione, blanditiis dolorum quaerat, fugit suscipit nulla delectus voluptatibus natus deserunt quasi at.</p>
+     </div>
+ </div>
 </div>
