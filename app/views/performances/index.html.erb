@@ -8,6 +8,15 @@
 </div>
 
 
+  <%= form_tag performances_path, method: :get do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Search by city"
+    %>
+  <% end %>
+
+
 <div class="cards-container">
   <div class="row">
 
