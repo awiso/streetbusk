@@ -1,0 +1,10 @@
+<div class="container">
+<h1>Your good-hearted contributions to beautiful artists</h1>
+<ul>
+  <li>
+    State: <%= @contribution.state %>
+    Artist: <%= @contribution.artist_id %>
+    Amount: <%= humanized_money_with_symbol(@contribution.amount) %>
+  </li>
+</ul>
+</div>
