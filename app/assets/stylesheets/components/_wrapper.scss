@@ -1,0 +1,50 @@
+.wrapper {
+  background-color: #f9f9f9;
+  height: 400px;
+}
+
+.container {
+  position: relative;
+  height: 100%;
+}
+
+.desc-left {
+  position: absolute;
+  top: 30%;
+  left: 25%;
+  width: calc(100% - 30%);
+  font-size: 15px;
+}
+
+.desc-right {
+  position: absolute;
+  top: 30%;
+  width: calc(100% - 30%);
+  font-size: 15px;
+  left: 30px;
+}
+
+.left {
+  width: 50%;
+  position: relative;
+  top: 45px;
+  opacity: 0.4;
+}
+
+.right {
+  width: 50%;
+  position: absolute;
+  top: 45px;
+  opacity: 0.4;
+  right: 10px;
+}
+
+@media (max-width: 500px){
+  .left {
+    width: 70%;
+  }
+  .right {
+    width: 70%;
+  }
+}
+
