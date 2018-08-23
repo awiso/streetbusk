@@ -20,5 +20,10 @@
     <%# end %>
 
   </ul>
+  <ul class="attendance">
+    <% @attendance.each do |a| %>
+    <li> <%= a.user.email %></li>
+    <% end %>
+  </ul>
   <%= link_to 'Back', performances_path %>
 </div>

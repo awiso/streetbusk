@@ -39,6 +39,8 @@ class PerformancesController < ApplicationController
   end
 
   def show
+    @attendance = @performance.attendances
+    @attendance_numbers = @performance.attendances.count
     authorize @performance
     @contribution = Contribution.new
   end
