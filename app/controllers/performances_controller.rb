@@ -49,6 +49,7 @@ class PerformancesController < ApplicationController
         lng: @performance.longitude
           }]
     @duration = duration(@performance)
+
   end
 
   def edit
