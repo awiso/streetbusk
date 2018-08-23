@@ -9,7 +9,6 @@
 
 .card {
   height: 300px;
-  width: 100%;
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   background-size: cover !important;
   background-position: center;
@@ -17,6 +16,7 @@
   position: relative;
   transition: all 0.5s;
   margin: 5px;
+  display: inline-block;
 }
 
 .card-description {
