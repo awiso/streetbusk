@@ -1,10 +1,11 @@
 <div class="container">
-<h1>Your good-hearted contributions to beautiful artists</h1>
-<ul>
-  <li>
-    State: <%= @contribution.state %>
-    Artist: <%= @contribution.artist_id %>
-    Amount: <%= humanized_money_with_symbol(@contribution.amount) %>
-  </li>
-</ul>
+  <h1 id='thanks'>Thanks!</h1>
+  <div class="message">
+    <p>On behalf of artists everywhere, thank you for your contribution</p>
+    <p class='team'> - StreetBusk Team</p>
+  </div>
+  <div class="move">
+    <%= link_to 'Back to Performances', performances_path, class: 'btn btn-primary contribution' %>
+  </div>
 </div>
+
