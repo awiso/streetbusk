@@ -19,6 +19,8 @@ class PerformancesController < ApplicationController
   end
 
   def index
+    @performances = policy_scope(Performance)
+
     policy_scope(Performance)
     if params[:query].present?
       sql_query = "location ILIKE :query"
@@ -40,6 +42,7 @@ class PerformancesController < ApplicationController
     @attendance = @performance.attendances
     @attendance_numbers = @performance.attendances.count
     authorize @performance
+    @contribution = Contribution.new
   end
 
   def edit
