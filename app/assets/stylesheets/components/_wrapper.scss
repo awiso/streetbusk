@@ -10,16 +10,18 @@
 
 .desc-left {
   position: absolute;
-  top: 50%;
-  left: 30%;
+  top: 30%;
+  left: 25%;
   width: calc(100% - 30%);
+  font-size: 15px;
 }
 
 .desc-right {
   position: absolute;
-  top: 50%;
-  left: 30%;
+  top: 30%;
   width: calc(100% - 30%);
+  font-size: 15px;
+  left: 30px;
 }
 
 .left {
@@ -31,10 +33,10 @@
 
 .right {
   width: 50%;
-  position: relative;
+  position: absolute;
   top: 45px;
   opacity: 0.4;
-  left: 470px;
+  right: 10px;
 }
 
 @media (max-width: 500px){
