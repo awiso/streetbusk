@@ -136,10 +136,12 @@ function signupfunction(e){
         content[counter].classList.remove('signup-transition-in');
       }, 1000);
     }
+
   }
 
   function hideSignupView(counter){
     if(counter >= 0){
+      document.querySelector('.signup').classList.remove('show-signup');
       signupNavItems[counter].classList.remove('signup-navitem-active');
       const transitionTime = 1200;
       content[counter].classList.add('signup-transition-out');
@@ -147,7 +149,7 @@ function signupfunction(e){
         //  content[counter + 1].classList.remove('signup-transition-in');
         content[counter].classList.remove('signup-transition-out');
         views[counter].classList.remove('signup-show');
-      }, transitionTime);      
+      }, transitionTime);
     }
   }
 
@@ -159,14 +161,6 @@ function signupfunction(e){
     hideSignupView(counter);
     showSignupView(index);
     counter = parseInt(index);
-    // for (i = 0; i < views.length; i++){
-    //   if i == index{
-    //
-    //   }
-    //   else{
-    //     signupNavItems[counter].classList.remove('signup-navitem-active');
-    //   }
-    // }
   }
 }
 
