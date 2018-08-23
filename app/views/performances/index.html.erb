@@ -11,7 +11,15 @@
 
     <div class="row">
 
-  <h1 class="performance">Performances (<%= @performances.length %>)</h1>
+  <%= form_tag performances_path, method: :get do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Search by city"
+    %>
+  <% end %>
+
+  <h1>Performances (<%= @performances.length %>)</h1>
 
       <% @performances.each do |performance| %>
       <div class="col-xs-12 col-sm-4">
