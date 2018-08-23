@@ -8,9 +8,13 @@
     <li><%= @performance.description %></li>
   </ul>
   <ul class="attendance">
+    <h3>Attending</h3>
     <% @attendance.each do |a| %>
     <li> <%= a.user.email %></li>
     <% end %>
   </ul>
+  <%= simple_form_for([ @performance, @attendance ], remote: true) do |form| %>
+    <%= form.button :submit, "Attend" %>
+  <% end %>
   <%= link_to 'Back', performances_path %>
 </div>
