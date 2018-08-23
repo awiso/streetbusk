@@ -9,14 +9,14 @@ User.destroy_all
 
 puts "Generate users"
 
-User.new(email: 'john@beatles.com', password: '123123', avatar: 'sample', name: 'John Lennon', artist: true, artist_name: 'John', default_performance_photo: 'sample', social_media_links: 'www.twitter.com').save
+User.new(email: 'john@beatles.com', password: '123123', avatar: nil, name: 'John Lennon', artist: true, artist_name: 'John', default_performance_photo: 'sample', social_media_links: 'www.twitter.com').save
 
-User.new(email: 'paul@beatles.com', password: '123123', avatar: 'sample', name: 'Paul McCartney', artist: true, artist_name: 'Paul', default_performance_photo: 'sample', social_media_links: 'www.twitter.com').save
+User.new(email: 'paul@beatles.com', password: '123123', avatar: nil, name: 'Paul McCartney', artist: true, artist_name: 'Paul', default_performance_photo: 'sample', social_media_links: 'www.twitter.com').save
 
-User.new(email: 'george@beatles.com', password: '123123', avatar: 'sample', name: 'George Harrison', artist: true, artist_name: 'George', default_performance_photo: 'sample', social_media_links: 'www.twitter.com').save
+User.new(email: 'george@beatles.com', password: '123123', avatar: nil, name: 'George Harrison', artist: true, artist_name: 'George', default_performance_photo: 'sample', social_media_links: 'www.twitter.com').save
 
 
-User.new(email: 'ringo@beatles.com', password: '123123', avatar: 'sample', name: 'Ringo Starr', artist: true, artist_name: 'Ringo', default_performance_photo: 'sample', social_media_links: 'www.twitter.com').save
+User.new(email: 'ringo@beatles.com', password: '123123', avatar: nil, name: 'Ringo Starr', artist: true, artist_name: 'Ringo', default_performance_photo: 'sample', social_media_links: 'www.twitter.com').save
 
 john = User.first
 ringo = User.last

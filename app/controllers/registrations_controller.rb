@@ -2,7 +2,9 @@ class RegistrationsController < Devise::RegistrationsController
   def create
     @user = User.new(sign_up_params)
     if @user.save
-      redirect_to performances_path
+      session[:user_id] = @user.id
+      flash.notice = "Thanks for signing up, have a look around!"
+      sign_in_and_redirect @user
     else
       render :new
     end
@@ -16,5 +18,9 @@ class RegistrationsController < Devise::RegistrationsController
 
   def account_update_params
     params.require(:user).permit(:email, :password, :password_confirmation, :current_password)
+  end
+
+  def after_sign_in_path_for(resource)
+      session[:previous_url] || performances_path
   end
 end

@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2018_08_22_142808) do
-
+ActiveRecord::Schema.define(version: 2018_08_23_201608) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,7 +76,7 @@ ActiveRecord::Schema.define(version: 2018_08_22_142808) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "avatar", default: "http://res.cloudinary.com/djvp4os8m/image/upload/v1535055537/p44vav9uvwnzgbir6ek5.png"
+    t.string "avatar", default: "https://res.cloudinary.com/dtczfskhf/image/upload/v1535063445/uos81zgosqzs3m2ua7q6.png"
     t.string "name"
     t.boolean "artist"
     t.string "artist_name"
