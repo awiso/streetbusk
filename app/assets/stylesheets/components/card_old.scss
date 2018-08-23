@@ -1,0 +1,48 @@
+.img_card{
+  max-height: 100%;
+}
+
+.card{
+  flex: 0 0 auto;
+  height: 200px;
+  width: 100%;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  box-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+
+.card-description{
+  color: white;
+  text-shadow: 0 1px 0 #111;
+  font-size: 18px;
+  text-align: center;
+}
+
+.padding{
+  padding: 0px;
+}
+
+.col-xs-6 {
+  padding: 20px 3px;
+}
+
+.card:hover{
+  opacity: 0.9;
+  -webkit-transform: scale(1.02);
+  transform: scale(1.02);
+}
+
+.link:hover{
+  text-decoration: none;
+}
+
+.card-time{
+  font-size: 13px;
+  font-weight: lighter;
+}

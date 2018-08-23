@@ -2,43 +2,47 @@
   <div
   id="map"
   style="width: 100%;
-  height: 600px;"
+  height: 400px;"
   data-markers="<%= @markers.to_json %>">
-  </div>
+</div>
 
 
-  <div class="cards-container">
+<div class="cards-container">
 
-    <div class="row">
-
-  <%= form_tag performances_path, method: :get do %>
-    <%= text_field_tag :query,
-      params[:query],
-      class: "form-control-index",
+  <div class="row">
+    <div class="search-bar">
+     <%= form_tag performances_path, method: :get do %>
+     <%= text_field_tag :query,
+     params[:query],
+     class: "form-control",
       placeholder: "Search by city"
-    %>
-  <% end %>
-
-  <div class="performance">
-  <h1>Performances (<%= @performances.length %>)</h1>
-  </div>
-
-      <% @performances.each do |performance| %>
-      <div class="col-xs-12 col-sm-4">
-
-        <%= link_to performance_path(performance) do %>
-
-        <div class="card">
-          <%= cl_image_tag performance.photo_url, height: 300, width: 350, crop: :fill %>
-
-          <div class="card-description">
-             <h2> <%= performance.user.name %></h2>
-              <p><i class="fas fa-map-pin"></i> &nbsp; <%= performance.location %></p>
-          </div>
-        </div>
-
-        <% end %>
-      </div>
+      %>
       <% end %>
     </div>
+  <div class="performance">
+    <h5> Explore beautiful artists in your area</h5>
   </div>
+  </div>
+
+  <div class="scrolling-wrapper">
+
+    <% @performances.each do |performance| %>
+    <%= link_to performance_path(performance) do %>
+
+    <div class="card">
+      <%= cl_image_tag performance.photo_url, height: 230, width: 350, crop: :fill %>
+
+      <div class="card-description">
+       <h2> <%= performance.user.name %></h2>
+       <p><i class="fas fa-map-pin"></i> &nbsp; <%= performance.location %></p>
+       <% start_time = performance.start_time %>
+       <% end_time = performance.end_time %>
+       <p class="card-time"> <%= start_time.strftime("%a %m/%d/%y")  %></p>
+       <p class="card-time"> <%= start_time.strftime("%I %p")  %> - <%= end_time.strftime("%I %p")  %> </p>
+     </div>
+   </div>
+
+   <% end %>
+   <% end %>
+ </div>
+</div>
