@@ -2,7 +2,9 @@ class RegistrationsController < Devise::RegistrationsController
   def create
     @user = User.new(sign_up_params)
     if @user.save
-      sign_in_and_redirect after_sign_in_path_for(@user)
+      session[:user_id] = @user.id
+      flash.notice = "Thanks for signing up, have a look around!"
+      sign_in_and_redirect @user
     else
       render :new
     end

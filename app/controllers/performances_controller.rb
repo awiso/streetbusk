@@ -49,6 +49,7 @@ class PerformancesController < ApplicationController
         lng: @performance.longitude
           }]
     @duration = duration(@performance)
+    @playing_now = playing_now?
 
   end
 
@@ -76,8 +77,16 @@ class PerformancesController < ApplicationController
 
   def duration(performance)
     sec_in_hours = 60 * 60
-    minutes = (@performance.end_time - @performance.start_time)%sec_in_hours.to_i
+    minutes = ((@performance.end_time - @performance.start_time)/60).to_i
     hours = ((@performance.end_time - @performance.start_time)/sec_in_hours).floor
-    "#{hours} hours#{minutes > 0 ? " and #{minutes} minutes." : ""}"
+    "#{hours > 0 ? "#{hours} hours" : ""}#{minutes > 0 ? " #{minutes} minutes." : ""}"
+  end
+
+  def playing_now?
+    if DateTime.now > @performance.start_time && DateTime.now < @performance.end_time
+      true
+    else
+      false
+    end
   end
 end
