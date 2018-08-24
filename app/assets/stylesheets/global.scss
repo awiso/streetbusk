@@ -5,3 +5,13 @@ body{
 li{
   list-style: none;
 }
+
+.inline{
+  display: inline-block;
+}
+
+.flex-between{
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
+}

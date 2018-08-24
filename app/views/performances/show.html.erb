@@ -1,74 +1,104 @@
 
 <div class="performance-show">
   <div class="performance-photo-bg" style="background-image: url('<%= cl_image_path @performance.photo_url, crop: :fill %>')"></div>
-  <div class="overlay">
 
-      <%= link_to performances_path do %>
-      <i class="fas fa-arrow-left performance-back"></i>
-      <% end %>
-      <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#contribute-modal" id="contribute-button">
-        Contribute
-      </button>
+<div class="overlay">
+  <div class="artist-avatar">
+    <div class="performance-avatar" style="background-image: url('<%= cl_image_path @performance.user.avatar, crop: :fill %>')"></div>
+  </div>
+  <div class="container">
+    <h2><%= @performance.user.artist_name %></h2>
+    <p class="italic"><%= @performance.description %></p>
+  </div>
+
+</div>
+
+
+
 
     <!-- PERFORMANCE INFO -->
     <div class="container">
-      <h2><%= @performance.user.artist_name %></h2>
       <div class="performance-photo-cont">
 
         <!-- <%= cl_image_tag @performance.photo_url, crop: :fill %> -->
-        <div class="artist-avatar">
-          <div class="performance-avatar" style="background-image: url('<%= cl_image_path @performance.user.avatar, crop: :fill %>')"></div>
-        </div>
-        <ul>
-          <li><i class="fas fa-map-pin"></i><%= @performance.location %></li>
-          <% if @playing_now %>
-          <li><i class="far fa-clock"></i><span class="playing_now">
-            <% if @performance.genre.performance_type == "Music" %>
-            Playing now
+        <div>
+          <ul>
+            <li><i class="fas fa-map-pin"></i><% @performance.location.split(',').each do |l| %><%= l %> <br><% end %></li>
+            <% if @playing_now %>
+            <li><i class="far fa-clock"></i><span class="playing_now">
+              <% if @performance.genre.performance_type == "Music" %>
+              Playing now
+              <% else %>
+              Performing now
+              <% end %>
+            </span> until<%= @performance.end_time.to_formatted_s(:short)  %></li>
             <% else %>
-            Performing now
-            <% end %>
-          </span> until<%= @performance.end_time.to_formatted_s(:short)  %></li>
-          <% else %>
-          <li><i class="far fa-clock"></i>
-            <% if @performance.genre.performance_type == "Music" %>
-            Played at
-            <% else %>
-            Performed at
-            <% end %> <%= @performance.start_time.to_formatted_s(:short)  %></li>
-            <% end %>
-            <li><i class="far fa-comment"></i><%= @performance.description %></li>
+            <li><i class="far fa-clock"></i>
+              <% if @performance.genre.performance_type == "Music" %>
+              Played at
+              <% else %>
+              Performed at
+              <% end %> <%= @performance.start_time.to_formatted_s(:short)  %></li>
+              <% end %>
+            <!-- <li><i class="far fa-comment"></i><%= @performance.description %></li> -->
             <li><i class="fas fa-music"></i><%= @performance.genre.name %></li>
           </ul>
         </div>
 
-    </div>
+      <div class="flex-between">
+        <div class="inline">
+          <div>
+            <div class="attending-header-container">
+              <h4>Attending</h4>
+            </div>
+            <ul class="attendance">
+              <% if @attendances.length > 0 %>
+              <% @attendances.take(10).each do |a| %>
+              <!-- <li> <%= a.user.avatar %></li> -->
+              <%= render "attendance/attend", user: a.user %>
+              <% end %>
+              <% else %>
+              <p class="italic">No-one attending yet. Be the first to attend!</p>
+              <% if !current_user.present? %>  <%= link_to "Log in", new_user_session_path, class: "navbar-wagon-item italic" %><% end %>
+              <% end %>
+            </ul>
+          </div>
+          <% if current_user.present? %>
+          <%= simple_form_for [ @performance, @attendance ], url: performance_attendance_index_path(@performance.id), remote: true do |form| %>
+          <%= form.hidden_field :performance_id, :value => @performance.id %>
+          <%= form.button :submit, "Attend", class:"btn btn-primary" %>
+          <% end %>
+          <% end %>
+        </div>
 
+        <!-- Button trigger modal -->
+        <button type="button" class="btn" data-toggle="modal" data-target="#contribute-modal" id="contribute-button">
+          Contribute
+        </button>
+      </div>
 
-    <div class="attending-header-container">
-      <h3>Attending</h3>
-    </div>
-    <ul class="attendance">
-      <% @attendances.take(10).each do |a| %>
-      <!-- <li> <%= a.user.avatar %></li> -->
-      <%= render "attendance/attend", user: a.user %>
-      <% end %>
-    </ul>
-    <%= simple_form_for [ @performance, @attendance ], url: performance_attendance_index_path(@performance.id), remote: true do |form| %>
-      <%= form.hidden_field :performance_id, :value => @performance.id %>
-      <%= form.button :submit, "Attend", class:"btn btn-primary" %>
-    <% end %>
+        <%= link_to performances_path, class:"performances-back" do %>
+          <div class="flex-start">
+            <i class="fas fa-arrow-left performance-back"></i>
+            <p class="italic">View all performances near you</p>
+          </div>
+        <% end %>
+      </div>
 
-
-    <div
+      <div
       id="map"
       style="width: 100%;
+      flex-grow: 1;
       height: 600px;"
       data-markers="<%= @markers.to_json %>">
     </div>
+    </div>
 
-  </div>
+
+
+
+
+
 
 </div>
 
