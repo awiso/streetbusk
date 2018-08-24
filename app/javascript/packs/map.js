@@ -183,8 +183,19 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
   });
   map.setStyle('map_style');
 
+  console.log(markers);
+
+  const image = {
+    url: "http://www.myiconfinder.com/uploads/iconsets/256-256-56165014858e6dbadaf3ba00d782f125.png",
+    scaledSize: new google.maps.Size(40, 40)
+  };
+
+  markers.forEach(function(marker) {
+    marker.icon = image
+  });
 
   map.addMarkers(markers);
+
   if (markers.length === 0) {
     map.setZoom(0);
   } else if (markers.length === 1) {

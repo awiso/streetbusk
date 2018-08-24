@@ -6,24 +6,11 @@
   data-markers="<%= @markers.to_json %>">
 </div>
 
+<!-- Search bar -->
+ <%= render "shared/searchbar" %>
+
 
 <div class="cards-container">
-
-  <div class="row">
-    <div class="search-bar">
-     <%= form_tag performances_path, method: :get do %>
-     <%= text_field_tag :query,
-     params[:query],
-     class: "form-control",
-      placeholder: "Search by city"
-      %>
-      <% end %>
-    </div>
-  <div class="performance">
-    <h5> Explore beautiful artists in your area</h5>
-  </div>
-  </div>
-
   <div class="scrolling-wrapper">
 
     <% @performances.each do |performance| %>
