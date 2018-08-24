@@ -1,6 +1,10 @@
 
 function addAttendee(attendHTML, user_detail){
   const attendanceList = document.querySelector('.attendance');
+  const noAttendP = document.querySelector('.no-attend');
+  if (noAttendP){
+    noAttendP.style.display = "none";
+  }
   attendanceList.insertAdjacentHTML('beforeend', attendHTML)
 }
 
