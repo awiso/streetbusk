@@ -119,6 +119,7 @@
           <%= f.input :amount, label: "Other Amount", html: { autocomplete: 'off' } %>
         </div>
         <%= f.input :artist_id, as: :hidden, input_html: { value: @performance.user.id } %>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
