@@ -58,7 +58,7 @@
               <%= render "attendance/attend", user: a.user %>
               <% end %>
               <% else %>
-              <p class="italic">No-one attending yet. Be the first to attend!</p>
+              <p class="italic no-attend">No-one attending yet. Be the first to attend!</p>
               <% if !current_user.present? %>  <%= link_to "Log in", new_user_session_path, class: "navbar-wagon-item italic" %><% end %>
               <% end %>
             </ul>
@@ -67,14 +67,15 @@
           <%= simple_form_for [ @performance, @attendance ], url: performance_attendance_index_path(@performance.id), remote: true do |form| %>
           <%= form.hidden_field :performance_id, :value => @performance.id %>
           <%= form.button :submit, "Attend", class:"btn btn-primary" %>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn" data-toggle="modal" data-target="#contribute-modal" id="contribute-button">
+            Contribute
+          </button>
           <% end %>
           <% end %>
         </div>
 
-        <!-- Button trigger modal -->
-        <button type="button" class="btn" data-toggle="modal" data-target="#contribute-modal" id="contribute-button">
-          Contribute
-        </button>
+
       </div>
 
         <%= link_to performances_path, class:"performances-back" do %>
