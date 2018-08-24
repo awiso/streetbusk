@@ -1,3 +1,10 @@
+.search {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 20px 0px;
+}
+
 .search-bar{
   display: flex;
   align-items: center;
@@ -5,8 +12,8 @@
 }
 
 .search-icon{
-  background: #da552f;
-  padding: 5px;
+  background-color: #da552f;
+  padding: 7px;
   border-radius: 5px 0px 0px 5px;
   border: 1px solid #da552f;
   height: 39px;

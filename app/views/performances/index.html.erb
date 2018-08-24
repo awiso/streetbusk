@@ -14,18 +14,19 @@
   <div class="scrolling-wrapper">
 
     <% @performances.each do |performance| %>
-    <%= link_to performance_path(performance) do %>
 
     <div class="card">
-      <%= cl_image_tag performance.photo_url, height: 230, width: 350, crop: :fill %>
+    <%= link_to performance_path(performance) do %>
+      <div class="card-image">
+      <%= cl_image_tag performance.photo_url, height: 180, width: 280, crop: :fill %>
+      </div>
 
       <div class="card-description">
-       <h2> <%= performance.user.name %></h2>
-       <p><i class="fas fa-map-pin"></i> &nbsp; <%= performance.location %></p>
+       <h2> <strong> <%= performance.user.name %></strong></h2>
+       <p><i class="fas fa-map-pin"> &nbsp; <i><%= performance.location %></i> </p></i>
        <% start_time = performance.start_time %>
        <% end_time = performance.end_time %>
-       <p class="card-time"> <%= start_time.strftime("%a %m/%d/%y")  %></p>
-       <p class="card-time"> <%= start_time.strftime("%I %p")  %> - <%= end_time.strftime("%I %p")  %> </p>
+       <p class="card-time"> <%= start_time.strftime("%a %m/%d/%y")  %> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <%= start_time.strftime("%I %p")  %> - <%= end_time.strftime("%I %p")  %> </p>
      </div>
    </div>
 
