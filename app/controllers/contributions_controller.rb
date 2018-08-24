@@ -2,18 +2,14 @@ class ContributionsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    # @performance = Performance.find(params[:performance_id])
-    # @contribution = Contribution.new(contributions_params)
+
     @contribution = Contribution.new(contributions_params)
-    set_contribution_amount
     @contribution.user = current_user
+    set_contribution_amount
     @contribution.state = 'pending'
+    @contribution.save
     authorize @contribution
-  #  if @contribution.save
-      redirect_to new_contribution_payment_path(@contribution)
-    # else
-    #   render performance_path(Performance.find(params(:id)))
-    # end
+    redirect_to new_contribution_payment_path(@contribution)
 
     def show
       @contribution = current_user.sent_contributions.where(state: 'paid').find(params[:id])

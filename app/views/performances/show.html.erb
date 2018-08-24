@@ -58,7 +58,7 @@
               <%= render "attendance/attend", user: a.user %>
               <% end %>
               <% else %>
-              <p class="italic">No-one attending yet. Be the first to attend!</p>
+              <p class="italic no-attend">No-one attending yet. Be the first to attend!</p>
               <% if !current_user.present? %>  <%= link_to "Log in", new_user_session_path, class: "navbar-wagon-item italic" %><% end %>
               <% end %>
             </ul>
