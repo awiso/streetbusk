@@ -3,7 +3,9 @@ import { signupfunction } from "../components/signup.js";
 import { contribute } from "../components/contribute.js";
 
 contribute();
-let signupButton = document.querySelector('#signup-button')
-if( signupButton ){
-  signupButton.addEventListener('click', signupfunction);
+let signupButtons = document.querySelectorAll('#signup-button');
+if( signupButtons.length > 0 ){
+  signupButtons.forEach( function(button){
+    button.addEventListener('click', signupfunction);
+  })
 }

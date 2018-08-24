@@ -25,8 +25,10 @@ function contribute(){
       else{
         otherAmountField.classList.remove('show-other-amount');
         contributionAmount.classList.remove('show-contribution_amount');
-
       }
+      contributionAmount.addEventListener('keydown', function(e){
+        
+      })
     }
   }
 }
