@@ -186,7 +186,7 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
   console.log(markers);
 
   const image = {
-    url: "http://www.myiconfinder.com/uploads/iconsets/256-256-56165014858e6dbadaf3ba00d782f125.png",
+    url: "http://www.pngall.com/wp-content/uploads/2017/05/Map-Marker-Free-Download-PNG-180x180.png",
     scaledSize: new google.maps.Size(40, 40)
   };
 
