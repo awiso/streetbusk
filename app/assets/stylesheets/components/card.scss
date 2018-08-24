@@ -28,15 +28,17 @@ h1 {
 }
 
 .card {
-  height: 230px;
+  height: 330px;
+  width: 78%;
+  margin-top: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   background-size: cover !important;
   background-position: center;
   color: white;
   position: relative;
   transition: all 0.5s;
-  margin: 5px;
-
   align-items: center;
   display: inline-block;
   -webkit-transition-duration: 0.3s;
@@ -69,4 +71,9 @@ h1 {
   opacity: 0.9;
   -webkit-transform: scale(1.02);
   transform: scale(1.02);
+}
+
+.scrolling-wrapper {
+      margin-left: 15px;
+    margin-top: -30px;
 }

@@ -27,10 +27,12 @@
   <div class="scrolling-wrapper">
 
     <% @performances.each do |performance| %>
-    <%= link_to performance_path(performance) do %>
 
     <div class="card">
-      <%= cl_image_tag performance.photo_url, height: 230, width: 350, crop: :fill %>
+    <%= link_to performance_path(performance) do %>
+      <div class="card-image">
+      <%= cl_image_tag performance.photo_url, height: 180, width: 280, crop: :fill %>
+      </div>
 
       <div class="card-description">
        <h2> <%= performance.user.name %></h2>
