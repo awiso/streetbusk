@@ -29,11 +29,12 @@ class PerformancesController < ApplicationController
       @performances = Performance.all
     end
 
-    @markers = @performances.map do |performance|
+    @markers = @performances.map.with_index do |performance, index|
       {
         lat: performance.latitude,
-        lng: performance.longitude#,
-        # infoWindow: { content: render_to_string(partial: "/performances/map_box", locals: { performance: performance }) }
+        lng: performance.longitude,
+        performance: performance,
+        index: index
       }
     end
   end
