@@ -184,7 +184,16 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
   });
   map.setStyle('map_style');
 
+  console.log(markers);
 
+  const image = {
+    url: "http://www.pngall.com/wp-content/uploads/2017/05/Map-Marker-Free-Download-PNG-180x180.png",
+    scaledSize: new google.maps.Size(40, 40)
+  };
+
+  markers.forEach(function(marker) {
+    marker.icon = image
+  });
 
   const icons = {
           active: 'http://maps.google.com/mapfiles/ms/icons/orange.png',
@@ -192,7 +201,6 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
         };
 
   let mapMarkers = [];
-  console.log(markers)
   markers.forEach((marker, index) => {
 
     //if same let long then assign to same pin
@@ -238,6 +246,5 @@ function changeMarkerColor(index){
   } else {
     map.fitLatLngBounds(markers);
   }
-
 
 }

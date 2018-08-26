@@ -12,9 +12,15 @@
   display: inline-block;
 }
 
-.search-bar{
-  margin-top: 20px;
-  max-width: 50%;
+.search-wrapper{
+  width: 100vh;
+}
+
+.search-container{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 45px 0px;
 }
 
 
