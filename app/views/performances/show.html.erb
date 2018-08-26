@@ -2,42 +2,22 @@
 <div class="performance-show">
   <div class="performance-photo-bg" style="background-image: url('<%= cl_image_path @performance.photo_url, crop: :fill %>')"></div>
 
-<div class="overlay">
-  <!-- <div class="artist-overlay-card">
-
-    <div class="flex">
-      <div class="artist-header-p-card">
-        <h2><%= @performance.user.artist_name %></h2>
-          <p class="italic"><%= @performance.description %></p>
-      </div>
-      <div class="artist-avatar">
-        <div class="performance-avatar" style="background-image: url('<%= cl_image_path @performance.user.avatar, crop: :fill %>')"></div>
-      </div>
-    </div>
-
-  </div> -->
-
-  <div class="artist-overlay-card">
-    <div class="performance-avatar" style="background-image: url('<%= cl_image_path @performance.user.avatar, crop: :fill %>')"></div>
-    <h2><%= @performance.user.artist_name %></h2>
-
-    <p class="italic"><%= @performance.description %></p>
-
-  </div>
-
-</div>
-
-
 
 
     <!-- PERFORMANCE INFO -->
     <div class="container">
       <div class="performance-photo-cont">
 
+        <div class="artist-overlay-card">
+          <div class="performance-avatar" style="background-image: url('<%= cl_image_path @performance.user.avatar, crop: :fill %>')"></div>
+          <h2><%= @performance.user.artist_name %></h2>
+        </div>
+
+        <p class="italic"><%= @performance.description %></p>
         <!-- <%= cl_image_tag @performance.photo_url, crop: :fill %> -->
         <div>
           <ul>
-            <li><i style="float:left;" class="fas fa-map-pin"></i> <div style="display:inline-block;"> <% @performance.location.split(',').each do |l| %>  <%= l %> <br><% end %></div></li>
+            <li><i style="float:left;" class="fas fa-map-pin"></i> <div style="display:inline-block;"> <% @performance.location.split(',').reverse.each do |l| %>  <%= l %> <br><% end %></div></li>
             <% if @playing_now %>
             <li><i class="far fa-clock"></i><span class="playing_now">
               <% if @performance.genre.performance_type == "Music" %>
@@ -99,8 +79,8 @@
       <div
       id="map"
       style="width: 100%;
-      flex-grow: 1;
-      height: 600px;"
+      margin-top: 20px;
+      height: 50vh;"
       data-markers="<%= @markers.to_json %>">
     </div>
     <%= link_to performances_path, class:"performances-back" do %>
