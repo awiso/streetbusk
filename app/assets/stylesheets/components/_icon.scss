@@ -1,0 +1,40 @@
+.icon-text {
+  font-size: 12px;
+  padding: 5px;
+  color: #6c8089;
+}
+
+a, a:hover {
+  text-decoration: none;
+}
+
+.socialbtns, .socialbtns ul, .socialbtns li {
+  margin: 0;
+  padding: 5px;
+}
+
+.socialbtns li {
+  list-style: none outside none;
+  display: inline-block;
+}
+
+.socialbtns .fas, .fab{
+  width: 40px;
+  height: 40px;
+  color: #6c8089;
+  background-color: #FFF;
+  border: 1px solid #6c8089;
+  padding-top: 9px;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -o-border-radius: 22px;
+  transition: all 0.8s ease;
+}
+
+.socialbtns .fas:hover, .fab:hover {
+  color: orange;
+  background-color: #6c8089;
+  opacity: 0.8;
+  border: 1px solid #6c8089;
+}
