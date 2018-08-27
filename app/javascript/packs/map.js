@@ -234,7 +234,7 @@ if(mySwiper){
   mySwiper.on('touchEnd', function(e){
     let activeIndex = getActiveSlide();
     changeMarkerColor(activeIndex);
-  })  
+  })
 }
 
 function changeMarkerColor(index){
@@ -282,9 +282,6 @@ if (!window.location.search.includes("query")){
 
 }; // if map present
 
-
-
-}
 
 
 autocomplete();
