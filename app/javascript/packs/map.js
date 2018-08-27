@@ -1,6 +1,6 @@
 import GMaps from 'gmaps/gmaps.js';
-import { mySwiper, getActiveSlide } from './performance_slider.js'
 import { autocomplete } from '../components/autocomplete';
+import { mySwiper, getActiveSlide, animateActiveSlide } from './performance_slider.js'
 
 const mapElement = document.getElementById('map');
 const styles = [
@@ -214,6 +214,7 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
             return function () {
               changeMarkerColor(index);
               mySwiper.slideTo(marker.index, 500);
+              animateActiveSlide(index);
             };
         })(marker)
       });

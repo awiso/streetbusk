@@ -7,11 +7,14 @@
 </div>
 
 <!-- Search bar -->
- <!-- <%= render "shared/searchbar" %> -->
 
 <div class="cards-container">
 
-  <div class="row">
+  <div>
+    <div class="performance">
+      <h5> Explore beautiful artists in your area</h5>
+    </div>
+    <!-- <%= render "shared/searchbar" %> -->
     <div class="search-bar">
      <%= form_tag performances_path, method: :get do %>
      <%= text_field_tag :query,
@@ -20,9 +23,6 @@
       placeholder: "Search by city"
       %>
       <% end %>
-    </div>
-    <div class="performance">
-      <h5> Explore beautiful artists in your area</h5>
     </div>
   </div>
 
@@ -34,16 +34,19 @@
      <div class="swiper-slide" data-index=<%= index %>>
        <%= link_to performance_path(performance) do %>
 
-       <div class="card" >
-         <%= cl_image_tag performance.photo_url, height: 230, width: 350, crop: :fill %>
+       <div class="card"  data-index=<%= index %>>
+         <div class="card-bg-img" style="background-image: url('<%= cl_image_path(performance.photo_url, crop: :fill) %>')"></div>
 
          <div class="card-description">
-          <h2> <%= performance.user.name %></h2>
+          <p><i class="fas fa-user"></i> <%= performance.user.artist_name %></p>
           <p><i class="fas fa-map-pin"></i> &nbsp; <%= performance.location %></p>
           <% start_time = performance.start_time %>
           <% end_time = performance.end_time %>
-          <p class="card-time"> <%= start_time.strftime("%a %m/%d/%y")  %></p>
-          <p class="card-time"> <%= start_time.strftime("%I %p")  %> - <%= end_time.strftime("%I %p")  %> </p>
+          <div class="card-time-container card-time">
+            <p class="card-time"><i class="far fa-clock"></i> <%= start_time.strftime("%a %m/%d/%y")  %></p>
+            <p class="card-time-grow"></p>
+            <p class="card-time"><%= start_time.strftime("%I %p") %> - <%= end_time.strftime("%I %p") %></p>
+          </div>
         </div>
       </div>
       <% end %>
