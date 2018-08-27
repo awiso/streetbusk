@@ -18,7 +18,7 @@ a, a:hover {
   display: inline-block;
 }
 
-.socialbtns .fas, .fab{
+.socialbtns .fasa, .fab{
   width: 40px;
   height: 40px;
   color: #6c8089;
@@ -32,9 +32,26 @@ a, a:hover {
   transition: all 0.8s ease;
 }
 
-.socialbtns .fas:hover, .fab:hover {
+.socialbtns .fasa:hover, .fab:hover {
   color: orange;
   background-color: #6c8089;
   opacity: 0.8;
   border: 1px solid #6c8089;
+}
+
+
+.socialbtns{
+
+}
+
+#new_attendance{
+  button{
+    background-color: #FFF;
+    border: none;
+    color: white;
+    &:focus{
+      border: none;
+    }
+  }
+
 }

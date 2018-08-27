@@ -15,3 +15,9 @@ li{
   justify-content: space-between;
   align-items:center;
 }
+
+button:focus {outline:0;}
+
+input:focus{
+  border: 1px solid $orange;
+}

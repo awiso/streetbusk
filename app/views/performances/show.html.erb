@@ -9,10 +9,10 @@
 
         <div class="artist-overlay-card">
             <div class="performance-avatar" style="background-image: url('<%= cl_image_path @performance.user.avatar, crop: :fill %>')"></div>
-          <div class="artist-performance-desc">
+          <!-- <div class="artist-performance-desc"> -->
               <h2><%= @performance.user.artist_name %></h2>
             <p class="italic"><%= @performance.description %></p>
-          </div>
+          <!-- </div> -->
         </div>
 
         <!-- <%= cl_image_tag @performance.photo_url, crop: :fill %> -->
@@ -60,10 +60,18 @@
           <% if current_user.present? %>
             <%= simple_form_for [ @performance, @attendance ], url: performance_attendance_index_path(@performance.id), remote: true do |form| %>
             <%= form.hidden_field :performance_id, :value => @performance.id %>
-            <%= form.button :submit, "Attend", class:"btn btn-primary" %>
+            <!-- <%= form.button :submit, "Attend", class:"fa-users btn btn-primary" %> -->
+            <%= button_tag type: 'submit', class:"socialbtns attend-button" do %>
+              <i class=" fasa fas fa-users" aria-hidden="true"></i>
+              <p class="icon-text">Attend</p>
+            <% end %>
+            <!-- <input type="submit" name="commit" value="Create Attendance" class="btn fa-users" data-disable-with="Create Attendance">
+              <a href="#" class="fas fa-users">
+            </input> -->
             <!-- Button trigger modal -->
-            <button type="button" class="btn" data-toggle="modal" data-target="#contribute-modal" id="contribute-button" data-modal="<%= @contribution.errors.messages.any? %>">
-              Contribute
+            <button type="button" class="socialbtns" data-toggle="modal" data-target="#contribute-modal" id="contribute-button" data-modal="<%= @contribution.errors.messages.any? %>">
+              <i class=" fasa fas fa-hand-holding-usd" aria-hidden="true"></i>
+              <p class="icon-text">Contribute</p>
             </button>
           <% end %>
           <% else %>
