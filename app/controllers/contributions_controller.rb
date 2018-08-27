@@ -2,26 +2,39 @@ class ContributionsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-
     @contribution = Contribution.new(contributions_params)
     @contribution.user = current_user
     set_contribution_amount
     @contribution.state = 'pending'
-    @contribution.save
-    authorize @contribution
-    redirect_to new_contribution_payment_path(@contribution)
+    if @contribution.save
+      redirect_to new_contribution_payment_path(@contribution)
+    else
+      @performance = Performance.find(params[:performance_id])
+      @attendances = @performance.attendances
 
-    def show
-      @contribution = current_user.sent_contributions.where(state: 'paid').find(params[:id])
-      authorize @contribution
+      @attendance = Attendance.new
+      @markers = [{
+          lat: @performance.latitude,
+          lng: @performance.longitude
+            }]
+      @duration = duration(@performance)
+      @playing_now = playing_now?
+      
+      render "performances/show"
     end
-
+    
+    authorize @contribution
   end
-
+  
+  def show
+    @contribution = current_user.sent_contributions.where(state: 'paid').find(params[:id])
+    authorize @contribution
+  end
+  
   private
 
   def contributions_params
-    params.require(:contribution).permit(:amount, :artist_id, :credit)
+    params.require(:contribution).permit(:amount, :artist_id, :credit, :message)
   end
 
   def set_contribution_amount
@@ -29,6 +42,21 @@ class ContributionsController < ApplicationController
       @contribution.amount = Monetize.parse!(params[:credit_card])
     else
       @contribution.amount = Monetize.parse!(contributions_params[:amount])
+    end
+  end
+    
+  def duration(performance)
+    sec_in_hours = 60 * 60
+    minutes = ((performance.end_time - performance.start_time)/60).to_i
+    hours = ((performance.end_time - performance.start_time)/sec_in_hours).floor
+    "#{hours > 0 ? "#{hours} hours" : ""}#{minutes > 0 ? " #{minutes} minutes." : ""}"
+  end
+
+  def playing_now?
+    if DateTime.now > @performance.start_time && DateTime.now < @performance.end_time
+      true
+    else
+      false
     end
   end
 end

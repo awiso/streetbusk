@@ -6,11 +6,10 @@
   }
 
   .artist-overlay-card{
-    position: absolute;
-    right: 5%;
-    bottom: 0;
-    width: 60vh;
+    display: flex;
+    width: 66vh;
     max-width: 100vw;
+    margin-bottom: 20px;
 
     @media (max-width:600px){
       right: 0;
@@ -19,7 +18,6 @@
       width: 50%;
       padding-left: 10px;
       shape-outside: circle(50%);
-
     }
   }
 
@@ -28,23 +26,29 @@
     justify-content: center;
   }
   .performance-avatar{
-    margin: 0px 0px 20px 0px;
-    height: 120px;
-    width: 120px;
+    height: 20vw;
+    min-height: 20vw;
+    width: 20vw;
+    min-width: 20vw;
+    max-width: 120px;
+    max-height: 120px;
+    display: inline-block;
     background-position: center center;
     background-size: cover;
     border-radius: 50%;
-    shape-outside: circle(50%);
-    float: right;
     margin-right:2rem;
     border-radius: 50%;
-    -webkit-shape-outside:circle();
-    shape-outside:circle();
   }
   .artist-avatar{
     width: 50%;
     shape-outside: circle(50%);
 
+  }
+
+  .artist-performance-desc{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
   }
 
 
@@ -77,8 +81,7 @@
     background-repeat: no-repeat;
     background-position: center center;
     width: 100vw;
-    height: 70vh;
-    border-bottom: 1px solid black;
+    height: 40vh;
   }
   .overlay{
 

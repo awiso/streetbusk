@@ -87,7 +87,7 @@ function signupfunction(e){
               break;
             case "Yes":
               showNextView();
-              setUserArtistField(false);
+              setUserArtistField(true);
               break;
           }
       }
@@ -128,13 +128,17 @@ function signupfunction(e){
   }
 
   function showSignupView(counter){
-    if(counter >= 0){
+    if(counter >= 0 && counter < views.length){
       signupNavItems[counter].classList.add('show-signup-navitem');
       signupNavItems[counter].classList.add('signup-navitem-active');
       views[counter].classList.add('signup-show');
       content[counter].classList.add('signup-transition-in');
       let viewInputFirst = views[counter].querySelector('input');
-      if(viewInputFirst.type == "text" || viewInputFirst.type == "password"){ viewInputFirst.focus();}
+      if(viewInputFirst.type == "text" || viewInputFirst.type == "password")
+        { viewInputFirst.focus();}
+      else if(viewInputFirst.value == "Continue"){
+          viewInputFirst.focus();
+      }
       setTimeout(function(){
         content[counter].classList.remove('signup-transition-in');
       }, 1000);
@@ -143,7 +147,7 @@ function signupfunction(e){
   }
 
   function hideSignupView(counter){
-    if(counter >= 0){
+    if(counter >= 0 && counter < views.length){
       signupNavItems[counter].classList.remove('signup-navitem-active');
       const transitionTime = 1200;
       content[counter].classList.add('signup-transition-out');

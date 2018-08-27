@@ -12,13 +12,10 @@
   display: inline-block;
 }
 
-.search-wrapper{
-  width: 100vh;
+.main-container{
+  height: calc(100vh - 45px);
 }
 
-.search-container{
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin: 45px 0px;
+.cards-container{
+  height: 50%;
 }

@@ -1,4 +1,6 @@
 import GMaps from 'gmaps/gmaps.js';
+import { autocomplete } from '../components/autocomplete';
+import { mySwiper, getActiveSlide, animateActiveSlide } from './performance_slider.js'
 
 const mapElement = document.getElementById('map');
 const styles = [
@@ -172,8 +174,11 @@ const styles = [
     }
 ]
 
+
+
+
 if (mapElement) { // don't try to build a map if there's no div#map to inject in
-  const map = new GMaps({ el: '#map', lat: 0, lng: 0 });
+ const map = new GMaps({ el: '#map', lat: 0, lng: 0 });
   const markers = JSON.parse(mapElement.dataset.markers);
 
 
@@ -194,14 +199,89 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
     marker.icon = image
   });
 
-  map.addMarkers(markers);
+  const icons = {
+          active: 'http://maps.google.com/mapfiles/ms/icons/orange.png',
+          regular: 'http://maps.google.com/mapfiles/ms/icons/blue.png',
+          person: 'https://icon-icons.com/icons2/403/PNG/32/user-orange_40489.png'
+        };
 
+  let mapMarkers = [];
+  markers.forEach((marker, index) => {
+
+    //if same let long then assign to same pin
+    //push the same map marker to array
+    const mapMarker = map.createMarker({
+      lat: marker.lat,
+      lng: marker.lng,
+      icon: index == 0 ? icons["active"]: icons["regular"],
+      click: (function (marker) {
+            return function () {
+              changeMarkerColor(index);
+              if (mySwiper){
+                mySwiper.slideTo(marker.index, 500);
+              }
+              animateActiveSlide(index);
+            };
+        })(marker)
+      });
+    mapMarkers.push(mapMarker);
+    map.addMarker(mapMarker);
+  });
+
+
+  //mySwiper on change
+if(mySwiper){
+  mySwiper.on('touchEnd', function(e){
+    let activeIndex = getActiveSlide();
+    changeMarkerColor(activeIndex);
+  })
+}
+
+function changeMarkerColor(index){
+  mapMarkers.forEach(marker => {
+    marker.setIcon(icons["regular"]);
+    marker.setZIndex(0);
+  })
+  mapMarkers[index].setIcon(icons["active"]);
+  mapMarkers[index].setZIndex(999);
+}
+
+if (!window.location.search.includes("query")){
+
+  GMaps.geolocate({
+  success: function(position) {
+    map.setCenter(position.coords.latitude, position.coords.longitude);
+    map.setZoom(12);
+    const currentLocMarker = map.createMarker({
+      lat:position.coords.latitude,
+      lng: position.coords.longitude,
+      icon: icons["person"]
+    })
+    map.addMarker(currentLocMarker);
+  },
+  error: function(error) {
+    alert('Geolocation failed: '+error.message);
+  },
+  not_supported: function() {
+    alert("Your browser does not support geolocation");
+  }
+})
+
+}
+
+//Unmark to use old one
+  // old one
   if (markers.length === 0) {
     map.setZoom(0);
   } else if (markers.length === 1) {
     map.setCenter(markers[0].lat, markers[0].lng);
-    map.setZoom(14);
+    map.setZoom(10);
   } else {
     map.fitLatLngBounds(markers);
   }
-}
+
+}; // if map present
+
+
+
+autocomplete();
