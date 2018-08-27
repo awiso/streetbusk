@@ -33,5 +33,13 @@ function contribute(){
   }
 }
 
+function displayModal() {
+  const button = document.getElementById('contribute-button');
 
-export { contribute };
+  if (button.dataset.modal === 'true') {
+    $('#contribute-modal').modal();
+  }
+}
+
+
+export { contribute, displayModal };

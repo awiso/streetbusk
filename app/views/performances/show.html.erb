@@ -62,7 +62,7 @@
             <%= form.hidden_field :performance_id, :value => @performance.id %>
             <%= form.button :submit, "Attend", class:"btn btn-primary" %>
             <!-- Button trigger modal -->
-            <button type="button" class="btn" data-toggle="modal" data-target="#contribute-modal" id="contribute-button">
+            <button type="button" class="btn" data-toggle="modal" data-target="#contribute-modal" id="contribute-button" data-modal="<%= @contribution.errors.messages.any? %>">
               Contribute
             </button>
           <% end %>
@@ -108,13 +108,14 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Make a Contribution</h4>
       </div>
-      <%= simple_form_for(@contribution) do |f| %>
+      <%= simple_form_for([@performance, @contribution]) do |f| %>
       <div class="modal-body">
         <p>Select an amount:</p>
         <%= select_tag "credit_card", options_for_select([ "€1", "€2", "€5", "€10", "Other" ], "€1"), class: "contribute_options" %>
         <div class="performance-other-amount">
           <%= f.input :amount, label: "Other Amount", html: { autocomplete: 'off' } %>
         </div>
+        <%= f.input :message %>
         <%= f.input :artist_id, as: :hidden, input_html: { value: @performance.user.id } %>
 
       </div>
