@@ -3,16 +3,28 @@
   margin-left: 10px;
 }
 
+.cards-container{
+  margin-bottom: 10px;
+}
+
+.card-active{
+  animation-name: activate-card;
+  animation-duration: 0.4s;
+  animation-delay: 0.3s;
+}
+
+@keyframes activate-card{
+  0% { transform: scale(1.0);}
+  50% { transform: scale(1.05);}
+  100% { transform: scale(1.0);}
+}
 
 .card {
-  height: 320px;
-  width: 80%;
-  margin-top: 15px;
-  margin-right: 0px;
-  margin-left: 37px;
-  border: 1px solid #ffffff;
+  box-sizing: border-box;
+  height: auto;
+  margin: 15px 0px 10px 37px;
   border-radius: 3px;
-  box-shadow: 0 5px 25px rgba(0,0,0,0.15), 0 5px 10px rgba(0,0,0,0.12);
+  box-shadow: 0px -5px 25px rgba(0,0,0,0.15), 0 5px 10px rgba(0,0,0,0.12);
   background-color: #ffffff;
   // text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   background-size: cover !important;
@@ -26,11 +38,30 @@
   transition-duration: 0.3s;
   -webkit-transition-property: transform;
   transition-property: transform;
+  width: 65vw;
+  @media (min-width: 430px){
+    width: 36vh;
+  }
+}
+
+.card:first-child{
+  //margin-left: 50px;
+}
+
+.card-bg-img{
+  height: 20vh;
+  width: 100%;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 
 .performance {
-  margin-left: 20px;
+  margin-left: 30px;
+  h5{
+    margin-bottom: 0px;
+  }
 }
 
 .form-control-index {
@@ -44,17 +75,17 @@
 
 .card-description {
  color: black;
- padding-left: 25px;
-}
-
-.card-description h2 {
-  font-size: 24px;
+ padding: 5px 4%;
 }
 
 .card-description p {
   font-size: 14px;
   opacity: 0.7;
   font-weight: lighter;
+  margin-bottom: 4px;
+  @media (max-width: 400px){
+    font-size: 12px;
+  }
 }
 
 .card-description:hover {
@@ -80,4 +111,17 @@
 
 .card-description h2 {
   margin-top: 15px;
+}
+
+.card-time{
+  display: inline-block;
+}
+
+.card-time-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  .card-time-grow{
+    flex-grow: 1;
+  }
 }
