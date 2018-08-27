@@ -2,6 +2,9 @@ require_relative 'boot'
 
 require 'rails/all'
 
+config.action_mailer.delivery_method = :postmark
+config.action_mailer.postmark_settings = { :api_token => "617600f1-7fb1-4550-b4a9-1ea8a6b39e35" }
+
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
