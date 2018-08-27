@@ -11,3 +11,11 @@
 .card {
   display: inline-block;
 }
+
+.main-container{
+  height: calc(100vh - 45px);
+}
+
+.cards-container{
+  height: 50%;
+}
