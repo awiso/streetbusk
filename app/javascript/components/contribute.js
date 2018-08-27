@@ -27,7 +27,7 @@ function contribute(){
         contributionAmount.classList.remove('show-contribution_amount');
       }
       contributionAmount.addEventListener('keydown', function(e){
-        
+
       })
     }
   }

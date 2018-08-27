@@ -12,9 +12,41 @@
   display: inline-block;
 }
 
-.search-bar{
-  margin-top: 20px;
-  max-width: 50%;
+.search-wrapper{
+  width: 100vh;
+}
+
+.search-container{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 45px 0px;
+}
+
+
+.swiper-container {
+    width: 100vw;
+    height: 30vh;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  /* Center slide text vertically */
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
 }
 
 .artist-performance-desc{
