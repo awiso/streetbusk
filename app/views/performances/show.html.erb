@@ -9,13 +9,14 @@
       <div class="performance-photo-cont">
 
         <div class="artist-overlay-card">
-          <div class="performance-avatar" style="background-image: url('<%= cl_image_path @performance.user.avatar, crop: :fill %>')"></div>
-          <h2><%= @performance.user.artist_name %></h2>
+            <div class="performance-avatar" style="background-image: url('<%= cl_image_path @performance.user.avatar, crop: :fill %>')"></div>
+          <div class="artist-performance-desc">
+              <h2><%= @performance.user.artist_name %></h2>
+            <p class="italic"><%= @performance.description %></p>
+          </div>
         </div>
 
-        <p class="italic"><%= @performance.description %></p>
         <!-- <%= cl_image_tag @performance.photo_url, crop: :fill %> -->
-        <div>
           <ul>
             <li><i style="float:left;" class="fas fa-map-pin"></i> <div style="display:inline-block;"> <% @performance.location.split(',').reverse.each do |l| %>  <%= l %> <br><% end %></div></li>
             <% if @playing_now %>
