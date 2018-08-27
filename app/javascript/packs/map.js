@@ -1,4 +1,5 @@
 import GMaps from 'gmaps/gmaps.js';
+import { mySwiper, getActiveSlide, animateActiveSlide } from './performance_slider.js'
 
 const mapElement = document.getElementById('map');
 const styles = [
@@ -176,7 +177,7 @@ const styles = [
 
 
 if (mapElement) { // don't try to build a map if there's no div#map to inject in
-  const map = new GMaps({ el: '#map', lat: 0, lng: 0 });
+ const map = new GMaps({ el: '#map', lat: 0, lng: 0 });
   const markers = JSON.parse(mapElement.dataset.markers);
 
 
@@ -189,7 +190,7 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
   console.log(markers);
 
   const image = {
-    url: "http://www.myiconfinder.com/uploads/iconsets/256-256-56165014858e6dbadaf3ba00d782f125.png",
+    url: "http://www.pngall.com/wp-content/uploads/2017/05/Map-Marker-Free-Download-PNG-180x180.png",
     scaledSize: new google.maps.Size(40, 40)
   };
 
@@ -197,7 +198,49 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
     marker.icon = image
   });
 
-  map.addMarkers(markers);
+  const icons = {
+          active: 'http://maps.google.com/mapfiles/ms/icons/orange.png',
+          regular: 'http://maps.google.com/mapfiles/ms/icons/blue.png'
+        };
+
+  let mapMarkers = [];
+  markers.forEach((marker, index) => {
+
+    //if same let long then assign to same pin
+    //push the same map marker to array
+    const mapMarker = map.createMarker({
+      lat: marker.lat,
+      lng: marker.lng,
+      icon: index == 0 ? icons["active"]: icons["regular"],
+      click: (function (marker) {
+            return function () {
+              changeMarkerColor(index);
+              mySwiper.slideTo(marker.index, 500);
+              animateActiveSlide(index);
+            };
+        })(marker)
+      });
+    mapMarkers.push(mapMarker);
+    map.addMarker(mapMarker);
+  });
+
+
+  //mySwiper on change
+
+mySwiper.on('touchEnd', function(e){
+  let activeIndex = getActiveSlide();
+  changeMarkerColor(activeIndex);
+})
+
+function changeMarkerColor(index){
+  mapMarkers.forEach(marker => {
+    marker.setIcon(icons["regular"]);
+    marker.setZIndex(0);
+  })
+  mapMarkers[index].setIcon(icons["active"]);
+  mapMarkers[index].setZIndex(999);
+}
+
 
 
 
@@ -272,6 +315,7 @@ buttonGeo.addEventListener("click", (event) => {
 
 
 }; // if map present
+
 
 
 

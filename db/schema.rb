@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2018_08_27_084623) do
+=======
+ActiveRecord::Schema.define(version: 2018_08_27_090954) do
+>>>>>>> 12b4a4e43273f147e06f57e69c93dcc3949aba93
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +44,7 @@ ActiveRecord::Schema.define(version: 2018_08_27_084623) do
     t.integer "amount_cents", default: 0, null: false
     t.string "state"
     t.jsonb "payment"
+    t.text "message"
     t.index ["artist_id"], name: "index_contributions_on_artist_id"
     t.index ["user_id"], name: "index_contributions_on_user_id"
   end

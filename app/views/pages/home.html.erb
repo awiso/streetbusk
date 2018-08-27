@@ -1,4 +1,4 @@
-<div class="banner" style="background-image: linear-gradient(-190deg, rgba(76,51,35,-0.5) 0%, rgba(0,0,10, 0.5) 100%), url('<%= image_path 'banner.jpg' %>');">
+<div class="banner" style="background-image: linear-gradient(-190deg, rgba(76,51,35,-0.5) 0%, rgba(0,0,10, 0.5) 100%), url('<%= image_path 'new_banner.jpg' %>');">
 
   <div class="banner-content">
 
@@ -8,7 +8,24 @@
 
 
     <!-- Search bar -->
-    <%= render "shared/searchbar" %>
+    <div class="search-home">
+
+      <div class="search-bar">
+        <div class="search-icon-home">
+          <i class="fa fa-search"></i>
+        </div>
+        <div class="search-field">
+         <%= form_tag performances_path, method: :get do %>
+         <%= text_field_tag :query,
+         params[:query],
+         class: "form-text",
+          placeholder: "Search by city..."
+          %>
+          <% end %>
+        </div>
+      </div>
+
+  </div>
 
 
 

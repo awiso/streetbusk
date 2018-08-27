@@ -20,6 +20,13 @@ class PaymentsController < ApplicationController
   )
   authorize @contribution
   @contribution.update(payment: charge.to_json, state: 'paid')
+  # email! 
+  @recipient = @contribution.artist
+  @donor = @contribution.user
+  @amount = @contribution.amount_cents
+  @message = @contribution.message
+  ContributionMailer.contribute(@recipient, @donor, @amount, @message).deliver_now
+
   redirect_to contribution_path(@contribution)
 
 rescue Stripe::CardError => e

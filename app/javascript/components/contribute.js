@@ -14,7 +14,7 @@ function contribute(){
   const contributeOptions = document.querySelector('.contribute_options');
   const otherAmountField = document.querySelector('.performance-other-amount');
   const contributionAmount = document.querySelector('#contribution_amount');
-  console.log(contributeOptions)
+  //console.log(contributeOptions)
   if(contributeOptions){
     contributeOptions.onchange = function(){
       let val = this.options[this.selectedIndex].value;
@@ -27,11 +27,21 @@ function contribute(){
         contributionAmount.classList.remove('show-contribution_amount');
       }
       contributionAmount.addEventListener('keydown', function(e){
-        
+
       })
     }
   }
 }
 
+function displayModal() {
+  const button = document.getElementById('contribute-button');
 
-export { contribute };
+  if (button) {
+    if (button.dataset.modal === 'true') {
+      $('#contribute-modal').modal();
+    }
+  }
+}
+
+
+export { contribute, displayModal };
