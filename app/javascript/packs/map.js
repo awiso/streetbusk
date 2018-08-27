@@ -1,5 +1,6 @@
 import GMaps from 'gmaps/gmaps.js';
 import { mySwiper, getActiveSlide } from './performance_slider.js'
+import { autocomplete } from '../components/autocomplete';
 
 const mapElement = document.getElementById('map');
 const styles = [
@@ -248,3 +249,7 @@ function changeMarkerColor(index){
   }
 
 }
+
+console.log("about to hit autocomplete")
+
+autocomplete();
