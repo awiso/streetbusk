@@ -6,18 +6,12 @@
   data-markers="<%= @markers.to_json %>">
 </div>
 
-<!-- Geocode -->
-<button id="geocode">Start discovery</button>
-
 
 <!-- Search bar -->
 
 <div class="cards-container">
 
   <div>
-    <div class="performance">
-      <h5> Explore beautiful artists in your area</h5>
-    </div>
     <!-- <%= render "shared/searchbar" %> -->
     <div class="search-bar">
      <%= form_tag performances_path, method: :get do %>

@@ -5,32 +5,8 @@
     <%= image_tag '', class: 'logo-img' %>
     <h1>Live performance now.</h1><br>
 
-
-
-    <!-- Search bar -->
-    <div class="search-home">
-
-      <div class="search-bar">
-        <div class="search-icon-home">
-          <i class="fa fa-search"></i>
-        </div>
-        <div class="search-field">
-         <%= form_tag performances_path, method: :get do %>
-         <%= text_field_tag :query,
-         params[:query],
-         class: "form-text",
-          placeholder: "Search by city..."
-          %>
-          <% end %>
-        </div>
-      </div>
-
-  </div>
-
-
-
       <br>
-    <%=link_to "Discover", performances_path, class: 'btn btn-home btn-warning' %>
+    <%=link_to "Discover local artists nearby", performances_path, class: 'btn btn-home btn-warning', id: 'geocode' %>
     <!-- Current location -->
     <!-- <%= link_to "Start discovery", performances_path, class: 'btn btn-warning', id: 'geocode' %> -->
   </div>
