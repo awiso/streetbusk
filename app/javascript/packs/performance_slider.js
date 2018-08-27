@@ -5,14 +5,28 @@ import Swiper from 'swiper';
 const swiperContainer = document.querySelector('.swiper-container');
 const performanceCards = document.querySelectorAll('.card');
 
-var mySwiper = new Swiper('.swiper-container', {
-  freeMode: true,
-  freeModeSticky: true,
-  freeModeMomentumRatio: 0.1,
-  slidesPerView: 1,
-  spaceBetween: spaceBetweenValue(),
-  slidesOffsetBefore: -10,
-});
+if (swiperContainer){
+  var mySwiper = new Swiper('.swiper-container', {
+    freeMode: true,
+    freeModeSticky: true,
+    freeModeMomentumRatio: 0.1,
+    slidesPerView: 1,
+    spaceBetween: spaceBetweenValue(),
+    slidesOffsetBefore: -10,
+  });
+
+  window.addEventListener('resize', () => {
+    mySwiper.destroy();
+    mySwiper = new Swiper('.swiper-container', {
+      freeMode: true,
+      freeModeSticky: true,
+      freeModeMomentumRatio: 0.1,
+      slidesPerView: 1,
+      spaceBetween: spaceBetweenValue(),
+      slidesOffsetBefore: -10,
+    });
+  })
+}
 
 function getActiveSlide(){
     let activeSlide = swiperContainer.querySelector('.swiper-slide-active');
@@ -39,16 +53,5 @@ function spaceBetweenValue(){
   }
 }
 
-window.addEventListener('resize', () => {
-  mySwiper.destroy();
-  mySwiper = new Swiper('.swiper-container', {
-    freeMode: true,
-    freeModeSticky: true,
-    freeModeMomentumRatio: 0.1,
-    slidesPerView: 1,
-    spaceBetween: spaceBetweenValue(),
-    slidesOffsetBefore: -10,
-  });
-})
 
 export { mySwiper, getActiveSlide, animateActiveSlide }

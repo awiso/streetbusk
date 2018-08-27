@@ -217,7 +217,9 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
       click: (function (marker) {
             return function () {
               changeMarkerColor(index);
-              mySwiper.slideTo(marker.index, 500);
+              if (mySwiper){
+                mySwiper.slideTo(marker.index, 500);
+              }
               animateActiveSlide(index);
             };
         })(marker)
@@ -228,11 +230,12 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
 
 
   //mySwiper on change
-
-mySwiper.on('touchEnd', function(e){
-  let activeIndex = getActiveSlide();
-  changeMarkerColor(activeIndex);
-})
+if(mySwiper){
+  mySwiper.on('touchEnd', function(e){
+    let activeIndex = getActiveSlide();
+    changeMarkerColor(activeIndex);
+  })  
+}
 
 function changeMarkerColor(index){
   mapMarkers.forEach(marker => {
@@ -284,3 +287,4 @@ if (!window.location.search.includes("query")){
 }
 
 
+autocomplete();
