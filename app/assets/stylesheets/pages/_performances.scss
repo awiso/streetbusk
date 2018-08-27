@@ -48,3 +48,10 @@
   -webkit-align-items: center;
   align-items: center;
 }
+
+.artist-performance-desc{
+  vertical-align: center;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
