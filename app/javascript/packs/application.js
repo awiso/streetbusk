@@ -1,6 +1,7 @@
 import "bootstrap";
 import { signupfunction } from "../components/signup.js";
 import { contribute, displayModal } from "../components/contribute.js";
+import "../plugins/flatpickr";
 
 contribute();
 displayModal();

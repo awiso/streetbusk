@@ -1,12 +1,16 @@
 <div class="container">
   <%= simple_form_for @performance do |f| %>
-  <%= f.input :location %>
-  <%= f.input :start_time %>
-  <%= f.input :end_time %>
-  <%= f.input :description %>
-  <%= f.input :genre_id, collection: Genre.all %>
-  <%= f.input :photo %>
-  <%= f.input :photo_cache, as: :hidden %>
-  <%= f.button :submit, class: "btn btn-primary" %>
+    <%= f.input :location %>
+
+    <%= f.input :start_time, as: :string, required: false, input_html: {class: "datepicker"} %>
+    <%= f.input :end_time, as: :string, required: false, input_html: {class: "datepicker"} %>
+    
+    <%#= f.input :start_time %>
+    <%#= f.input :end_time %>
+    <%= f.input :description %>
+    <%= f.input :genre_id, collection: Genre.all %>
+    <%= f.input :photo %>
+    <%= f.input :photo_cache, as: :hidden %>
+    <%= f.button :submit, class: "btn btn-primary" %>
   <% end %>
 </div>
