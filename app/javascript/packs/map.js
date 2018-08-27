@@ -288,8 +288,6 @@ if (!window.location.search.includes("query")){
    console.log(cardsContainer.clientHeight)
    mapElement.style.height = ($( window ).height() - cardsContainer.clientHeight - 60) + "px";
    console.log(mapElement.style.height)
-
  }
-
 
 autocomplete();
