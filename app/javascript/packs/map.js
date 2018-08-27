@@ -251,6 +251,4 @@ function changeMarkerColor(index){
 
 }
 
-console.log("about to hit autocomplete")
-
 autocomplete();
