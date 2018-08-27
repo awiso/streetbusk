@@ -8,14 +8,10 @@
 .search-bar{
   display: flex;
   align-items: center;
-  width: 65%;
   margin-top: 15px;
   margin-left: 15px;
   form{
     width: 100%;
-  }
-  @media(min-width: 430px){
-    width: 36vh;
   }
 }
 

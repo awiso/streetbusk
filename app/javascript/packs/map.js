@@ -1,4 +1,5 @@
 import GMaps from 'gmaps/gmaps.js';
+import { autocomplete } from '../components/autocomplete';
 import { mySwiper, getActiveSlide, animateActiveSlide } from './performance_slider.js'
 
 const mapElement = document.getElementById('map');
@@ -280,5 +281,6 @@ if (!window.location.search.includes("query")){
 
 
 
+}
 
 
