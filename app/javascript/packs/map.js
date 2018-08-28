@@ -247,25 +247,23 @@ function changeMarkerColor(index){
 }
 
 if (!window.location.search.includes("query")){
-
-  GMaps.geolocate({
-  success: function(position) {
-    map.setCenter(position.coords.latitude, position.coords.longitude);
-    map.setZoom(12);
-    const currentLocMarker = map.createMarker({
-      lat:position.coords.latitude,
-      lng: position.coords.longitude,
-      icon: icons["person"]
-    })
-    map.addMarker(currentLocMarker);
-  },
-  error: function(error) {
-    alert('Geolocation failed: '+error.message);
-  },
-  not_supported: function() {
-    alert("Your browser does not support geolocation");
-  }
-})
+  navigator.geolocation.getCurrentPosition(function(position) {
+      map.setCenter(position.coords.latitude, position.coords.longitude);
+      map.setZoom(12);
+      const currentLocMarker = map.createMarker({
+        lat:position.coords.latitude,
+        lng: position.coords.longitude,
+        icon: icons["person"]
+      })
+      map.addMarker(currentLocMarker);
+    }, function() {
+      alert("Your browser does not support geolocation");
+    });
+  // GMaps.geolocate({
+  // success: ,
+  // error: function(error) {
+  //   alert('Geolocation failed: ' + error.message);
+  // },
 
 }
 
