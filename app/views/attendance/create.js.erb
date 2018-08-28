@@ -1,16 +1,20 @@
 
 function addAttendee(attendHTML, user_detail){
-  const attendanceList = document.querySelector('.attendance');
+  const attendanceList = document.querySelectorAll('.attend-item');
   const noAttendP = document.querySelector('.no-attend');
   if (noAttendP){
     noAttendP.style.display = "none";
   }
-  attendanceList.insertAdjacentHTML('beforeend', attendHTML)
+  attendanceList[-1].insertAdjacentHTML('afterend', attendHTML)
 }
 
 function showAttendError(){
-  const attendHeader = document.querySelector('.attending-header-container');
-  attendHeader.insertAdjacentHTML('beforeend', "<p>You're already attending this event</p>")
+  const attendHeader = document.querySelector('.attending-error-container');
+  if (attendHeader.children.length > 0){
+  }
+  else{
+    attendHeader.insertAdjacentHTML('beforeend', "<p>You're already attending this event</p>");
+  }
 }
 
 <% if @attendance.valid? %>

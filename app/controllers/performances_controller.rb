@@ -40,7 +40,7 @@ class PerformancesController < ApplicationController
   end
 
   def show
-    @attendances = @performance.attendances
+    @attendances = @performance.attendances.order(:id).limit(6);
     # @attendance_numbers = @performance.attendances.count
     @attendance = Attendance.new
     authorize @performance
@@ -51,7 +51,8 @@ class PerformancesController < ApplicationController
           }]
     @duration = duration(@performance)
     @playing_now = playing_now?
-
+    @comment = Comment.new(performance: @performance)
+    @comments = @performance.comments.order(id: :desc).limit(5)
   end
 
   def edit

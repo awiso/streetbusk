@@ -2,6 +2,10 @@
   font-size: 12px;
   padding: 5px;
   color: #6c8089;
+  margin: 0 10px;
+  vertical-align: center;
+  position: relative;
+  top: -10px;
 }
 
 a, a:hover {
@@ -10,7 +14,7 @@ a, a:hover {
 
 .socialbtns, .socialbtns ul, .socialbtns li {
   margin: 0;
-  padding: 5px;
+  // padding: 5px;
 }
 
 .socialbtns li {
@@ -18,13 +22,13 @@ a, a:hover {
   display: inline-block;
 }
 
-.socialbtns .fas, .fasa, .fab{
-  width: 40px;
-  height: 40px;
+.socialbtns .fasa, .fab{
+  width: 45px;
+  height: 45px;
   color: #6c8089;
   background-color: #FFF;
   border: 1px solid #6c8089;
-  padding-top: 10px;
+  padding-top: 12px;
   border-radius: 50%;
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;

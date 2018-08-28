@@ -1,0 +1,13 @@
+
+function addComment(commentHTML){
+  const commentsDiv = document.querySelector('.comments ul');
+  const commentInput = document.querySelector('#comment_comment_text');
+  commentsDiv.insertAdjacentHTML("afterbegin", commentHTML);
+  commentInput.value = "";
+}
+
+<% if @comment.valid? %>
+  addComment('<%= j render "comment/comment", comment: @comment %> ')
+<% else %>
+  <% flash[:error] = "This is not a valid comment" %>
+<% end %>
