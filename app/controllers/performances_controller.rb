@@ -40,7 +40,7 @@ class PerformancesController < ApplicationController
   end
 
   def show
-    @attendances = @performance.attendances.order(:id).limit(8);
+    @attendances = @performance.attendances.order(:id).limit(6);
     # @attendance_numbers = @performance.attendances.count
     @attendance = Attendance.new
     authorize @performance
