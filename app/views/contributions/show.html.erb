@@ -1,24 +1,21 @@
-<div class="container">
+<div class="banner-half-page">
+  <%= image_tag 'thank_you.jpeg' %>
+</div>
 
-  <p>Artist Name</p>
-  <%= @contribution.artist.artist_name %>
+<div class="container half-page">
+  <div class="confirmation-box">
+    <i class="far fa-check-square icon-size-increase icon-orange"></i>
+    <h3 id='thanks'>Your payment went through!</h3>
+  </div>
 
-  <p>Artist image</p>
-  <%= cl_image_path @contribution.artist.avatar %>
+  <p>Special thanks from <strong> <%= @contribution.artist.artist_name %> </strong> who has just received your contribution of <strong> <%= humanized_money_with_symbol(@contribution.amount) %> </strong>.</p>
 
-  <p>Contribution Message</p>
-  <%= @contribution.message %>
-
-  <p>Amount of contribution</p>
-  <%= humanized_money_with_symbol(@contribution.amount) %>
-
-  <h1 id='thanks'>Thanks!</h1>
   <div class="message">
-    <p>On behalf of artists everywhere, thank you for your contribution</p>
+    <p>We from StreetBusk </p>
     <p class='team'> - StreetBusk Team</p>
   </div>
   <div class="move">
-    <%= link_to 'Back to Performances', performances_path, class: 'btn btn-primary contribution' %>
+    <%= link_to 'Keep Exploring', performances_path, class: 'btn btn-primary contribution' %>
   </div>
 </div>
 
