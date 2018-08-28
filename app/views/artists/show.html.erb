@@ -2,8 +2,8 @@
   <h1>My Dashboard</h1>
   <%= link_to "Create a performance", new_performance_path, class: "btn btn-primary" %>
   <%= link_to "View Performances from other artists", performances_path, class: "btn btn-primary" %>
-  <% @performances.each do |performance| %>
   <ul>
+  <% @performances.each do |performance| %>
     <li>
       <%= cl_image_tag performance.photo_url, width: 400, crop: :fill %>
       <%= performance.location %>
