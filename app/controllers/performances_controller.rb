@@ -11,7 +11,7 @@ class PerformancesController < ApplicationController
     @performance = Performance.new(performance_params)
     @performance.user = current_user
     if @performance.save
-      redirect_to artist_dashboard_path
+      redirect_to profile_path(current_user)
     else
       render :new
     end

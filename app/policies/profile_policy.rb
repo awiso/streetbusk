@@ -1,11 +1,10 @@
-class ArtistPolicy < ApplicationPolicy
-
-  def show?
-    user.artist
-  end
-
+class ProfilePolicy < ApplicationPolicy
   def edit?
     true
+  end
+
+  def update?
+    edit?
   end
 
   class Scope < Scope
