@@ -3,6 +3,7 @@ import { signupfunction } from "../components/signup.js";
 import { contribute, displayModal } from "../components/contribute.js";
 import "../plugins/flatpickr";
 
+
 contribute();
 displayModal();
 let signupButtons = document.querySelectorAll('#signup-button');
