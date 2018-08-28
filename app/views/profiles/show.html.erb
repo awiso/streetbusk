@@ -1,5 +1,6 @@
 <div class="container">
-  <h1><%= @user.name %></h1>
-  <%= cl_image_tag 'sample' %>
+  <p>The profile of</p>
+  <p><%= @user.email %></p>
+  <%#= cl_image_tag 'sample' %>
   <%= link_to 'Back', performances_path %>
 </div>
