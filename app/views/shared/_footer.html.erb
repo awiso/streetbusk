@@ -1,0 +1,86 @@
+<div class="mobile-footer hidden-sm hidden-md hidden-lg">
+  <div class="link-box">
+    <!-- Explore -->
+    <div class="icon-box">
+      <%= link_to performances_path do %>
+         <i class="fas fa-search footer-icon"></i>
+          <% if user_signed_in? %>
+          <% if current_user.artist %>
+          <br>
+          <% end %>
+          <% end %>
+           <%= t(".profile", default: "EXPLORE") %>
+      <% end %>
+    </div>
+
+    <!-- Profile -->
+    <% if user_signed_in? %>
+      <% if current_user.artist %>
+      <div class="icon-box">
+        <%= link_to profile_path(current_user) do %>
+         <i class="fa fa-user footer-icon"></i>
+          <% if user_signed_in? %>
+          <% if current_user.artist %>
+          <br>
+          <% end %>
+          <% end %>
+          <%= t(".profile", default: "PROFILE") %>
+          <% end %>
+      </div>
+      <!-- New Performance -->
+      <div class="icon-box">
+        <%= link_to new_performance_path do %>
+          <i class="fas fa-plus footer-icon"></i>
+          <% if user_signed_in? %>
+          <% if current_user.artist %>
+          <br>
+          <% end %>
+          <% end %>
+           <%= t(".newperformance", default: "POST") %>
+        <% end %>
+      </div>
+        <% end %>
+    <% end %>
+
+    <!-- Setting -->
+    <% if user_signed_in? %>
+      <div class="icon-box footer-icon">
+        <%= link_to edit_user_registration_path do %>
+          <i class="fa fa-cog footer-icon"></i>
+          <% if user_signed_in? %>
+          <% if current_user.artist %>
+          <br>
+          <% end %>
+          <% end %>
+           <%= t(".settings", default: "SETTINGS") %>
+        <% end %>
+      </div>
+      <% end %>
+
+    <!-- Log out-->
+    <% if user_signed_in? %>
+      <div class="icon-box">
+        <%= link_to destroy_user_session_path, method: :delete do %>
+          <i class="fa fa-sign-out footer-icon"></i>
+          <% if user_signed_in? %>
+          <% if current_user.artist %>
+          <br>
+          <% end %>
+          <% end %>
+           <%= t(".sign_out", default: "LOG OUT") %>
+        <% end %>
+      </div>
+    <% end %>
+
+    <!-- Log in / sign up -->
+    <% if !user_signed_in? %>
+      <div class="icon-box">
+        <%= link_to t(".sign_in", default: "LOG IN"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      </div>
+      <div class="icon-box">
+        <a href="#" id="signup-button" class= "navbar-wagon-item navbar-wagon-link">SIGN UP</a>
+      </div>
+    <% end %>
+
+  </div>
+</div>

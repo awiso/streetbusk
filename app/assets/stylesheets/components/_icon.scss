@@ -36,7 +36,7 @@ a, a:hover {
   transition: all 0.8s ease;
 }
 
-.socialbtns .fasa:hover, .fab:hover {
+.socialbtns .fas:hover, .fasa:hover, .fab:hover {
   color: orange;
   background-color: #6c8089;
   opacity: 0.8;
@@ -47,3 +47,30 @@ a, a:hover {
 .socialbtns{
 
 }
+<<<<<<< HEAD
+=======
+
+#new_attendance{
+  button{
+    background-color: #FFF;
+    border: none;
+    color: white;
+    &:focus{
+      border: none;
+    }
+  }
+
+}
+
+.icon-orange{
+  color: #E67E22;
+}
+
+.icon-size-increase{
+  font-size: 50px;
+}
+
+.footer-icon{
+  color: white;
+}
+>>>>>>> master

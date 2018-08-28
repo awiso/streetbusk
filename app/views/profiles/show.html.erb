@@ -1,5 +1,24 @@
 <div class="container">
-  <h1><%= @user.name %></h1>
-  <%= cl_image_tag 'sample' %>
+  <p>The profile of</p>
+  <%= cl_image_tag @user.avatar, width: 200 %>
+  <p><%= @user.email %></p>
+  <p><%= @user.artist_name %></p>
+  <p><%= @user.social_media_links %></p>
+  <br>
+
+  <p>Perfromances:</p>
+  <ul> 
+  <% @performances.each do |performance| %>
+    <li>
+      <%= performance.user.artist_name %>
+      <%= performance.location %>
+    </li>
+  <% end %>
+  </ul>
+
   <%= link_to 'Back', performances_path %>
+  <% if policy(@user).edit? %>
+  <%= link_to 'Edit', edit_profile_path(@user) %>
+  <% end %>
+
 </div>

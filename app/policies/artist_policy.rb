@@ -4,6 +4,10 @@ class ArtistPolicy < ApplicationPolicy
     user.artist
   end
 
+  def edit?
+    true
+  end
+
   class Scope < Scope
     def resolve
       scope.all

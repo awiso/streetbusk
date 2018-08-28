@@ -4,63 +4,39 @@ import { mySwiper, getActiveSlide, animateActiveSlide } from './performance_slid
 
 const mapElement = document.getElementById('map');
 const styles = [
-    {
+{
         "featureType": "all",
-        "elementType": "geometry.fill",
+        "elementType": "geometry",
         "stylers": [
             {
-                "weight": "2.00"
-            }
-        ]
-    },
-    {
-        "featureType": "all",
-        "elementType": "geometry.stroke",
-        "stylers": [
+                "hue": "#ff4400"
+            },
             {
-                "color": "#9c9c9c"
-            }
-        ]
-    },
-    {
-        "featureType": "all",
-        "elementType": "labels.text",
-        "stylers": [
+                "saturation": -68
+            },
             {
-                "visibility": "on"
-            }
-        ]
-    },
-    {
-        "featureType": "landscape",
-        "elementType": "all",
-        "stylers": [
+                "lightness": -4
+            },
             {
-                "color": "#f2f2f2"
-            }
-        ]
-    },
-    {
-        "featureType": "landscape",
-        "elementType": "geometry.fill",
-        "stylers": [
-            {
-                "color": "#ffffff"
+                "gamma": 0.72
             }
         ]
     },
     {
         "featureType": "landscape.man_made",
-        "elementType": "geometry.fill",
+        "elementType": "geometry",
         "stylers": [
             {
-                "color": "#ffffff"
+                "hue": "#0077ff"
+            },
+            {
+                "gamma": 3.1
             }
         ]
     },
     {
         "featureType": "poi",
-        "elementType": "all",
+        "elementType": "labels.text",
         "stylers": [
             {
                 "visibility": "off"
@@ -68,55 +44,7 @@ const styles = [
         ]
     },
     {
-        "featureType": "road",
-        "elementType": "all",
-        "stylers": [
-            {
-                "saturation": -100
-            },
-            {
-                "lightness": 45
-            }
-        ]
-    },
-    {
-        "featureType": "road",
-        "elementType": "geometry.fill",
-        "stylers": [
-            {
-                "color": "#eeeeee"
-            }
-        ]
-    },
-    {
-        "featureType": "road",
-        "elementType": "labels.text.fill",
-        "stylers": [
-            {
-                "color": "#7b7b7b"
-            }
-        ]
-    },
-    {
-        "featureType": "road",
-        "elementType": "labels.text.stroke",
-        "stylers": [
-            {
-                "color": "#ffffff"
-            }
-        ]
-    },
-    {
-        "featureType": "road.highway",
-        "elementType": "all",
-        "stylers": [
-            {
-                "visibility": "simplified"
-            }
-        ]
-    },
-    {
-        "featureType": "road.arterial",
+        "featureType": "poi",
         "elementType": "labels.icon",
         "stylers": [
             {
@@ -125,8 +53,8 @@ const styles = [
         ]
     },
     {
-        "featureType": "transit",
-        "elementType": "all",
+        "featureType": "poi.attraction",
+        "elementType": "labels",
         "stylers": [
             {
                 "visibility": "off"
@@ -134,23 +62,122 @@ const styles = [
         ]
     },
     {
-        "featureType": "water",
+        "featureType": "poi.business",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "poi.government",
+        "elementType": "labels.text",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "poi.medical",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "poi.park",
         "elementType": "all",
         "stylers": [
             {
-                "color": "#46bcec"
+                "hue": "#44ff00"
             },
             {
-                "visibility": "on"
+                "saturation": -23
+            }
+        ]
+    },
+    {
+        "featureType": "poi.place_of_worship",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "poi.school",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "poi.sports_complex",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "transit",
+        "elementType": "labels.text.stroke",
+        "stylers": [
+            {
+                "saturation": -64
+            },
+            {
+                "hue": "#ff9100"
+            },
+            {
+                "lightness": 16
+            },
+            {
+                "gamma": 0.47
+            },
+            {
+                "weight": 2.7
+            }
+        ]
+    },
+    {
+        "featureType": "transit.line",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "lightness": -48
+            },
+            {
+                "hue": "#ff5e00"
+            },
+            {
+                "gamma": 1.2
+            },
+            {
+                "saturation": -23
             }
         ]
     },
     {
         "featureType": "water",
-        "elementType": "geometry.fill",
+        "elementType": "all",
         "stylers": [
             {
-                "color": "#c8d7d4"
+                "hue": "#00ccff"
+            },
+            {
+                "gamma": 0.44
+            },
+            {
+                "saturation": -33
             }
         ]
     },
@@ -159,7 +186,16 @@ const styles = [
         "elementType": "labels.text.fill",
         "stylers": [
             {
-                "color": "#070707"
+                "hue": "#007fff"
+            },
+            {
+                "gamma": 0.77
+            },
+            {
+                "saturation": 65
+            },
+            {
+                "lightness": 99
             }
         ]
     },
@@ -168,7 +204,19 @@ const styles = [
         "elementType": "labels.text.stroke",
         "stylers": [
             {
-                "color": "#ffffff"
+                "gamma": 0.11
+            },
+            {
+                "weight": 5.6
+            },
+            {
+                "saturation": 99
+            },
+            {
+                "hue": "#0091ff"
+            },
+            {
+                "lightness": -86
             }
         ]
     }
@@ -176,9 +224,8 @@ const styles = [
 
 
 
-
 if (mapElement) { // don't try to build a map if there's no div#map to inject in
- const map = new GMaps({ el: '#map', lat: 0, lng: 0 });
+ const map = new GMaps({ el: '#map', lat: 47, lng: 2, disableDefaultUI: true, zoom: 4 });
   const markers = JSON.parse(mapElement.dataset.markers);
 
 
@@ -247,26 +294,23 @@ function changeMarkerColor(index){
 }
 
 if (!window.location.search.includes("query")){
-
-  GMaps.geolocate({
-  success: function(position) {
-    map.setCenter(position.coords.latitude, position.coords.longitude);
-    map.setZoom(12);
-    const currentLocMarker = map.createMarker({
-      lat:position.coords.latitude,
-      lng: position.coords.longitude,
-      icon: icons["person"]
-    })
-    map.addMarker(currentLocMarker);
-  },
-  error: function(error) {
-    alert('Geolocation failed: '+error.message);
-  },
-  not_supported: function() {
-    alert("Your browser does not support geolocation");
-  }
-})
-
+  navigator.geolocation.getCurrentPosition(function(position) {
+      map.setCenter(position.coords.latitude, position.coords.longitude);
+      map.setZoom(12);
+      const currentLocMarker = map.createMarker({
+        lat:position.coords.latitude,
+        lng: position.coords.longitude,
+        icon: icons["person"]
+      })
+      map.addMarker(currentLocMarker);
+    }, function() {
+      alert("Your browser does not support geolocation");
+    });
+  // GMaps.geolocate({
+  // success: ,
+  // error: function(error) {
+  //   alert('Geolocation failed: ' + error.message);
+  // },
 }
 
 //Unmark to use old one
