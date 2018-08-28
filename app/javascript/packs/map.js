@@ -280,6 +280,12 @@ if (!window.location.search.includes("query")){
 
 }; // if map present
 
-
+ if(window.location.pathname == "/performances"){
+   const cardsContainer = document.querySelector('.cards-container');
+   console.log(mapElement.style.height)
+   console.log(cardsContainer.clientHeight)
+   mapElement.style.height = ($( window ).height() - cardsContainer.clientHeight - 60) + "px";
+   console.log(mapElement.style.height)
+ }
 
 autocomplete();
