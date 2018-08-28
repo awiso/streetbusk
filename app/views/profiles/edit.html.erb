@@ -1,4 +1,4 @@
-<%= simple_form_for @user do |f| %>
+<%= simple_form_for @user, url: profile_path, method: :patch do |f| %>
     <%= f.input :avatar %>
     <%= f.input :social_media_links %>
     <%= f.input :artist_name %>
