@@ -3,6 +3,7 @@ class ProfilesController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @performances = @user.performances
     authorize @user
   end
 
