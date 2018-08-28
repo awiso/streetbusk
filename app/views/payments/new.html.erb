@@ -1,3 +1,12 @@
+<p>Artist Name</p>
+<%= @contribution.artist.artist_name %>
+
+<p>Artist image</p>
+<%= cl_image_path @contribution.artist.avatar %>
+
+<p>Contribution Message</p>
+<%= @contribution.message %>
+
 <%= form_tag contribution_payments_path(@contribution) do %>
   <article>
     <label class="amount">
