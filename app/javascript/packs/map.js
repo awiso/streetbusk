@@ -4,7 +4,8 @@ import { mySwiper, getActiveSlide, animateActiveSlide } from './performance_slid
 
 const mapElement = document.getElementById('map');
 const styles = [
-    {
+{
+        "featureType": "all",
         "elementType": "geometry",
         "stylers": [
             {
@@ -22,10 +23,6 @@ const styles = [
         ]
     },
     {
-        "featureType": "road",
-        "elementType": "labels.icon"
-    },
-    {
         "featureType": "landscape.man_made",
         "elementType": "geometry",
         "stylers": [
@@ -38,7 +35,140 @@ const styles = [
         ]
     },
     {
+        "featureType": "poi",
+        "elementType": "labels.text",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "labels.icon",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "poi.attraction",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "poi.business",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "poi.government",
+        "elementType": "labels.text",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "poi.medical",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "poi.park",
+        "elementType": "all",
+        "stylers": [
+            {
+                "hue": "#44ff00"
+            },
+            {
+                "saturation": -23
+            }
+        ]
+    },
+    {
+        "featureType": "poi.place_of_worship",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "poi.school",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "poi.sports_complex",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "transit",
+        "elementType": "labels.text.stroke",
+        "stylers": [
+            {
+                "saturation": -64
+            },
+            {
+                "hue": "#ff9100"
+            },
+            {
+                "lightness": 16
+            },
+            {
+                "gamma": 0.47
+            },
+            {
+                "weight": 2.7
+            }
+        ]
+    },
+    {
+        "featureType": "transit.line",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "lightness": -48
+            },
+            {
+                "hue": "#ff5e00"
+            },
+            {
+                "gamma": 1.2
+            },
+            {
+                "saturation": -23
+            }
+        ]
+    },
+    {
         "featureType": "water",
+        "elementType": "all",
         "stylers": [
             {
                 "hue": "#00ccff"
@@ -48,17 +178,6 @@ const styles = [
             },
             {
                 "saturation": -33
-            }
-        ]
-    },
-    {
-        "featureType": "poi.park",
-        "stylers": [
-            {
-                "hue": "#44ff00"
-            },
-            {
-                "saturation": -23
             }
         ]
     },
@@ -98,45 +217,6 @@ const styles = [
             },
             {
                 "lightness": -86
-            }
-        ]
-    },
-    {
-        "featureType": "transit.line",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "lightness": -48
-            },
-            {
-                "hue": "#ff5e00"
-            },
-            {
-                "gamma": 1.2
-            },
-            {
-                "saturation": -23
-            }
-        ]
-    },
-    {
-        "featureType": "transit",
-        "elementType": "labels.text.stroke",
-        "stylers": [
-            {
-                "saturation": -64
-            },
-            {
-                "hue": "#ff9100"
-            },
-            {
-                "lightness": 16
-            },
-            {
-                "gamma": 0.47
-            },
-            {
-                "weight": 2.7
             }
         ]
     }
