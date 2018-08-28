@@ -11,6 +11,18 @@
 
 .banner-content {
   position: relative;
-  bottom: -170px;
+  font-size: 17px;
   left: 0px;
+  top: 20px;
+  color: white;
+  text-align: left;
+  margin-left: 40px;
+  @media(min-width: 420px){
+    text-align: center;
+    margin:auto;
+  }
+}
+
+.banner-content h1 {
+  font-size: 50px;
 }
