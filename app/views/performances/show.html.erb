@@ -1,3 +1,5 @@
+<!-- Navbar that is hidden on mobile -->
+<%= render 'shared/navbar_hidden' %>
 
 <div class="performance-show">
   <div class="performance-photo-bg" style="background-image: url('<%= cl_image_path @performance.photo_url, crop: :fill %>')"></div>
@@ -98,14 +100,9 @@
     </div>
     <% end %>
     </div>
-
-
-
-
-
-
-
 </div>
+<!-- Footer for mobile device -->
+<%= render 'shared/footer' %>
 
 
 <!-- Modal -->
@@ -135,3 +132,5 @@
     </div>
   </div>
 </div>
+
+
