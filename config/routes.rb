@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :performances do
     resources :attendance, only: [:create]
+    resources :comment, only: [:create]
     resources :contributions, only: :create
   end
 

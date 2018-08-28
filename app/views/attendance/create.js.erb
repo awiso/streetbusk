@@ -10,7 +10,11 @@ function addAttendee(attendHTML, user_detail){
 
 function showAttendError(){
   const attendHeader = document.querySelector('.attending-header-container');
-  attendHeader.insertAdjacentHTML('beforeend', "<p>You're already attending this event</p>")
+  if (attendHeader){
+  }
+  else{
+    attendHeader.insertAdjacentHTML('beforeend', "<p>You're already attending this event</p>");
+  }
 }
 
 <% if @attendance.valid? %>

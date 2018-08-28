@@ -16,8 +16,8 @@ li{
   align-items:center;
 }
 
-button:focus {outline:0;}
+button:focus {outline:0 !important;}
 
-input:focus{
-  border: 1px solid $orange;
+input:focus, textarea:focus{
+  border: 1px solid $orange !important;
 }

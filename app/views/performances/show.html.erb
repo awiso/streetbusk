@@ -47,40 +47,61 @@
             </div>
             <ul class="attendance">
               <% if @attendances.length > 0 %>
-              <% @attendances.take(10).each do |a| %>
+                <% @attendances.each do |a| %>
               <!-- <li> <%= a.user.avatar %></li> -->
-              <%= render "attendance/attend", user: a.user %>
-              <% end %>
+                  <%= render "attendance/attend", user: a.user %>
+                <% end %>
               <% else %>
-              <p class="italic no-attend">No-one attending yet. Be the first to attend!</p>
-              <% if !current_user.present? %>  <%= link_to "Log in", new_user_session_path, class: "navbar-wagon-item italic" %><% end %>
+                <p class="italic no-attend">No-one attending yet. Be the first to attend!</p>
+                <% if !current_user.present? %>  <%= link_to "Log in", new_user_session_path, class: "navbar-wagon-item italic" %><% end %>
               <% end %>
             </ul>
           </div>
           <% if current_user.present? %>
             <%= simple_form_for [ @performance, @attendance ], url: performance_attendance_index_path(@performance.id), remote: true do |form| %>
-            <%= form.hidden_field :performance_id, :value => @performance.id %>
-            <!-- <%= form.button :submit, "Attend", class:"fa-users btn btn-primary" %> -->
-            <%= button_tag type: 'submit', class:"socialbtns attend-button" do %>
-              <i class=" fasa fas fa-users" aria-hidden="true"></i>
-              <p class="icon-text">Attend</p>
+              <%= form.hidden_field :performance_id, :value => @performance.id %>
+              <!-- <%= form.button :submit, "Attend", class:"fa-users btn btn-primary" %> -->
+              <%= button_tag type: 'submit', class:"socialbtns attend-button" do %>
+                <i class=" fasa fas fa-users" aria-hidden="true"></i>
+                <p class="icon-text">Attend</p>
+              <% end %>
+              <!-- <input type="submit" name="commit" value="Create Attendance" class="btn fa-users" data-disable-with="Create Attendance">
+                <a href="#" class="fas fa-users">
+              </input> -->
+              <!-- Button trigger modal -->
+              <button type="button" class="socialbtns" data-toggle="modal" data-target="#contribute-modal" id="contribute-button" data-modal="<%= @contribution.errors.messages.any? %>">
+                <i class=" fasa fas fa-hand-holding-usd" aria-hidden="true"></i>
+                <p class="icon-text">Contribute</p>
+              </button>
             <% end %>
-            <!-- <input type="submit" name="commit" value="Create Attendance" class="btn fa-users" data-disable-with="Create Attendance">
-              <a href="#" class="fas fa-users">
-            </input> -->
-            <!-- Button trigger modal -->
-            <button type="button" class="socialbtns" data-toggle="modal" data-target="#contribute-modal" id="contribute-button" data-modal="<%= @contribution.errors.messages.any? %>">
-              <i class=" fasa fas fa-hand-holding-usd" aria-hidden="true"></i>
-              <p class="icon-text">Contribute</p>
-            </button>
-          <% end %>
           <% else %>
-          <p class="italic">Please sign in to <strong>attend</strong> or to <strong>contribute</strong></p>
+            <p class="italic">Please sign in to <strong>attend</strong> or to <strong>contribute</strong></p>
           <% end %>
         </div>
-
-
       </div>
+
+    <div class="comments">
+      <ul>
+        <% if @comments.length > 0 %>
+          <% @comments.each do |comment| %>
+            <%= render "comment/comment", comment: comment %>
+          <% end %>
+        <% else %>
+          <p class="italic no-attend">No comments yet. Be the first to comment!</p>
+          <% if !current_user.present? %>  <%= link_to "Log in", new_user_session_path, class: "navbar-wagon-item italic" %><% end %>
+        <% end %>
+      </ul>
+
+      <% if current_user.present? %>
+        <%= simple_form_for [ @performance, @comment ], url: performance_comment_index_path(@performance.id), remote: true do |form| %>
+          <%= form.hidden_field :performance_id, :value => @performance.id %>
+          <%= form.input :comment_text, as: :text, label: "Your Comment" %>
+          <%= form.button :submit, "Add Comment", class:"fa-users btn btn-primary" %>
+        <% end %>
+      <% else %>
+      <p class="italic">Please sign in to comment</strong></p>
+      <% end %>
+    </div>
 
       </div>
 
