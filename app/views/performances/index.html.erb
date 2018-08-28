@@ -17,14 +17,14 @@
   <div>
     <!-- <%= render "shared/searchbar" %> -->
     <div class="search-bar">
-      <div class="performance">
-        <h5> Explore beautiful artists in your area</h5>
+      <div class="search-bar-icon">
+        <i class="fas fa-search"></i>
       </div>
      <%= form_tag performances_path, method: :get do %>
      <%= text_field_tag :query,
      params[:query],
-     class: "form-control",
-      placeholder: "Search by city"
+     class: "form-search",
+      placeholder: "Explore performances in your area ..."
       %>
       <% end %>
     </div>
@@ -43,13 +43,13 @@
 
          <div class="card-description">
           <p><i class="fas fa-user"></i> <%= performance.user.artist_name %></p>
-          <p><i class="fas fa-map-pin"></i> &nbsp; <%= performance.location %></p>
+          <p><i class="fas fa-map-pin"></i> &nbsp; <i><%= performance.location %></i></p>
           <% start_time = performance.start_time %>
           <% end_time = performance.end_time %>
           <div class="card-time-container card-time">
-            <p class="card-time"><i class="far fa-clock"></i> <%= start_time.strftime("%a %m/%d/%y")  %></p>
+            <p class="card-time"><i class="far fa-clock"></i> <strong><%= start_time.strftime("%a %m/%d/%y")  %></strong></p>
             <p class="card-time-grow"></p>
-            <p class="card-time"><%= start_time.strftime("%I %p") %> - <%= end_time.strftime("%I %p") %></p>
+            <p class="card-time"><strong><%= start_time.strftime("%I %p") %> - <%= end_time.strftime("%I %p") %></strong></p>
           </div>
         </div>
       </div>
