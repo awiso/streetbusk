@@ -18,7 +18,7 @@
       <% if current_user.artist %>
       <div class="icon-box">
         <%= link_to profile_path(current_user) do %>
-         <i class="fa fa-user"></i>
+         <i class="fa fa-user footer-icon"></i>
           <% if user_signed_in? %>
           <% if current_user.artist %>
           <br>
@@ -30,7 +30,7 @@
       <!-- New Performance -->
       <div class="icon-box">
         <%= link_to new_performance_path do %>
-          <i class="fas fa-plus"></i>
+          <i class="fas fa-plus footer-icon"></i>
           <% if user_signed_in? %>
           <% if current_user.artist %>
           <br>
@@ -44,9 +44,9 @@
 
     <!-- Setting -->
     <% if user_signed_in? %>
-      <div class="icon-box">
+      <div class="icon-box footer-icon">
         <%= link_to edit_user_registration_path do %>
-          <i class="fa fa-cog"></i>
+          <i class="fa fa-cog footer-icon"></i>
           <% if user_signed_in? %>
           <% if current_user.artist %>
           <br>
@@ -61,7 +61,7 @@
     <% if user_signed_in? %>
       <div class="icon-box">
         <%= link_to destroy_user_session_path, method: :delete do %>
-          <i class="fa fa-sign-out"></i>
+          <i class="fa fa-sign-out footer-icon"></i>
           <% if user_signed_in? %>
           <% if current_user.artist %>
           <br>
