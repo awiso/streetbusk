@@ -18,7 +18,7 @@ a, a:hover {
   display: inline-block;
 }
 
-.socialbtns .fasa, .fab{
+.socialbtns .fas, .fasa, .fab{
   width: 40px;
   height: 40px;
   color: #6c8089;
@@ -32,7 +32,7 @@ a, a:hover {
   transition: all 0.8s ease;
 }
 
-.socialbtns .fasa:hover, .fab:hover {
+.socialbtns .fas:hover, .fasa:hover, .fab:hover {
   color: orange;
   background-color: #6c8089;
   opacity: 0.8;

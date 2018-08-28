@@ -8,10 +8,15 @@
 .search-bar{
   display: flex;
   align-items: center;
-  margin-left: 15px;
+  padding: 5px;
   form{
     width: 100%;
   }
+}
+
+.search-bar-icon {
+  position: absolute;
+  left: 35px;
 }
 
 .search-icon{
@@ -23,7 +28,7 @@
 }
 
 .fa-search{
-  color: white;
+  color: gray;
 }
 
 .form-text{
@@ -36,6 +41,15 @@
   font-style: lighter;
   padding-left: 5px;
   color: black;
+}
+
+.form-search {
+  margin-left: 20px;
+  height: 39px;
+  width: 90%;
+  font-size: 15px;
+  border-radius: 5px;
+  padding-left: 35px;
 }
 
 .search-field{
