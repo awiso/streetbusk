@@ -1,6 +1,11 @@
 <div class="container">
   <p>The profile of</p>
   <p><%= @user.email %></p>
-  <%#= cl_image_tag 'sample' %>
+  <%= cl_image_tag @user.avatar, width: 200 %>
+  <br>
   <%= link_to 'Back', performances_path %>
+  <% if policy(@user).edit? %>
+  <%= link_to 'Edit', edit_profile_path(@user) %>
+  <% end %>
+
 </div>

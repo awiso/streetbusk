@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   resources :contributions, only: [ :show ] do
     resources :payments, only: [:new, :create]
   end
+
+  resources :users, only: [:edit, :update]
 end
