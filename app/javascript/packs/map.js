@@ -219,6 +219,15 @@ const styles = [
                 "lightness": -86
             }
         ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
     }
 ]
 
