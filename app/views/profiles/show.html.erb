@@ -1,24 +1,38 @@
-<div class="container">
-  <p>The profile of</p>
-  <%= cl_image_tag @user.avatar, width: 200 %>
-  <p><%= @user.email %></p>
-  <p><%= @user.artist_name %></p>
-  <p><%= @user.social_media_links %></p>
+
+  <div class="profile-banner" style="background-image: url('<%= cl_image_path @user.avatar, crop: :fill %>')">
+  </div>
+  <h2 class='profile-artist-name'><%= @user.artist_name %></h2>
   <br>
 
+<div class="container">
   <p>Perfromances:</p>
   <ul> 
   <% @performances.each do |performance| %>
     <li>
-      <%= performance.user.artist_name %>
-      <%= performance.location %>
+      <%= link_to performance.location, performance_path(performance) %>
     </li>
   <% end %>
   </ul>
 
-  <%= link_to 'Back', performances_path %>
-  <% if policy(@user).edit? %>
-  <%= link_to 'Edit', edit_profile_path(@user) %>
+
+  <% if @user.youtube != nil &&  @user.youtube != "" || @user.soundcloud != nil && @user.soundcloud != "" %>
+    <div class="media-container">
+      <% if @user.youtube != nil && @user.youtube != "" %>
+        <p>Check me out on YouYube</p>
+        <iframe src="<%= @user.youtube %>" frameborder="0"></iframe>
+      <% end %>
+
+      <% if @user.soundcloud != nil && @user.soundcloud != "" %>
+        <p>Check me out on Soundcloud</p>
+        <iframe src="<%= @user.soundcloud %>" frameborder="0"></iframe>
+      <% end %>
+    </div>
   <% end %>
 
+  <br>
+
+  <%= link_to 'Back', performances_path, class: 'btn btn-primary' %>
+  <% if policy(@user).edit? %>
+    <%= link_to 'Edit', edit_profile_path(@user), class: 'btn btn-success' %>
+  <% end %>
 </div>
