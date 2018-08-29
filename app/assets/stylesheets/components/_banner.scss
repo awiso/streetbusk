@@ -26,3 +26,40 @@
 .banner-content h1 {
   font-size: 50px;
 }
+
+.banner-half-page{
+  background-size: cover !important;
+  background-position: center;
+  height: 35vh;
+}
+
+.banner-font{
+  font-weight: lighter;
+  text-shadow: 1px 1px #000000;
+  margin-top: -3px;
+}
+
+.avatar-on-banner{
+  box-shadow: 1px 1px 1px 0px rgba(199, 199, 199, 0.76);
+  height: 20vw;
+  min-height: 50px;
+  width: 20vw;
+  min-width: 50px;
+  max-width: 120px;
+  max-height: 120px;
+  display: inline-block;
+  background-position: center center;
+  background-size: cover;
+  border-radius: 50%;
+  margin-right:2rem;
+  flex-basis: 10vw;
+  flex-shrink: 0;
+  opacity: 0.8;
+}
+
+.banner-content{
+  margin-left: 0px;
+  width: 100%;
+  padding-top: 20px;
+  text-align: center;
+}

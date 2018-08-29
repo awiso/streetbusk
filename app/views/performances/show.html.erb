@@ -1,5 +1,4 @@
 <!-- Navbar that is hidden on mobile -->
-<%= render 'shared/navbar_hidden' %>
 
 <div class="performance-show">
 
@@ -8,7 +7,7 @@
     <div class="artist-overlay-card">
       <div class="artist-performance-desc">
         <div class="performance-avatar" style="background-image: url('<%= cl_image_path @performance.user.avatar, crop: :fill %>')"></div>
-          <h2><%= @performance.user.artist_name %></h2>
+          <h2><%= link_to @performance.user.artist_name, profile_path(@performance.user) %></h2>
       </div>
       <p class="italic"><%= @performance.description %></p>
       <ul class="performance-description">
@@ -116,7 +115,7 @@
 
       <% if current_user.present? %>
         <%= simple_form_for [ @performance, @comment ], url: performance_comment_index_path(@performance.id), remote: true do |form| %>
-          <%= form.hidden_field :performance_id, :value => @performance.id %>
+          <%= form.hidden_field :performance_id, :value => @performance.id, html: { id: "performance_"} %>
           <%= form.input :comment_text, as: :text, label: "Your Comment" %>
           <%= form.button :submit, "Add Comment", class:"fa-users btn btn-primary" %>
         <% end %>

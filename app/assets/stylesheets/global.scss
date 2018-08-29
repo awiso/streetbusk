@@ -13,3 +13,7 @@ button:focus {outline:0 !important;}
 input:focus, textarea:focus{
   border: 1px solid $orange !important;
 }
+
+.fullscreen-body{
+  overflow-y: scroll;
+}

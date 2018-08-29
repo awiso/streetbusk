@@ -77,6 +77,7 @@
     display: flex;
     justify-content: center;
   }
+
   .performance-avatar{
     height: 10vw;
     min-height: 50px;
@@ -92,6 +93,7 @@
     flex-basis: 10vw;
     flex-shrink: 0;
   }
+
   .artist-avatar{
     width: 50%;
     shape-outside: circle(50%);
@@ -275,7 +277,7 @@
 }
 
 .comments{
-
+  margin-bottom: 70px;
    .comment-avatar{
      height: 45px;
      width: 45px;
@@ -329,4 +331,3 @@
   display: flex;
   justify-content: center;
   }
-}

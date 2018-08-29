@@ -1,17 +1,27 @@
-<div class="banner-half-page">
+<div class="banner-half-page" style="background-image: linear-gradient(-190deg, rgba(130,130,130,0.5) 0%, rgba(0,0,10, 0.5) 100%), url('<%= image_path '7.jpg' %>');">
 
-  <div class="performance-photo-bg" style="background-image: url('<%= cl_image_tag @contribution.artist.avatar, crop: :fill %>')"></div>
+  <div class="banner-content">
+    <div class="avatar-on-banner" style="background-image: url('<%= cl_image_path @contribution.artist.avatar, crop: :fill %>')"></div>
+    <h3 class='banner-font'><%= @contribution.artist.artist_name %></h3><br>
 
-  <p>Artist Name</p>
-  <%= @contribution.artist.artist_name %>
 
-  <p>Artist image</p>
-  <%= cl_image_path @contribution.artist.avatar %>
+  </div>
+
+
+</div>
+
+    <%=link_to "Discover local artists", performances_path, class: 'btn btn-home btn-warning', id: 'geocode' %>
+
+
+
 
 </div>
 
 <div class="container half-page">
   <h4>Review your Contribution</h4>
+
+
+
   <div class="icon-next-to-text">
     <i class="fas fa-hand-holding-usd icon-orange icon-padding"></i>
     <p>Amount: <%= humanized_money_with_symbol(@contribution.amount) %> </p>
@@ -39,4 +49,3 @@
 
 <% end %>
 </div>
-
