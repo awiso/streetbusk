@@ -5,6 +5,10 @@
     margin-bottom: 10px;
     margin-left: 2rem;
     text-align: left !important;
+    @media(max-width: 400px){
+      margin-left: 10px;
+      margin-bottom: 5px;
+    }
   }
   img{
     height: 35vh;
@@ -37,6 +41,11 @@
     align-items: flex-start;
     //margin-left: calc(10vw + 2rem);
     margin: 10px;
+    @media(max-width: 400px){
+      flex-direction: row;
+      justify-content: space-between;
+      margin-top: 5px;
+    }
   }
 
   i{
@@ -48,7 +57,7 @@
   text-shadow: 1px 1px rgba(0,0,0,0.5);
   color: white;
   position: absolute;
-  top: 10%;
+  top: 8%;
   left: 50%;
   transform: translateX(-50%);
 
@@ -92,6 +101,9 @@
     margin: 1rem 2rem;
     flex-basis: 10vw;
     flex-shrink: 0;
+    @media (max-width: 400px){
+      margin-left: 10px;
+    }
   }
 
   .artist-avatar{
@@ -152,12 +164,12 @@
     top: 20px;
     color: #6c8089;
     opacity: 0.6;
-    @media(max-width: 420px){
-      left: 10px;
+    @media(max-width: 400px){
+      right: 10px;
       top: 10px;
     }
     @media(max-width:310px){
-      left: 5px;
+      right: 5px;
       top: 5px;
     }
     &:hover{
