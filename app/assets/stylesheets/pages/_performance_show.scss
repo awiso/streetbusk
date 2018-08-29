@@ -111,9 +111,10 @@
         margin: 0;
         a{
           color: white;
+          transition: all 1s ease;
           &:hover{
             text-decoration: none;
-            color: #6c8089;
+            opacity: 0.6;
           }
         }
           @media(max-width: 680px){
@@ -147,13 +148,20 @@
     display: block;
     font-size: 32px;
     position: absolute;
-    right: 20px;
+    left: 20px;
     top: 20px;
     color: #6c8089;
     opacity: 0.6;
     @media(max-width: 420px){
       left: 10px;
       top: 10px;
+    }
+    @media(max-width:310px){
+      left: 5px;
+      top: 5px;
+    }
+    &:hover{
+      color: white;
     }
   }
 
@@ -242,8 +250,6 @@
       list-style: none;
     }
     .attend-item{
-      height: 45px;
-      width: 45px;
       background-position: center center;
       background-size: cover;
       border-radius: 50%;
@@ -251,6 +257,8 @@
     }
     .attend-overlap{
       margin-right: -25px;
+      height: 45px;
+      width: 45px;
     }
   }
 
