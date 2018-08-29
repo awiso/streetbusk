@@ -48,11 +48,11 @@
     <p class="attending-text">Attending</p>
     <ul class="attendance">
       <% if @attendances.length > 0 %>
-      <% @attendances.each do |a| %>
-      <%= render "attendance/attend", user: a.user %>
-      <% end %>
+        <% @attendances.each do |a| %>
+        <%= render "attendance/attend", user: a.user %>
+        <% end %>
       <% else %>
-      <p class="italic no-attend">No-one attending yet. Be the first to attend!</p>
+        <li class="italic no-attend attend-item">Be the first to attend!</li>
       <% if !current_user.present? %>  <%= link_to "Log in", new_user_session_path, class: "navbar-wagon-item italic" %><% end %>
       <% end %>
       <li class="attend-item">

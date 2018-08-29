@@ -2,10 +2,10 @@
 function addAttendee(attendHTML, user_detail){
   const attendanceList = document.querySelectorAll('.attend-item');
   const noAttendP = document.querySelector('.no-attend');
-  if (noAttendP){
-    noAttendP.style.display = "none";
-  }
-  attendanceList[-1].insertAdjacentHTML('afterend', attendHTML)
+    attendanceList[attendanceList.length - 1].insertAdjacentHTML('beforebegin', attendHTML);
+    if (noAttendP){
+      noAttendP.style.display = "none";
+    }
 }
 
 function showAttendError(){
