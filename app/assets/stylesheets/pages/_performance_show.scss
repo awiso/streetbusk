@@ -109,6 +109,14 @@
         text-align: left;
         display: inline-block;
         margin: 0;
+        a{
+          color: white;
+          transition: all 1s ease;
+          &:hover{
+            text-decoration: none;
+            opacity: 0.6;
+          }
+        }
           @media(max-width: 680px){
             font-size: 34px;
           }
@@ -140,13 +148,20 @@
     display: block;
     font-size: 32px;
     position: absolute;
-    right: 20px;
+    left: 20px;
     top: 20px;
     color: #6c8089;
     opacity: 0.6;
     @media(max-width: 420px){
       left: 10px;
       top: 10px;
+    }
+    @media(max-width:310px){
+      left: 5px;
+      top: 5px;
+    }
+    &:hover{
+      color: white;
     }
   }
 
@@ -235,8 +250,6 @@
       list-style: none;
     }
     .attend-item{
-      height: 45px;
-      width: 45px;
       background-position: center center;
       background-size: cover;
       border-radius: 50%;
@@ -244,6 +257,8 @@
     }
     .attend-overlap{
       margin-right: -25px;
+      height: 45px;
+      width: 45px;
     }
   }
 
@@ -255,29 +270,6 @@
     font-size: 18px;
     font-weight: 500;
   }
-}
-
-.performance-other-amount{
-  #contribution_amount{
-    display: none;
-  }
-  .show-contribution_amount{
-    display: block !important;
-  }
-  opacity: 0;
-  max-height: 0;
-  transition: all 0.4s ease;
-}
-.show-other-amount{
-  margin-top: 15px;
-  opacity: 1 !important;
-  max-height: 150px;
-}
-
-.contribute_options{
-  width: 30%;
-  padding: 5px;
-  background: rgba(255,255,255,0.7);
 }
 
 .comments{
@@ -334,5 +326,12 @@
    width:100%;
   display: flex;
   justify-content: center;
+  }
+}
+
+.modal-footer{
+  button{
+    border: none !important;
+    background-color: none !important;
   }
 }

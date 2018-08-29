@@ -28,8 +28,8 @@ a, a:hover {
   height: 45px;
   color: #6c8089;
   background-color: #FFF;
-  border: 1px solid rgba(255,255,255,0.5);
-  padding-top: 14px;
+  border: 1px solid rgba(255,255,255,0.4);
+  padding-top: 12px;
   border-radius: 50%;
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
@@ -67,10 +67,16 @@ a, a:hover {
 .attend-button:hover, .contribute-button:hover, .comment-button:hover{
     opacity: 0.8 !important;
     background-color: #FFF !important;
-    color: orange !important;
+
+    color: #6c8089 !important;
     border: 1px solid #6c8089;
+    color: #6c8089 !important;
 }
 
+
+.attend-button:hover p, .contribute-button:hover p, .comment-button:hover p{
+  color: #6c8089 !important;
+}
 
 .socialbtns{
 
