@@ -30,6 +30,13 @@ Genre.create!(name: "Hip hop", performance_type: "Music")
 Genre.create!(name: "Breakdance", performance_type: "Performance")
 Genre.create!(name: "Jazz", performance_type: "Music")
 Genre.create!(name: "Street Art", performance_type: "Performance")
+Genre.create!(name: "Soul", performance_type: "Music")
+Genre.create!(name: "Acoustic", performance_type: "Music")
+Genre.create!(name: "Magic", performance_type: "Performance")
+Genre.create!(name: "Dance", performance_type: "Performance")
+Genre.create!(name: "Breakbeat", performance_type: "Music")
+Genre.create!(name: "Comedy", performance_type: "Music")
+Genre.create!(name: "Uncategorizable", performance_type: "Music")
 
 puts "Generate performances"
 
