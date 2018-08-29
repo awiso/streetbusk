@@ -1,38 +1,69 @@
-
-  <div class="profile-banner" style="background-image: url('<%= cl_image_path @user.avatar, crop: :fill %>')">
-  </div>
-  <h2 class='profile-artist-name'><%= @user.artist_name %></h2>
-  <br>
-
+<!-- Top Section: General Infos about the artist -->
 <div class="container">
-  <p>Perfromances:</p>
-  <ul> 
-  <% @performances.each do |performance| %>
-    <li>
-      <%= link_to performance.location, performance_path(performance) %>
-    </li>
-  <% end %>
-  </ul>
-
-
-  <% if @user.youtube != nil &&  @user.youtube != "" || @user.soundcloud != nil && @user.soundcloud != "" %>
-    <div class="media-container">
-      <% if @user.youtube != nil && @user.youtube != "" %>
-        <p>Check me out on YouYube</p>
-        <iframe src="<%= @user.youtube %>" frameborder="0"></iframe>
-      <% end %>
-
-      <% if @user.soundcloud != nil && @user.soundcloud != "" %>
-        <p>Check me out on Soundcloud</p>
-        <iframe src="<%= @user.soundcloud %>" frameborder="0"></iframe>
-      <% end %>
+  <div class="row flex-align-center">
+    <div class="col-xs-4">
+      <div class="avatar-on-banner" style="background-image: url('<%= cl_image_path @user.avatar, crop: :fill %>')"></div>
     </div>
+    <div class="col-xs-4">
+        <p class='profile-artist-name'><%= @user.artist_name %></p>
+    </div>
+    <div class="col-xs-4">
+        <!-- Contribution logic still unclear -->
+        <button class="btn btn-primary">Contribute</button>
+    </div>
+  </div>
+</div>
+
+<!-- Previous performances of tee artist -->
+<!-- Implementation slider missing -->
+<div class="container">
+  <div class="row">
+    <h4><%= @user.artist_name %>‘s previous performances:</h4>
+
+  <% @performances.each do |performance| %>
+       <%= link_to performance_path(performance) do %>
+
+       <div class="card">
+         <div class="card-bg-img" style="background-image: url('<%= cl_image_path(performance.photo_url, crop: :fill) %>')"></div>
+
+         <div class="card-description">
+          <p><i class="fas fa-map-pin"></i> &nbsp; <i><%= performance.location %></i></p>
+          <% start_time = performance.start_time %>
+          <% end_time = performance.end_time %>
+          <div class="card-time-container card-time">
+            <p class="card-time"><i class="far fa-clock"></i> <strong><%= start_time.strftime("%a %m/%d/%y")  %></strong></p>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    <% end %>
+
+    </div>
+</div>
+
+<!-- Social Media-->
+  <% if @user.youtube != nil &&  @user.youtube != "" || @user.soundcloud != nil && @user.soundcloud != "" %>
+  <div class="media-container">
+  <h4> Social Media: </h4>
+    <% if @user.youtube != nil && @user.youtube != "" %>
+    <p>Check me out on YouYube</p>
+    <iframe src="<%= @user.youtube %>" frameborder="0"></iframe>
+    <% end %>
+
+    <% if @user.soundcloud != nil && @user.soundcloud != "" %>
+    <p>Check me out on Soundcloud</p>
+    <iframe src="<%= @user.soundcloud %>" frameborder="0"></iframe>
+    <% end %>
+  </div>
   <% end %>
 
+</div>
   <br>
 
   <%= link_to 'Back', performances_path, class: 'btn btn-primary' %>
   <% if policy(@user).edit? %>
-    <%= link_to 'Edit', edit_profile_path(@user), class: 'btn btn-success' %>
+  <%= link_to 'Edit', edit_profile_path(@user), class: 'btn btn-success' %>
   <% end %>
 </div>
+
+
