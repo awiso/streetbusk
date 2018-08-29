@@ -13,6 +13,13 @@
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
   <body>
+    <% if current_page?('/') %>
+      <%= render 'shared/navbar' %>
+    <% elsif current_page? new_contribution_payment_path(:id) %>
+    <% else %>
+      <%= render 'shared/navbar_hidden' %>
+    <% end %>
+
     <%= render 'shared/flashes' %>
     <%= render 'shared/signup' %>
     <%= yield %>
