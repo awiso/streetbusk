@@ -27,7 +27,7 @@ a, a:hover {
   height: 45px;
   color: #6c8089;
   background-color: #FFF;
-  border: 1px solid #6c8089;
+  border: 1px solid rgba(255,255,255,0.5);
   padding-top: 12px;
   border-radius: 50%;
   -moz-border-radius: 50%;
@@ -43,10 +43,16 @@ a, a:hover {
     // border: 1px solid #6c8089;
 }
 
-.attend-button{
+.attend-button, .contribute-button{
     color: orange !important;
     background-color: #6c8089 !important;
     border: 1px solid #6c8089;
+}
+
+.attend-button:hover, .contribute-button:hover{
+    opacity: 0.8 !important;
+    background-color: #FFF !important;
+    color: #6c8089 !important;
 }
 
 
@@ -54,10 +60,10 @@ a, a:hover {
 
 }
 
-#new_attendance{
+#new_attendance, #new_contribution_form{
   button{
-    background-color: #FFF;
-    border: none;
+    background-color: rgba(255,255,255,0);
+    border: rgba(0,0,0,0.3);
     color: white;
     &:focus{
       border: none;
