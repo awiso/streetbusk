@@ -3,38 +3,28 @@ class ContributionsController < ApplicationController
 
   def create
     @contribution = Contribution.new(contributions_params)
+    @contribution.amount = Monetize.parse!(contributions_params[:amount])
     @contribution.user = current_user
-    set_contribution_amount
     @contribution.state = 'pending'
     if @contribution.save
       redirect_to new_contribution_payment_path(@contribution)
     else
-      @performance = Performance.find(params[:performance_id])
-      @attendances = @performance.attendances
-
-      @attendance = Attendance.new
-      @markers = [{
-          lat: @performance.latitude,
-          lng: @performance.longitude
-            }]
-      @duration = duration(@performance)
-      @playing_now = playing_now?
-      
+      get_performance_variables
       render "performances/show"
     end
-    
+
     authorize @contribution
   end
-  
+
   def show
     @contribution = current_user.sent_contributions.where(state: 'paid').find(params[:id])
     authorize @contribution
   end
-  
+
   private
 
   def contributions_params
-    params.require(:contribution).permit(:amount, :artist_id, :credit, :message)
+    params.require(:contribution).permit(:amount,:message, :artist_id)
   end
 
   def set_contribution_amount
@@ -44,7 +34,7 @@ class ContributionsController < ApplicationController
       @contribution.amount = Monetize.parse!(contributions_params[:amount])
     end
   end
-    
+
   def duration(performance)
     sec_in_hours = 60 * 60
     minutes = ((performance.end_time - performance.start_time)/60).to_i
@@ -58,5 +48,20 @@ class ContributionsController < ApplicationController
     else
       false
     end
+  end
+
+  def get_performance_variables
+    @performance = Performance.find(params[:performance_id])
+    @attendances = @performance.attendances
+
+    @attendance = Attendance.new
+    @markers = [{
+        lat: @performance.latitude,
+        lng: @performance.longitude
+          }]
+    @duration = duration(@performance)
+    @playing_now = playing_now?
+    @comments = @performance.comments
+    @comment = Comment.new
   end
 end
