@@ -42,7 +42,7 @@
 
          <div class="card-description">
           <p><i class="fas fa-user"></i> <%= performance.user.artist_name %></p>
-          <p><i class="fas fa-map-pin"></i> &nbsp; <i><%= performance.location %></i></p>
+          <p><i class="fas fa-map-pin"></i> &nbsp; <i><%= performance.location.split(',')[0] %></i></p>
           <% start_time = performance.start_time %>
           <% end_time = performance.end_time %>
           <div class="card-time-container card-time">

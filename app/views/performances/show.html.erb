@@ -11,7 +11,7 @@
       </div>
       <p class="italic"><%= @performance.description %></p>
       <ul class="performance-description">
-        <li><i style="vertical-align: top;" class="fas fa-map-pin"></i> <div style="display:inline-block;"> <% @performance.location.split(',').reverse.take(2).each do |l| %>  <%= l %> <br><% end %></div></li>
+        <li><i style="vertical-align: top;" class="fas fa-map-pin"></i> <div style="display:inline-block;"> <%= @performance.location %></div></li>
         <li><i class="fas fa-music"></i><%= @performance.genre.name %></li>
         <% if @playing_now %>
         <li><i class="far fa-clock"></i><span class="playing_now">
