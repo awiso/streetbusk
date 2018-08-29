@@ -222,15 +222,17 @@
 
   #contribute-button{
     color: white;
-    position: relative;
-    top: -57px;
+    padding: 10px;
+    width: 100%;
+    //position: relative;
+    //top: -57px;
     //background-color: $orange;
   }
 
 
   .attendance{
     position: absolute;
-    bottom: 0;
+    bottom: 25px;
     left: 50%;
     transform: translate(-50%, 50%);
     margin: 0px;
@@ -264,7 +266,7 @@
 
   .attending-text{
     position: absolute;
-    bottom: 0px;
+    bottom: 25px;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 18px;
@@ -273,6 +275,18 @@
 }
 
 .comments{
+  h3 {
+    margin-top: 0;
+  }
+  textarea {
+    border-radius: 0;
+    margin: 0;
+    width: 100%;
+  }
+  button {
+    border: 0;
+    padding: 0;
+  }
   margin-bottom: 70px;
    .comment-avatar{
      height: 45px;
@@ -316,13 +330,13 @@
   display: flex;
   justify-content: space-between;
   align-items:center;
-  max-height: 0px;
+  //max-height: 0px;
   form{
-      max-height: 0px;
+  //    max-height: 0px;
   }
   .inline{
   display: inline-block;
-  max-height: 0px;
+  //max-height: 0px;
    width:100%;
   display: flex;
   justify-content: center;
