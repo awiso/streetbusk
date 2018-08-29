@@ -1,11 +1,12 @@
 .icon-text {
   font-size: 12px;
   padding: 5px;
-  color: #6c8089;
+  color: white;
   margin: 0 10px;
   vertical-align: center;
   position: relative;
-  top: -10px;
+  top: -17px;
+  left: -79px;
 }
 
 a, a:hover {
@@ -28,10 +29,24 @@ a, a:hover {
   color: #6c8089;
   background-color: #FFF;
   border: 1px solid rgba(255,255,255,0.5);
-  padding-top: 12px;
+  padding-top: 14px;
   border-radius: 50%;
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
+  -o-border-radius: 22px;
+  transition: all 0.8s ease;
+}
+
+.socialbtns .fasc{
+  width: 110px;
+  height: 40px;
+  color: #6c8089;
+  background-color: #FFF;
+  border: 1px solid rgba(255,255,255,0.5);
+  padding-top: 7px;
+  padding-left: 73px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 5px;
   -o-border-radius: 22px;
   transition: all 0.8s ease;
 }
@@ -53,6 +68,7 @@ a, a:hover {
     opacity: 0.8 !important;
     background-color: #FFF !important;
     color: #6c8089 !important;
+    border: 1px solid #6c8089;
 }
 
 

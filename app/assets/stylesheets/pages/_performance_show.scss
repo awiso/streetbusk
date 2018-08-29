@@ -2,7 +2,8 @@
   position: relative;
   .italic{
     font-style: italic;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+    margin-left: 2rem;
     text-align: left !important;
   }
   img{
@@ -35,7 +36,7 @@
     flex-direction: column;
     align-items: flex-start;
     //margin-left: calc(10vw + 2rem);
-    margin: 0;
+    margin: 10px;
   }
 
   i{
@@ -75,6 +76,22 @@
   .flex{
     display: flex;
     justify-content: center;
+  }
+
+  .performance-avatar{
+    height: 10vw;
+    min-height: 50px;
+    width: 10vw;
+    min-width: 50px;
+    max-width: 120px;
+    max-height: 120px;
+    display: inline-block;
+    background-position: center center;
+    background-size: cover;
+    border-radius: 50%;
+    margin: 1rem 2rem;
+    flex-basis: 10vw;
+    flex-shrink: 0;
   }
 
   .artist-avatar{
@@ -123,7 +140,7 @@
     display: block;
     font-size: 32px;
     position: absolute;
-    left: 20px;
+    right: 20px;
     top: 20px;
     color: #6c8089;
     opacity: 0.6;
@@ -139,7 +156,7 @@
     background-repeat: no-repeat;
     background-position: center center;
     width: 100vw;
-    height: 40vw;
+    height: calc(50vh - 30px);
     min-height: 40vh;
     z-index: 1;
     text-shadow: 1px 1px rgba(0,0,0,0.5);
@@ -147,8 +164,12 @@
 
   }
 
+
   h3{
     display: inline-block;
+  }
+
+  .no-attend{
   }
   .attending-error-container{
     display: block;
@@ -186,6 +207,8 @@
 
   #contribute-button{
     color: white;
+    position: relative;
+    top: -57px;
     //background-color: $orange;
   }
 
@@ -258,7 +281,7 @@
 }
 
 .comments{
-
+  margin-bottom: 70px;
    .comment-avatar{
      height: 45px;
      width: 45px;
@@ -297,18 +320,19 @@
 
 }
 
-.performance-avatar{
-  height: 10vw;
-  min-height: 50px;
-  width: 10vw;
-  min-width: 50px;
-  max-width: 120px;
-  max-height: 120px;
+.flex-between{
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
+  max-height: 0px;
+  form{
+      max-height: 0px;
+  }
+  .inline{
   display: inline-block;
-  background-position: center center;
-  background-size: cover;
-  border-radius: 50%;
-  margin-right:2rem;
-  flex-basis: 10vw;
-  flex-shrink: 0;
+  max-height: 0px;
+   width:100%;
+  display: flex;
+  justify-content: center;
+  }
 }

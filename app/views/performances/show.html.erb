@@ -1,5 +1,4 @@
 <!-- Navbar that is hidden on mobile -->
-<%= render 'shared/navbar_hidden' %>
 
 <div class="performance-show">
 
@@ -48,11 +47,11 @@
     <p class="attending-text">Attending</p>
     <ul class="attendance">
       <% if @attendances.length > 0 %>
-      <% @attendances.each do |a| %>
-      <%= render "attendance/attend", user: a.user %>
-      <% end %>
+        <% @attendances.each do |a| %>
+        <%= render "attendance/attend", user: a.user %>
+        <% end %>
       <% else %>
-      <p class="italic no-attend">No-one attending yet. Be the first to attend!</p>
+        <li class="italic no-attend attend-item">Be the first to attend!</li>
       <% if !current_user.present? %>  <%= link_to "Log in", new_user_session_path, class: "navbar-wagon-item italic" %><% end %>
       <% end %>
       <li class="attend-item">
@@ -71,7 +70,7 @@
   <div
   id="map"
   style="width: 100%;
-  height: 50vh;"
+  height: calc(50vh - 30px);"
   data-markers="<%= @markers.to_json %>">
 </div>
 
@@ -90,8 +89,8 @@
 
               <!-- Button trigger modal -->
               <button type="button" class="socialbtns" data-toggle="modal" data-target="#contribute-modal" id="contribute-button" data-modal="<%= @contribution.errors.messages.any? %>">
-                <i class=" fasa fas fa-hand-holding-usd contribute-button" aria-hidden="true"></i>
-                <p class="icon-text">Contribute</p>
+                <i class=" fasc fas fa-hand-holding-usd contribute-button" aria-hidden="true"><p class="icon-text">Contribute</p></i>
+
               </button>
             <% end %>
           <% else %>
@@ -99,6 +98,7 @@
           <% end %>
         </div>
       </div>
+
 
     <div class="comments">
       <h3>Comments</h3>
@@ -115,7 +115,7 @@
 
       <% if current_user.present? %>
         <%= simple_form_for [ @performance, @comment ], url: performance_comment_index_path(@performance.id), remote: true do |form| %>
-          <%= form.hidden_field :performance_id, :value => @performance.id %>
+          <%= form.hidden_field :performance_id, :value => @performance.id, html: { id: "performance_"} %>
           <%= form.input :comment_text, as: :text, label: "Your Comment" %>
           <%= form.button :submit, "Add Comment", class:"fa-users btn btn-primary" %>
         <% end %>
