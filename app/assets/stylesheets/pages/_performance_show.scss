@@ -140,7 +140,7 @@
     display: block;
     font-size: 32px;
     position: absolute;
-    left: 20px;
+    right: 20px;
     top: 20px;
     color: #6c8089;
     opacity: 0.6;
@@ -164,8 +164,12 @@
 
   }
 
+
   h3{
     display: inline-block;
+  }
+
+  .no-attend{
   }
   .attending-error-container{
     display: block;
