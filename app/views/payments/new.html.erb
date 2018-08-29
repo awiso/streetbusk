@@ -28,7 +28,8 @@
     <h4 class="header-orange">Choose a payment method</h4>
     <div>
 
-      <%= image_tag 'card.gif', class: 'icon-padding' %>
+      <i class="far fa-credit-card icon-padding icon-big-black"></i>
+      <br>
 
       <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
       data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
