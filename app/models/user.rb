@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :artist_genres
   has_many :performances, dependent: :destroy
 
-  has_many :attendances
+  has_many :attendances, dependent: :destroy
   has_many :comments
 
   has_many :sent_contributions, :class_name => 'Contribution', :foreign_key => 'user_id'
