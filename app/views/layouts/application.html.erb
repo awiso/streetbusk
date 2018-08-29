@@ -33,11 +33,16 @@
 
   </head>
   <body>
+    <% contribution_id = params[:contribution_id].present? ? params[:contribution_id] : ""   %>
     <% if current_page?('/') %>
       <%= render 'shared/navbar' %>
-    <% elsif current_page? new_contribution_payment_path(:id) %>
+    <% elsif current_page? new_contribution_payment_path(contribution_id) %>
+
     <% else %>
       <%= render 'shared/navbar_hidden' %>
+      <!-- Footer for mobile device -->
+      <%= render 'shared/footer' %>
+
     <% end %>
 
     <%= render 'shared/flashes' %>
