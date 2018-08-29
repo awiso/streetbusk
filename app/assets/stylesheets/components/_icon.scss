@@ -40,8 +40,8 @@ a, a:hover {
 .socialbtns .fasc{
   width: 110px;
   height: 40px;
-  color: #6c8089;
-  background-color: #FFF;
+  // color: #6c8089;
+  // background-color: #FFF;
   border: 1px solid rgba(255,255,255,0.5);
   padding-top: 7px;
   padding-left: 73px;
@@ -58,13 +58,13 @@ a, a:hover {
     // border: 1px solid #6c8089;
 }
 
-.attend-button, .contribute-button{
+.attend-button, .contribute-button, .comment-button{
     color: orange !important;
     background-color: #6c8089 !important;
     border: 1px solid #6c8089;
 }
 
-.attend-button:hover, .contribute-button:hover{
+.attend-button:hover, .contribute-button:hover, .comment-button:hover{
     opacity: 0.8 !important;
     background-color: #FFF !important;
     color: #6c8089 !important;
