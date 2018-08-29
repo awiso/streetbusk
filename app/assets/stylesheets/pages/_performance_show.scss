@@ -20,15 +20,17 @@
   }
 
   p, li{
-    @media(max-width: 800px){
-      font-size: 16px;
-    }
-    @media(max-width: 620px){
-      font-size: 14px;
-    }
-    @media(max-width: 400px){
-      font-size: 14px;
-    }
+    font-size: 18px;
+    padding: 4px;
+    // @media(max-width: 800px){
+    //   font-size: 16px;
+    // }
+    // @media(max-width: 620px){
+    //   font-size: 14px;
+    // }
+    // @media(max-width: 400px){
+    //   font-size: 14px;
+    // }
   }
   ul{
     margin-left: 0px;
@@ -41,16 +43,17 @@
     align-items: flex-start;
     //margin-left: calc(10vw + 2rem);
     margin: 10px;
-    @media(max-width: 400px){
-      flex-direction: row;
-      justify-content: space-between;
-      margin-top: 5px;
-    }
+    // @media(max-width: 400px){
+    //   flex-direction: row;
+    //   justify-content: space-between;
+    //   margin-top: 5px;
+    // }
   }
 
   i{
     width: 30px;
     text-align: center;
+    //color: coral;
   }
   .artist-overlay-card{
   //  display: flex;

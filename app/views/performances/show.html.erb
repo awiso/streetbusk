@@ -13,23 +13,10 @@
       <ul class="performance-description">
         <li><i style="vertical-align: top;" class="fas fa-map-pin"></i> <div style="display:inline-block;"> <%= @performance.location %></div></li>
         <li><i class="fas fa-music"></i><%= @performance.genre.name %></li>
-        <% if @playing_now %>
         <li><i class="far fa-clock"></i><span class="playing_now">
-          <% if @performance.genre.performance_type == "Music" %>
-          Playing now
-          <% else %>
-          Performing now
-          <% end %>
-        </span> until<%= @performance.end_time.to_formatted_s(:short)  %></li>
-        <% else %>
-        <li><i class="far fa-clock"></i>
-          <% if @performance.genre.performance_type == "Music" %>
-          Played on
-          <% else %>
-          Performed on
-          <% end %> <%= @performance.start_time.strftime('%A, %b %d') %></li>
-          <% end %>
-        <!-- <li><i class="far fa-comment"></i><%= @performance.description %></li> -->
+          Playing until <%= @performance.end_time.strftime("%-I %p") %>
+        </li>
+        
       </ul>
     </div>
 
