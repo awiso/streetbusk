@@ -61,7 +61,7 @@
     <% if user_signed_in? %>
       <div class="icon-box">
         <%= link_to destroy_user_session_path, method: :delete do %>
-          <i class="fa fa-sign-out footer-icon"></i>
+          <i class="fas fa-sign-out-alt footer-icon"></i>
           <% if user_signed_in? %>
           <% if current_user.artist %>
           <br>
