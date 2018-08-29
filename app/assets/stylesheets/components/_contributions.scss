@@ -1,0 +1,47 @@
+.performance-other-amount{
+  #contribution_amount{
+    display: none;
+  }
+  .show-contribution_amount{
+    display: block !important;
+  }
+  opacity: 0;
+  max-height: 0;
+  transition: all 0.4s ease;
+}
+.show-other-amount{
+  margin-top: 15px;
+  opacity: 1 !important;
+  max-height: 150px;
+}
+
+.contribute_options{
+  width: 30%;
+  padding: 5px;
+  background: rgba(255,255,255,0.7);
+}
+
+.contribute-option{
+  display: flex;
+  justify-content: center;
+  flex-flow: column;
+  align-items: center;
+  padding: 10px;
+  border: 1px #6c8089 solid;
+  border-radius: 3px;
+  margin: 10px;
+  width: 100px;
+  p{
+    margin: 10px 0 5px;
+  }
+  label{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.contributions-flex{
+  display: flex;
+  justify-content: center;
+}

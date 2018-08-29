@@ -1,51 +1,46 @@
+<!-- Half Banner -->
 <div class="banner-half-page" style="background-image: linear-gradient(-190deg, rgba(130,130,130,0.5) 0%, rgba(0,0,10, 0.5) 100%), url('<%= image_path '7.jpg' %>');">
 
   <div class="banner-content">
     <div class="avatar-on-banner" style="background-image: url('<%= cl_image_path @contribution.artist.avatar, crop: :fill %>')"></div>
     <h3 class='banner-font'><%= @contribution.artist.artist_name %></h3><br>
-
-
   </div>
 
-
 </div>
 
-    <%=link_to "Discover local artists", performances_path, class: 'btn btn-home btn-warning', id: 'geocode' %>
+<!-- Container half page -->
+<div class="container container-half-page container-off-white text-center">
+  <h4 class="header-orange">Review your Contribution</h4>
 
 
-
-
-</div>
-
-<div class="container half-page">
-  <h4>Review your Contribution</h4>
-
-
-
-  <div class="icon-next-to-text">
-    <i class="fas fa-hand-holding-usd icon-orange icon-padding"></i>
+  <div>
+    <i class="far fa-money-bill-alt icon-big-black"></i>
     <p>Amount: <%= humanized_money_with_symbol(@contribution.amount) %> </p>
   </div>
-  <div class="icon-next-to-text">
-    <i class="fas fa-envelope-open icon-orange icon-padding"></i>
+  <div>
+    <i class="far fa-envelope-open icon-big-black"></i>
     <p>Message: <%= @contribution.message %> </p>
   </div>
 
+  <!-- Stripe payment -->
+  <div class="padding-top">
+    <%= form_tag contribution_payments_path(@contribution) do %>
+    <h4 class="header-orange">Choose a payment method</h4>
+    <div>
 
-  <%= form_tag contribution_payments_path(@contribution) do %>
-  <h4>Choose a payment method</h4>
-  <div class="icon-next-to-text">
+      <i class="far fa-credit-card icon-padding icon-big-black"></i>
+      <br>
 
-  <%= image_tag 'card.gif', class: 'icon-padding' %>
+      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+      data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+      data-name="My Contribution"
+      data-email="<%= current_user.email %>"
+      data-description="Contribution to an artist"
+      data-amount="<%= @contribution.amount_cents %>"
+      data-currency="<%= @contribution.amount.currency %>">
+    </script>
 
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-  data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-  data-name="My Contribution"
-  data-email="<%= current_user.email %>"
-  data-description="Contribution to an artist"
-  data-amount="<%= @contribution.amount_cents %>"
-  data-currency="<%= @contribution.amount.currency %>">
-</script>
+    <% end %>
+  </div>
 
-<% end %>
 </div>

@@ -89,7 +89,7 @@
 
               <!-- Button trigger modal -->
               <button type="button" class="socialbtns" data-toggle="modal" data-target="#contribute-modal" id="contribute-button" data-modal="<%= @contribution.errors.messages.any? %>">
-                <i class=" fasc fas fa-hand-holding-usd contribute-button" aria-hidden="true"><p class="icon-text">Contribute</p></i>
+                <i class=" fasc fas fa-hand-holding-usd contribute-button" aria-hidden="true"><p class="icon-text" style="font-size: 14px !important;">Contribute</p></i>
 
               </button>
             <% end %>
@@ -116,8 +116,11 @@
       <% if current_user.present? %>
         <%= simple_form_for [ @performance, @comment ], url: performance_comment_index_path(@performance.id), remote: true do |form| %>
           <%= form.hidden_field :performance_id, :value => @performance.id, html: { id: "performance_"} %>
-          <%= form.input :comment_text, as: :text, label: "Your Comment" %>
-          <%= form.button :submit, "Add Comment", class:"fa-users btn btn-primary" %>
+          <%= form.input :comment_text, as: :text, label: "Your message" %>
+         <!--  <%= form.button :submit, "Add Comment", class:"fasc fas fa-comment-lines" %> -->
+           <%= button_tag type: 'submit', class:"socialbtns " do %>
+            <i class="comment-button fasc fas fa-comment-dots" aria-hidden="true"><p class="icon-text">Comment</p></i>
+          <% end %>
         <% end %>
       <% else %>
       <p class="italic">Please sign in to comment</strong></p>
@@ -144,17 +147,52 @@
       <%= simple_form_for([@performance, @contribution]) do |f| %>
       <div class="modal-body">
         <p>Select an amount:</p>
-        <%= select_tag "credit_card", options_for_select([ "€1", "€2", "€5", "€10", "Other" ], "€1"), class: "contribute_options" %>
-        <div class="performance-other-amount">
+        <!-- <%= select_tag "credit_card", options_for_select([ "€1", "€2", "€5", "€10", "Other" ], "€1"), class: "contribute_options" %> -->
+
+        <!-- <%= f.input :amount, as: :radio_buttons, collection: ["1€", "2€", "5€", "10€"], class: "contribute_options" %> -->
+        <!-- <div class="performance-other-amount">
           <%= f.input :amount, label: "Other Amount", html: { autocomplete: 'off' } %>
+        </div> -->
+        <div class="contributions-flex">
+          <div class="contribute-option">
+            <%= f.radio_button :amount, "1€" %>
+            <%= f.label :amount, :value => "true" do %>
+            <p>1€</p>
+            <i class="fas fa-coins"></i>
+            <% end %>
+          </div>
+          <div class="contribute-option">
+            <%= f.radio_button :amount, "2€" %>
+            <%= f.label :amount, :value => "true" do %>
+            <p>2€</p>
+            <i class="fas fa-coins"></i>
+            <% end %>
+          </div>
+          <div class="contribute-option">
+            <%= f.radio_button :amount, "5€" %>
+            <%= f.label :amount, :value => "true" do %>
+            <p>5€</p>
+            <i class="fas fa-money-bill"></i>
+            <% end %>
+          </div>
+          <div class="contribute-option">
+            <%= f.radio_button :amount, "10€" %>
+            <%= f.label :amount, :value => "true" do %>
+            <p>10€</p>
+            <i class="fas fa-money-bill"></i>
+            <% end %>
+          </div>
+
         </div>
+
         <%= f.input :message %>
         <%= f.input :artist_id, as: :hidden, input_html: { value: @performance.user.id } %>
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <%= f.submit 'Contribute', class: 'btn btn-primary' %>
+        <%= button_tag type: 'submit', class:"socialbtns" do %>
+        <i class=" fasc fas fa-hand-holding-usd contribute-button" aria-hidden="true"><p class="icon-text" style="font-size: 14px !important;">Contribute</p></i>
+        <% end %>
       </div>
       <% end %>
     </div>
