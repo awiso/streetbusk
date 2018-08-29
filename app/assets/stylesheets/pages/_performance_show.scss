@@ -130,6 +130,7 @@
   .performances-back{
     &:hover{
       text-decoration:none;
+      color: #6c8089;
     }
   }
   .performance-back{
@@ -140,6 +141,10 @@
     top: 20px;
     color: #6c8089;
     opacity: 0.6;
+    @media(max-width: 420px){
+      left: 10px;
+      top: 10px;
+    }
   }
 
   .performance-photo-bg{
