@@ -1,6 +1,6 @@
 <div class="banner-half-page">
 
-  <div class="performance-photo-bg" style="background-image: url('<%= cl_image_tag @contribution.artist.avatar, crop: :fill %>')"></div>
+  <div class="performance-photo-bg" style="background-image: url(<%= cl_image_path @contribution.artist.avatar, crop: :fill %>)"></div>
 
   <p>Artist Name</p>
   <%= @contribution.artist.artist_name %>
@@ -39,4 +39,3 @@
 
 <% end %>
 </div>
-
