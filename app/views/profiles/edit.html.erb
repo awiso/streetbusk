@@ -1,7 +1,10 @@
-<%= simple_form_for @user, url: profile_path, method: :patch do |f| %>
-    <%= f.input :avatar %>
-    <%= f.input :social_media_links %>
-    <%= f.input :artist_name %>
-    <%= f.input :default_performance_photo %>
-    <%= f.submit %>
-<% end %>
+<div class="container">
+    <%= simple_form_for @user, url: profile_path, method: :patch do |f| %>
+        <%= f.input :avatar %>
+        <%= f.input :soundcloud %>
+        <%= f.input :youtube %>
+        <%= f.input :artist_name %>
+        <%= f.input :default_performance_photo %>
+        <%= f.submit %>
+    <% end %>
+</div>

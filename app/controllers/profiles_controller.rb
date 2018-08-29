@@ -26,6 +26,6 @@ class ProfilesController < ApplicationController
   private 
 
   def user_params
-    params.require(:user).permit(:social_media_links, :avatar, :email, :artist_name, :default_performance_photo)
+    params.require(:user).permit(:soundcloud, :youtube, :avatar, :email, :artist_name, :default_performance_photo)
   end
 end
