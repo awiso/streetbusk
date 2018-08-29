@@ -5,26 +5,22 @@ import Swiper from 'swiper';
 const swiperContainer = document.querySelector('.swiper-container');
 const performanceCards = document.querySelectorAll('.card');
 
+const swiperOptions = {
+  freeMode: true,
+  freeModeSticky: true,
+  freeModeMomentumRatio: 0.1,
+  slidesPerView: 1,
+  spaceBetween: spaceBetweenValue(),
+  slidesOffsetBefore: -10,
+  autoHeight: true
+};
+
 if (swiperContainer){
-  var mySwiper = new Swiper('.swiper-container', {
-    freeMode: true,
-    freeModeSticky: true,
-    freeModeMomentumRatio: 0.1,
-    slidesPerView: 1,
-    spaceBetween: spaceBetweenValue(),
-    slidesOffsetBefore: -10,
-  });
+  var mySwiper = new Swiper('.swiper-container', swiperOptions);
 
   window.addEventListener('resize', () => {
     mySwiper.destroy();
-    mySwiper = new Swiper('.swiper-container', {
-      freeMode: true,
-      freeModeSticky: true,
-      freeModeMomentumRatio: 0.1,
-      slidesPerView: 1,
-      spaceBetween: spaceBetweenValue(),
-      slidesOffsetBefore: -10,
-    });
+    mySwiper = new Swiper('.swiper-container', swiperOptions);
   })
 }
 
