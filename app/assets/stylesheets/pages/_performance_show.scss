@@ -109,6 +109,13 @@
         text-align: left;
         display: inline-block;
         margin: 0;
+        a{
+          color: white;
+          &:hover{
+            text-decoration: none;
+            color: #6c8089;
+          }
+        }
           @media(max-width: 680px){
             font-size: 34px;
           }
@@ -257,29 +264,6 @@
   }
 }
 
-.performance-other-amount{
-  #contribution_amount{
-    display: none;
-  }
-  .show-contribution_amount{
-    display: block !important;
-  }
-  opacity: 0;
-  max-height: 0;
-  transition: all 0.4s ease;
-}
-.show-other-amount{
-  margin-top: 15px;
-  opacity: 1 !important;
-  max-height: 150px;
-}
-
-.contribute_options{
-  width: 30%;
-  padding: 5px;
-  background: rgba(255,255,255,0.7);
-}
-
 .comments{
   margin-bottom: 70px;
    .comment-avatar{
@@ -334,5 +318,12 @@
    width:100%;
   display: flex;
   justify-content: center;
+  }
+}
+
+.modal-footer{
+  button{
+    border: none !important;
+    background-color: none !important;
   }
 }
