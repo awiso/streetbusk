@@ -37,10 +37,16 @@ a, a:hover {
 }
 
 .socialbtns .fas:hover, .fasa:hover, .fab:hover {
-  color: orange;
-  background-color: #6c8089;
-  opacity: 0.8;
-  border: 1px solid #6c8089;
+    // color: orange;
+    // background-color: #6c8089;
+    // opacity: 0.8;
+    // border: 1px solid #6c8089;
+}
+
+.attend-button{
+    color: orange !important;
+    background-color: #6c8089 !important;
+    border: 1px solid #6c8089;
 }
 
 

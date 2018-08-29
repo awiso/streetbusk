@@ -44,7 +44,8 @@
   }
   .artist-overlay-card{
   //  display: flex;
-  font-weight: 500;
+  text-shadow: 1px 1px rgba(0,0,0,0.5);
+  color: white;
   position: absolute;
   top: 10%;
   left: 50%;
@@ -150,6 +151,9 @@
     height: 40vw;
     min-height: 40vh;
     z-index: 1;
+    text-shadow: 1px 1px rgba(0,0,0,0.5);
+    color: white;
+
   }
 
   h3{
@@ -234,7 +238,6 @@
     bottom: 0px;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: black;
     font-size: 18px;
     font-weight: 500;
   }
