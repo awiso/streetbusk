@@ -5,6 +5,6 @@ class ContributionMailer < ApplicationMailer
     @amount = amount
     @message = message
 
-    mail(to: @recipient.email, subject: 'Welcome to Le Wagon')
+    mail(to: @recipient.email, subject: 'You received a contribution!')
   end
 end
