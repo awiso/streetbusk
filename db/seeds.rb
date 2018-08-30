@@ -13,7 +13,6 @@ puts "Generate users"
 
 names = %w(AlexD AlexW Camille Chris Clara Constantin Diego Emily FabianB FabianK Gabriel Ginny Hien Iain Ileana JanC JanS Jascha Jinyong Julian Louis Malcom Matt Matti Max Mike Nicolas Noah Oriane Pascal Pierre Stephane Steven Taylor Umberto Zuza)
 
-
 names.each do |name|
   new_user = User.new()
   new_user.email = "#{name.downcase}@streetbusk.com"
@@ -30,6 +29,9 @@ puts "Generate artists"
 
 artist_names = %w(Alice ClaraM Dimitri Sandrine Bryan Phillip Rich Arbi Martin Andy)
 
+videos = ['https://www.youtube.com/embed/2PaPNWVQcco', 'https://www.youtube.com/embed/0EKilrvi8Qc', 'https://www.youtube.com/embed/7zuzyrWRdqE', 'https://www.youtube.com/embed/gIBT88O_S_4', 'https://www.youtube.com/embed/-0gED3rn2Tc', 'https://www.youtube.com/embed/vTNo8EXP0gA']
+songs = ['https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/423847089&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true', 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/87353468&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true']
+
 artist_names.each do |name|
   new_artist = User.new()
   new_artist.email = "#{name.downcase}@streetbusk.com"
@@ -39,8 +41,9 @@ artist_names.each do |name|
   new_artist.artist = true
   new_artist.artist_name = name
   new_artist.default_performance_photo = "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-0.3.5&s=264727722bf2479d73380e1170bb3f48&auto=format&fit=crop&w=1050&q=80"
-  new_artist.soundcloud = ''
-  new_artist.youtube = '' 
+  new_artist.soundcloud = songs.pop || ''
+  new_artist.youtube = videos.pop || ''
+  new_artist.social_media_links = 'www.youtube.com$%$www.instagram.com$%$www.twitter.com$%$www.facebook.com'
   new_artist.save!
 end
 
@@ -83,7 +86,7 @@ puts "Generate attendances"
 fans = User.all.where(artist: false).where.not(email: 'alexw@streetbusk.com').shuffle
 p fans.length
 
-comments = ['Super cool show!', 'Wow so cool! 😱', 'Amazing performance guys - thank you 😘', 'So sick!', 'Take my money!!', 'Pls marry me!!', 'I love your performance', 'Meh', 'O M G !!', '❤️']
+comments = ['Super cool show!', 'Wow so cool! 😱', 'Amazing performance guys - thank you 😘', 'So sick!', 'Take my money!!', 'Pls marry me!!', 'I love your performance', 'Meh', 'O M G !!', '❤️', 'I wanna have yo babies 😍', 'you are truly gifted my friend!']
 
 Performance.all.to_a.each do |perf|
   3.times do 
