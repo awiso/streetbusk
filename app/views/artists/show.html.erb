@@ -5,7 +5,7 @@
   <ul>
   <% @performances.each do |performance| %>
     <li>
-      <%= cl_image_tag performance.photo_url, width: 400, crop: :fill %>
+      <%= cl_image_tag performance.photo_url, width: 400, crop: :fill, secure: true %>
       <%= performance.location %>
       <%= performance.description %>
       <%= performance.start_time %>

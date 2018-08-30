@@ -244,7 +244,6 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
   });
   map.setStyle('map_style');
 
-  console.log(markers);
 
   const image = {
     url: "http://www.pngall.com/wp-content/uploads/2017/05/Map-Marker-Free-Download-PNG-180x180.png",
@@ -256,8 +255,8 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
   });
 
   const icons = {
-          active: 'http://maps.google.com/mapfiles/ms/icons/orange.png',
-          regular: 'http://maps.google.com/mapfiles/ms/icons/blue.png',
+          active: 'https://maps.google.com/mapfiles/ms/icons/orange.png',
+          regular: 'https://maps.google.com/mapfiles/ms/icons/blue.png',
           person: 'https://icon-icons.com/icons2/403/PNG/32/user-orange_40489.png'
         };
 
@@ -307,22 +306,17 @@ function changeMarkerColor(index){
 
 if (!window.location.search.includes("query")){
   navigator.geolocation.getCurrentPosition(function(position) {
-      map.setCenter(position.coords.latitude, position.coords.longitude);
-      map.setZoom(12);
-      const currentLocMarker = map.createMarker({
-        lat:position.coords.latitude,
-        lng: position.coords.longitude,
-        icon: icons["person"]
-      })
-      map.addMarker(currentLocMarker);
-    }, function() {
-      alert("Your browser does not support geolocation");
-    });
-  // GMaps.geolocate({
-  // success: ,
-  // error: function(error) {
-  //   alert('Geolocation failed: ' + error.message);
-  // },
+    map.setCenter(position.coords.latitude, position.coords.longitude);
+    map.setZoom(12);
+    const currentLocMarker = map.createMarker({
+      lat:position.coords.latitude,
+      lng: position.coords.longitude,
+      icon: icons["person"]
+    })
+    map.addMarker(currentLocMarker);
+  }, function() {
+    alert("Your browser does not support geolocation");
+  });
 }
 
 //Unmark to use old one
