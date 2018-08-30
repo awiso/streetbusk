@@ -2,29 +2,31 @@
     <%= simple_form_for @user, url: profile_path, method: :patch do |f| %>
         <%= f.input :avatar %>
         <h4>Social Media Links</h4>
-        <% if @social_media_links[0] %>
+        <% if @social_media_links.present? %>
+          <% if @social_media_links[0].present? %>
+            <div class="profile_edit_social_links">
+              <%= label "social_media[yt]", "Youtube Link" %>
+              <%= text_field_tag "social_media[yt]", @social_media_links[0]  %>
+            </div>
+          <% end %>
+          <% if @social_media_links[1].present? %>
+            <div class="profile_edit_social_links">
+              <%= label "social_media[in]", "Instagram Link"  %>
+              <%= text_field_tag "social_media[in]", @social_media_links[1] %>
+            </div>
+          <% end %>
+          <% if @social_media_links[2].present? %>
+            <div class="profile_edit_social_links">
+              <%= label "social_media[tw]", "Twitter Link" %>
+              <%= text_field_tag "social_media[tw]", @social_media_links[2] %>
+            </div>
+          <% end %>
+          <% if @social_media_links[3].present? %>
           <div class="profile_edit_social_links">
-            <%= label "social_media[yt]", "Youtube Link" %>
-            <%= text_field_tag "social_media[yt]", @social_media_links[0]  %>
+            <%= label "social_media[fb]", "Facebook Link" %>
+            <%= text_field_tag "social_media[fb]", @social_media_links[3] %>
           </div>
-        <% end %>
-        <% if @social_media_links[1] %>
-          <div class="profile_edit_social_links">
-            <%= label "social_media[in]", "Instagram Link"  %>
-            <%= text_field_tag "social_media[in]", @social_media_links[1] %>
-          </div>
-        <% end %>
-        <% if @social_media_links[2] %>
-          <div class="profile_edit_social_links">
-            <%= label "social_media[tw]", "Twitter Link" %>
-            <%= text_field_tag "social_media[tw]", @social_media_links[2] %>
-          </div>
-        <% end %>
-        <% if @social_media_links[3] %>
-        <div class="profile_edit_social_links">
-          <%= label "social_media[fb]", "Facebook Link" %>
-          <%= text_field_tag "social_media[fb]", @social_media_links[3] %>
-        </div>
+          <% end %>
         <% end %>
 
         <h4>Embed your videos or music</h4>
