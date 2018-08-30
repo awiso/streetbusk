@@ -255,10 +255,12 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
   });
 
   const icons = {
-          active: 'https://maps.google.com/mapfiles/ms/icons/orange.png',
-          regular: 'https://maps.google.com/mapfiles/ms/icons/blue.png',
-          person: 'https://icon-icons.com/icons2/403/PNG/32/user-orange_40489.png'
-        };
+        //   active: 'https://maps.google.com/mapfiles/ms/icons/orange.png',
+        //   regular: 'https://maps.google.com/mapfiles/ms/icons/blue.png',
+        active: {url: 'http://res.cloudinary.com/djvp4os8m/image/upload/v1535652658/mark_active.svg', scaledSize: new google.maps.Size(50, 50) },
+        regular: {url: 'http://res.cloudinary.com/djvp4os8m/image/upload/v1535652658/mark_inactive.svg', scaledSize: new google.maps.Size(50, 50) },
+        person: 'https://icon-icons.com/icons2/403/PNG/32/user-orange_40489.png'
+    };
 
   let mapMarkers = [];
   markers.forEach((marker, index) => {
@@ -270,15 +272,15 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
       lng: marker.lng,
       icon: index == 0 ? icons["active"]: icons["regular"],
       click: (function (marker) {
-            return function () {
+          return function () {
               changeMarkerColor(index);
               if (mySwiper){
-                mySwiper.slideTo(marker.index, 500);
-              }
-              animateActiveSlide(index);
+                  mySwiper.slideTo(marker.index, 500);
+                }
+                animateActiveSlide(index);
             };
         })(marker)
-      });
+    });
     mapMarkers.push(mapMarker);
     map.addMarker(mapMarker);
   });
