@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!-- Top Section: General Infos about the artist -->
 <div class="container">
   <div class="row flex-align-center">
@@ -10,60 +11,199 @@
     <div class="col-xs-4">
         <!-- Contribution logic still unclear -->
         <button class="btn btn-primary">Contribute</button>
+=======
+<div class="profile-show">
+
+  <div class="container">
+  <!-- Top Section: General Infos about the artist -->
+  <div class="artist-desc" style="justify-content: flex-start; align-items: flex-start;">
+
+    <div class="artist-avatar profile-avatar" style="background-image: url('<%= cl_image_path @user.avatar, crop: :fill %>'); "></div>
+    <div >
+      <h2><%= @user.artist_name %></h2>
+      <div class="artist-under-desc" >
+        <% if @playing_now %>
+          <% if @user.performances.last.genre.performance_type == "Music" %>
+            <p class="green">Playing now</p>
+          <% else %>
+            <p class="green">Performing now</p>
+          <% end %>
+        <% end %>
+
+        <div>
+          <% if current_user.present? %>
+              <button type="button" class="socialbtns" data-toggle="modal" data-target="#contribute-modal" id="contribute-button" data-modal="<%= @contribution.errors.messages.any? %>">
+                <i class=" fasc fas fa-hand-holding-usd contribute-button" aria-hidden="true"><p class="icon-text" style="font-size: 14px !important;">Contribute</p></i>
+              </button>
+          <% else %>
+            <p class="italic">Please sign in to <strong>attend</strong> or to <strong>contribute</strong></p>
+        <% end %>
+        </div>
+
+      </div>
+
     </div>
   </div>
-</div>
 
-<!-- Previous performances of tee artist -->
-<!-- Implementation slider missing -->
-<div class="container">
-  <div class="row">
-    <h4><%= @user.artist_name %>‘s previous performances:</h4>
 
-  <% @performances.each do |performance| %>
-       <%= link_to performance_path(performance) do %>
+      <p><%= @user.artist_description %></p>
 
        <div class="card">
          <div class="card-bg-img" style="background-image: url('<%= cl_image_path(performance.photo_url, crop: :fill, secure: true) %>')"></div>
+      <% if policy(@user).edit? %>
+      <%= link_to 'Edit Profile', edit_profile_path(@user), class: 'btn btn-success' %>
+      <% end %>
+  </div>
 
-         <div class="card-description">
-          <p><i class="fas fa-map-pin"></i> &nbsp; <i><%= performance.location %></i></p>
-          <% start_time = performance.start_time %>
-          <% end_time = performance.end_time %>
-          <div class="card-time-container card-time">
-            <p class="card-time"><i class="far fa-clock"></i> <strong><%= start_time.strftime("%a %m/%d/%y")  %></strong></p>
-          </div>
+  <div class="container">
+    <h4>  <%= @user.artist_name %>‘s previous performances</h4>
+  </div>
+  <!-- Previous performances of tee artist -->
+  <div class="">
+    <div class="swiper-container" data-slider="artist_show">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+            <!-- Slides -->
+            <% @performances.each do |performance| %>
+                 <div class="swiper-slide">
+                   <%= link_to performance_path(performance) do %>
+                   <div class="card">
+                     <div class="card-bg-img" style="background-image: url('<%= cl_image_path(performance.photo_url, crop: :fill) %>')"></div>
+                     <div class="card-description">
+                      <p><i class="fas fa-map-pin"></i> &nbsp; <i><%= performance.location %></i></p>
+                      <% start_time = performance.start_time %>
+                      <% end_time = performance.end_time %>
+                      <div class="card-time-container card-time">
+                        <p class="card-time"><i class="far fa-clock"></i> <strong><%= start_time.strftime("%a %m/%d/%y")  %></strong></p>
+                      </div>
+                    </div>
+                  </div>
+                  <% end %>
+                </div>
+              <% end %>
+
         </div>
-      </div>
+
+    </div>
+
+  </div>
+
+  <div class="container">
+    <% if @social_media_links.present? %>
+    <h4>Social Media Links</h4>
+      <% if @social_media_links[0] %>
+      <a href="<%= @social_media_links[0] %>">
+        <div class="youtube-icon social_media_icon"></div>
+      </a>
+      <% end %>
+      <% if @social_media_links[1] %>
+      <a href="<%= @social_media_links[1] %>">
+        <div class="instagram-icon social_media_icon"></div>
+      </a>
+      <% end %>
+      <% if @social_media_links[2] %>
+      <a href="<%= @social_media_links[2] %>">
+        <div class="twitter-icon social_media_icon"></div>
+      </a>
+      <% end %>
+      <% if @social_media_links[3] %>
+      <a href="<%= @social_media_links[3] %>">
+        <div class="facebook-icon social_media_icon"></div>
+      </a>
       <% end %>
     <% end %>
 
+  </div>
+
+  <!-- Social Media-->
+  <div class="profile-showcase">
+    <% if @user.youtube.present? || @user.soundcloud.present? %>
+    <h4> Showcase</h4>
+    <div class="media-container">
+    <h4> Social Media: </h4>
+      <% if @user.youtube.present? %>
+      <p>Check me out on YouYube</p>
+      <iframe src="<%= @user.youtube %>" frameborder="0"></iframe>
+      <% end %>
+
+      <% if @user.soundcloud.present? %>
+      <p>Check me out on Soundcloud</p>
+      <iframe src="<%= @user.soundcloud %>" frameborder="0"></iframe>
+      <% end %>
     </div>
-</div>
-
-<!-- Social Media-->
-  <% if @user.youtube != nil &&  @user.youtube != "" || @user.soundcloud != nil && @user.soundcloud != "" %>
-  <div class="media-container">
-  <h4> Social Media: </h4>
-    <% if @user.youtube != nil && @user.youtube != "" %>
-    <p>Check me out on YouYube</p>
-    <iframe src="<%= @user.youtube %>" frameborder="0"></iframe>
-    <% end %>
-
-    <% if @user.soundcloud != nil && @user.soundcloud != "" %>
-    <p>Check me out on Soundcloud</p>
-    <iframe src="<%= @user.soundcloud %>" frameborder="0"></iframe>
     <% end %>
   </div>
-  <% end %>
 
-</div>
-  <br>
+    <br>
 
-  <%= link_to 'Back', performances_path, class: 'btn btn-primary' %>
-  <% if policy(@user).edit? %>
-  <%= link_to 'Edit', edit_profile_path(@user), class: 'btn btn-success' %>
+<div class="container">
+  <%= link_to performances_path, class: 'back-link' do %>
+  <i class="fas fa-arrow-left back-arrow profile-back-arrow"></i>
   <% end %>
 </div>
 
 
+  </div>
+
+
+
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="contribute-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Make a Contribution</h4>
+        </div>
+        <%= simple_form_for([@performance, @contribution]) do |f| %>
+        <div class="modal-body">
+          <p>Select an amount:</p>
+          <div class="contributions-flex">
+            <div class="contribute-option">
+              <%= f.radio_button :amount, "1€" %>
+              <%= f.label :amount, :value => "true" do %>
+              <p>1€</p>
+              <i class="fas fa-coins"></i>
+              <% end %>
+            </div>
+            <div class="contribute-option">
+              <%= f.radio_button :amount, "2€" %>
+              <%= f.label :amount, :value => "true" do %>
+              <p>2€</p>
+              <i class="fas fa-coins"></i>
+              <% end %>
+            </div>
+            <div class="contribute-option">
+              <%= f.radio_button :amount, "5€" %>
+              <%= f.label :amount, :value => "true" do %>
+              <p>5€</p>
+              <i class="fas fa-money-bill"></i>
+              <% end %>
+            </div>
+            <div class="contribute-option">
+              <%= f.radio_button :amount, "10€" %>
+              <%= f.label :amount, :value => "true" do %>
+              <p>10€</p>
+              <i class="fas fa-money-bill"></i>
+              <% end %>
+            </div>
+
+          </div>
+
+          <%= f.input :message %>
+          <%= f.input :artist_id, as: :hidden, input_html: { value: @performance.user.id } %>
+
+        </div>
+        <div class="modal-footer">
+          <%= button_tag type: 'submit', class:"socialbtns" do %>
+          <i class=" fasc fas fa-hand-holding-usd contribute-button" aria-hidden="true"><p class="icon-text" style="font-size: 14px !important;">Contribute</p></i>
+          <% end %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+</div>

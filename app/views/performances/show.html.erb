@@ -4,8 +4,13 @@
   <!-- TOP HALF (artist card)-->
   <div class="performance-photo-bg" style="background-image: linear-gradient(-180deg, rgba(0, 0, 0, 0.6) 0%, rgba(6, 35, 61,0.6) 50%), url('<%= cl_image_path @performance.photo_url, crop: :fill %>')">
     <div class="artist-overlay-card">
+<<<<<<< HEAD
       <div class="artist-performance-desc">
         <div class="performance-avatar" style="background-image: url('<%= cl_image_path @performance.user.avatar, crop: :fill, secure: true %>')"></div>
+=======
+      <div class="artist-desc" style="justify-content: flex-start;">
+        <div class="artist-avatar" style="background-image: url('<%= cl_image_path @performance.user.avatar, crop: :fill %>')"></div>
+>>>>>>> master
           <h2><%= link_to @performance.user.artist_name, profile_path(@performance.user) %></h2>
       </div>
       <p class="italic"><%= @performance.description.truncate(80) %></p>
@@ -20,9 +25,9 @@
     </div>
 
     <!-- BACK ARROW -->
-    <%= link_to performances_path, class:"performances-back" do %>
+    <%= link_to performances_path, class:"back-link" do %>
     <div class="flex-start">
-      <i class="fas fa-arrow-left performance-back"></i>
+      <i class="fas fa-arrow-left back-arrow performance-back"></i>
       <!-- <p class="italic"> View all performances near you</p> -->
     </div>
     <% end %>
@@ -102,11 +107,13 @@
       <% if current_user.present? %>
         <%= simple_form_for [ @performance, @comment ], url: performance_comment_index_path(@performance.id), remote: true do |form| %>
           <%= form.hidden_field :performance_id, :value => @performance.id, html: { id: "performance_"} %>
+
           <%= form.input :comment_text, as: :text, label: false %>
            <%#= button_tag type: 'submit', class:"socialbtns " do %>
            <%= form.button :submit, 'Post', class: 'comment-button' %>
             <!-- <i class="comment-button fasc fas fa-comment-dots" aria-hidden="true"><p class="icon-text">Comment</p></i> -->
           <%# end %>
+
         <% end %>
       <% else %>
       <p class="italic">Please sign in to comment</strong></p>
@@ -131,12 +138,6 @@
       <%= simple_form_for([@performance, @contribution]) do |f| %>
       <div class="modal-body">
         <p>Select an amount:</p>
-        <!-- <%= select_tag "credit_card", options_for_select([ "€1", "€2", "€5", "€10", "Other" ], "€1"), class: "contribute_options" %> -->
-
-        <!-- <%= f.input :amount, as: :radio_buttons, collection: ["1€", "2€", "5€", "10€"], class: "contribute_options" %> -->
-        <!-- <div class="performance-other-amount">
-          <%= f.input :amount, label: "Other Amount", html: { autocomplete: 'off' } %>
-        </div> -->
         <div class="contributions-flex">
           <div class="contribute-option">
             <%= f.radio_button :amount, "1€" %>

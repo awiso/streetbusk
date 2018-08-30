@@ -1,3 +1,7 @@
+.profile-show{
+  margin: 10px 0px 70px 0px;
+}
+
 .profile-banner {
   height: 40vw;
   min-height: 40vh;
@@ -17,4 +21,34 @@
 .flex-align-center{
   display: flex;
   align-items: center;
+}
+
+.profile-back-arrow{
+  margin-right: 10px;
+  margin-top: 1rem;
+  position:relative;
+}
+
+.profile_edit_social_links{
+  label{
+    width: 180px;
+    font-weight: normal;
+  }
+}
+
+.profile_avatar{
+  margin: 0px 2rem 0px 0px;
+  @media(max-width: 420px){
+    margin-right: 10px;
+  }
+}
+
+.profile-showcase{
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  iframe{
+    margin-bottom: 30px;
+  }
 }

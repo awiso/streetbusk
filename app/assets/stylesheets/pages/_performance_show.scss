@@ -5,10 +5,7 @@
     margin-bottom: 10px;
     margin-left: 2rem;
     text-align: left !important;
-    @media(max-width: 400px){
-      margin-left: 10px;
-      margin-bottom: 5px;
-    }
+
   }
   img{
     height: 35vh;
@@ -43,11 +40,13 @@
     align-items: flex-start;
     //margin-left: calc(10vw + 2rem);
     margin: 10px;
+
     // @media(max-width: 400px){
     //   flex-direction: row;
     //   justify-content: space-between;
     //   margin-top: 5px;
     // }
+
   }
 
   i{
@@ -101,50 +100,15 @@
     max-width: 120px;
     max-height: 120px;
     display: inline-block;
+    box-shadow: 1px 1px 1px 0px rgba(199, 199, 199, 0.76);
     background-position: center center;
     background-size: cover;
     border-radius: 50%;
     //margin: 1rem 2rem;
     flex-basis: 10vw;
     flex-shrink: 0;
-    @media (max-width: 400px){
-      margin-left: 10px;
-    }
-  }
-
-  .artist-avatar{
-    width: 50%;
-    shape-outside: circle(50%);
 
   }
-
-  .artist-performance-desc{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-
-    h2{
-        text-align: left;
-        display: inline-block;
-        margin: 0;
-        a{
-          color: white;
-          transition: all 1s ease;
-          &:hover{
-            text-decoration: none;
-            opacity: 0.6;
-          }
-        }
-          @media(max-width: 680px){
-            font-size: 34px;
-          }
-          @media(max-width: 400px){
-            font-size: 28px;
-          }
-
-    }
-  }
-
 
   .flex-start{
     display: flex;
@@ -153,33 +117,6 @@
     // margin: 20px 0px 5% 0px;
     p{
       margin: 0;
-    }
-  }
-
-  .performances-back{
-    &:hover{
-      text-decoration:none;
-      color: #6c8089;
-    }
-  }
-  .performance-back{
-    display: block;
-    font-size: 32px;
-    position: absolute;
-    left: 20px;
-    top: 20px;
-    color: #6c8089;
-    opacity: 0.6;
-    @media(max-width: 400px){
-      right: 10px;
-      top: 10px;
-    }
-    @media(max-width:310px){
-      right: 5px;
-      top: 5px;
-    }
-    &:hover{
-      color: white;
     }
   }
 
@@ -365,12 +302,6 @@
   }
 }
 
-.modal-footer{
-  button{
-    border: none !important;
-    background-color: none !important;
-  }
-}
 
 #contribution_amount_1,
 #contribution_amount_2,
@@ -384,5 +315,9 @@ label {
 }
 input:checked + label {
     color: orange;
+}
+
+.contribute-active{
+  background-color: #e5e5e5;
 }
 

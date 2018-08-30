@@ -46,7 +46,7 @@ a, a:hover {
   padding-top: 7px;
   padding-left: 88px;
   -moz-border-radius: 50%;
-  -webkit-border-radius: 5px;
+  -webkit-border-radius: 3px;
   -o-border-radius: 22px;
   transition: all 0.8s ease;
 }
@@ -68,7 +68,7 @@ a, a:hover {
     color: white !important;
     background-color: #6c8089 !important;
     border: 1px solid #6c8089;
-    border-radius: 5px;
+    border-radius: 3px;
 }
 
 .attend-button:hover, .contribute-button:hover, .comment-button:hover{
@@ -99,6 +99,12 @@ a, a:hover {
     }
   }
 
+}
+
+#contribute-button, #comment-button{
+  background-color: rgba(255,255,255,0);
+  border: rgba(0,0,0,0);
+  cursor: default;
 }
 
 .icon-orange{

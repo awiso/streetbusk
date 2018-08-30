@@ -286,10 +286,13 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
 
   //mySwiper on change
 if(mySwiper){
-  mySwiper.on('touchEnd', function(e){
-    let activeIndex = getActiveSlide();
-    changeMarkerColor(activeIndex);
-  })
+  const swiperContainer = document.querySelector('.swiper-container');
+  if(swiperContainer.dataset.slider=="performances_index"){
+    mySwiper.on('touchEnd', function(e){
+      let activeIndex = getActiveSlide();
+      changeMarkerColor(activeIndex);
+    })
+  }
 }
 
 function changeMarkerColor(index){
