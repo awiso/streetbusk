@@ -2,9 +2,9 @@
 
 <div class="main-container">
   <div
-  id="map"
+  id="map" data-map="performances"
   style="width: 100%;
-  height: 50%;"
+  height: calc(100% - 60px - 325px);"
   data-markers="<%= @markers.to_json %>">
 </div>
 
@@ -65,4 +65,3 @@
 </div>
 <!-- Footer for mobile device -->
 <%= render 'shared/footer' %>
-
