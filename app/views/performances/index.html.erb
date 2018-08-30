@@ -43,7 +43,7 @@
 
          <div class="card-description">
           <p><i class="fas fa-user"></i>&nbsp;<strong> <%= performance.user.artist_name %> </strong></p>
-          <p><i class="fas fa-map-pin"></i> &nbsp; <i><strong> <%= performance.location.split(',')[0] %></strong></i></p>
+          <p><i class="fas fa-map-pin"></i> &nbsp; <i><strong> <%= performance.location.split(',').first.truncate(20) %></strong></i></p>
 
           <% start_time = performance.start_time %>
           <% end_time = performance.end_time %>
