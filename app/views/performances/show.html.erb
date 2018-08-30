@@ -1,35 +1,21 @@
 <!-- Navbar that is hidden on mobile -->
-
 <div class="performance-show">
 
   <!-- TOP HALF (artist card)-->
-  <div class="performance-photo-bg" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url('<%= cl_image_path @performance.photo_url, crop: :fill %>')">
+  <div class="performance-photo-bg" style="background-image: linear-gradient(-180deg, rgba(0, 0, 0, 0.6) 0%, rgba(6, 35, 61,0.6) 50%), url('<%= cl_image_path @performance.photo_url, crop: :fill %>')">
     <div class="artist-overlay-card">
       <div class="artist-performance-desc">
         <div class="performance-avatar" style="background-image: url('<%= cl_image_path @performance.user.avatar, crop: :fill %>')"></div>
           <h2><%= link_to @performance.user.artist_name, profile_path(@performance.user) %></h2>
       </div>
-      <p class="italic"><%= @performance.description %></p>
+      <p class="italic"><%= @performance.description.truncate(80) %></p>
       <ul class="performance-description">
-        <li><i style="vertical-align: top;" class="fas fa-map-pin"></i> <div style="display:inline-block;"> <% @performance.location.split(',').reverse.take(2).each do |l| %>  <%= l %> <br><% end %></div></li>
+        <li><i style="vertical-align: top;" class="fas fa-map-pin"></i> <div style="display:inline-block;"> <%= @performance.location %></div></li>
         <li><i class="fas fa-music"></i><%= @performance.genre.name %></li>
-        <% if @playing_now %>
         <li><i class="far fa-clock"></i><span class="playing_now">
-          <% if @performance.genre.performance_type == "Music" %>
-          Playing now
-          <% else %>
-          Performing now
-          <% end %>
-        </span> until<%= @performance.end_time.to_formatted_s(:short)  %></li>
-        <% else %>
-        <li><i class="far fa-clock"></i>
-          <% if @performance.genre.performance_type == "Music" %>
-          Played on
-          <% else %>
-          Performed on
-          <% end %> <%= @performance.start_time.strftime('%A, %b %d') %></li>
-          <% end %>
-        <!-- <li><i class="far fa-comment"></i><%= @performance.description %></li> -->
+          Playing until <%= @performance.end_time.strftime("%-I %p") %>
+        </li>
+
       </ul>
     </div>
 
@@ -44,7 +30,7 @@
    <!-- ATTENDING -->
     <div class="attending-error-container">
     </div>
-    <p class="attending-text">Attending</p>
+    <p class="attending-text">Attending:</p>
     <ul class="attendance">
       <% if @attendances.length > 0 %>
         <% @attendances.each do |a| %>
@@ -89,7 +75,7 @@
 
               <!-- Button trigger modal -->
               <button type="button" class="socialbtns" data-toggle="modal" data-target="#contribute-modal" id="contribute-button" data-modal="<%= @contribution.errors.messages.any? %>">
-                <i class=" fasc fas fa-hand-holding-usd contribute-button" aria-hidden="true"><p class="icon-text" style="font-size: 14px !important;">Contribute</p></i>
+                <i class=" fasc fas fa-hand-holding-usd contribute-button" aria-hidden="true"><p class="icon-text">Contribute</p></i>
 
               </button>
             <% end %>
@@ -101,7 +87,7 @@
 
 
     <div class="comments">
-      <h3>Comments</h3>
+      <h3>Comments:</h3>
       <ul>
         <% if @comments.length > 0 %>
           <% @comments.each do |comment| %>
@@ -116,11 +102,11 @@
       <% if current_user.present? %>
         <%= simple_form_for [ @performance, @comment ], url: performance_comment_index_path(@performance.id), remote: true do |form| %>
           <%= form.hidden_field :performance_id, :value => @performance.id, html: { id: "performance_"} %>
-          <%= form.input :comment_text, as: :text, label: "Your message" %>
-         <!--  <%= form.button :submit, "Add Comment", class:"fasc fas fa-comment-lines" %> -->
-           <%= button_tag type: 'submit', class:"socialbtns " do %>
-            <i class="comment-button fasc fas fa-comment-dots" aria-hidden="true"><p class="icon-text">Comment</p></i>
-          <% end %>
+          <%= form.input :comment_text, as: :text, label: false %>
+           <%#= button_tag type: 'submit', class:"socialbtns " do %>
+           <%= form.button :submit, 'Post', class: 'comment-button' %>
+            <!-- <i class="comment-button fasc fas fa-comment-dots" aria-hidden="true"><p class="icon-text">Comment</p></i> -->
+          <%# end %>
         <% end %>
       <% else %>
       <p class="italic">Please sign in to comment</strong></p>
@@ -169,14 +155,14 @@
           <div class="contribute-option">
             <%= f.radio_button :amount, "5€" %>
             <%= f.label :amount, :value => "true" do %>
-            <p>5€</p>
+            5€
             <i class="fas fa-money-bill"></i>
             <% end %>
           </div>
           <div class="contribute-option">
             <%= f.radio_button :amount, "10€" %>
             <%= f.label :amount, :value => "true" do %>
-            <p>10€</p>
+            10€
             <i class="fas fa-money-bill"></i>
             <% end %>
           </div>
@@ -189,7 +175,7 @@
       </div>
       <div class="modal-footer">
         <%= button_tag type: 'submit', class:"socialbtns" do %>
-        <i class=" fasc fas fa-hand-holding-usd contribute-button" aria-hidden="true"><p class="icon-text" style="font-size: 14px !important;">Contribute</p></i>
+        <i class=" fasc fas fa-hand-holding-usd contribute-button" aria-hidden="true"><p class="icon-text" style="font-size: 18px !important;">Contribute</p></i>
         <% end %>
       </div>
       <% end %>

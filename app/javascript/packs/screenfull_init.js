@@ -2,6 +2,7 @@ import * as screenfull from 'screenfull';
 
 function screenfullInit(){
   // const body = document.querySelector('body');
+
   // const footerExpand = document.querySelector('#footer-expand');
   // console.log(footerExpand)
   //   footerExpand.addEventListener('click', function(e){
@@ -21,6 +22,7 @@ function screenfullInit(){
     //   body.classList.add('fullscreen-body');
     //
     // })
+
 }
 
 export { screenfullInit };

@@ -1,5 +1,5 @@
 <li class="comment">
   <div class="comment-avatar" style="background-image: url(<%= comment.user.avatar  %>)"></div>
  <p class="comment-text"><%= comment.comment_text %></p>
- <p class="comment-date"><%= comment.created_at.strftime('%b %e, %l:%M %p') %></p>
+ <p class="comment-date"><%= time_ago_in_words(comment.created_at) %> ago</p>
 </li>

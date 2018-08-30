@@ -17,15 +17,17 @@
   }
 
   p, li{
-    @media(max-width: 800px){
-      font-size: 16px;
-    }
-    @media(max-width: 620px){
-      font-size: 14px;
-    }
-    @media(max-width: 400px){
-      font-size: 14px;
-    }
+    font-size: 18px !important;
+    padding: 4px;
+    // @media(max-width: 800px){
+    //   font-size: 16px;
+    // }
+    // @media(max-width: 620px){
+    //   font-size: 14px;
+    // }
+    // @media(max-width: 400px){
+    //   font-size: 14px;
+    // }
   }
   ul{
     margin-left: 0px;
@@ -38,15 +40,19 @@
     align-items: flex-start;
     //margin-left: calc(10vw + 2rem);
     margin: 10px;
-    @media(max-width: 400px){
-      margin-bottom: 5px;
 
-    }
+    // @media(max-width: 400px){
+    //   flex-direction: row;
+    //   justify-content: space-between;
+    //   margin-top: 5px;
+    // }
+
   }
 
   i{
     width: 30px;
     text-align: center;
+    //color: coral;
   }
   .artist-overlay-card{
   //  display: flex;
@@ -84,6 +90,9 @@
   }
 
   .performance-avatar{
+    margin-left: 30px;
+    margin-right: 10px;
+    margin-top: 15px;
     height: 10vw;
     min-height: 50px;
     width: 10vw;
@@ -94,7 +103,7 @@
     background-position: center center;
     background-size: cover;
     border-radius: 50%;
-    margin: 1rem 2rem;
+    //margin: 1rem 2rem;
     flex-basis: 10vw;
     flex-shrink: 0;
 
@@ -227,15 +236,17 @@
 
   #contribute-button{
     color: white;
-    position: relative;
-    top: -57px;
+    padding: 10px;
+    width: 100%;
+    //position: relative;
+    //top: -57px;
     //background-color: $orange;
   }
 
 
   .attendance{
     position: absolute;
-    bottom: 0;
+    bottom: 25px;
     left: 50%;
     transform: translate(-50%, 50%);
     margin: 0px;
@@ -269,7 +280,7 @@
 
   .attending-text{
     position: absolute;
-    bottom: 0px;
+    bottom: 25px;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 18px;
@@ -278,6 +289,22 @@
 }
 
 .comments{
+  .comment-date {
+    font-size: 10px;
+  }
+  h3 {
+    margin-top: 0;
+  }
+  textarea {
+    border-radius: 0;
+    margin: 0;
+    width: 100%;
+  }
+  button {
+    border: 0;
+    padding: 0;
+    background: rgba(255,255,255,0);
+  }
   margin-bottom: 70px;
    .comment-avatar{
      height: 45px;
@@ -321,13 +348,13 @@
   display: flex;
   justify-content: space-between;
   align-items:center;
-  max-height: 0px;
+  //max-height: 0px;
   form{
-      max-height: 0px;
+  //    max-height: 0px;
   }
   .inline{
   display: inline-block;
-  max-height: 0px;
+  //max-height: 0px;
    width:100%;
   display: flex;
   justify-content: center;
@@ -340,3 +367,18 @@
     background-color: none !important;
   }
 }
+
+#contribution_amount_1,
+#contribution_amount_2,
+#contribution_amount_5,
+#contribution_amount_10{
+  visibility: hidden;
+}
+
+label {
+    cursor: pointer;
+}
+input:checked + label {
+    color: orange;
+}
+
