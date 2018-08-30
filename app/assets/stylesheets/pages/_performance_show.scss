@@ -366,12 +366,6 @@
   }
 }
 
-.modal-footer{
-  button{
-    border: none !important;
-    background-color: none !important;
-  }
-}
 
 #contribution_amount_1,
 #contribution_amount_2,
@@ -385,5 +379,9 @@ label {
 }
 input:checked + label {
     color: orange;
+}
+
+.contribute-active{
+  background-color: #e5e5e5;
 }
 

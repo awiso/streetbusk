@@ -14,6 +14,12 @@ function radioButton() {
   // convert divs into array
   divs.forEach((div) => {
     div.addEventListener("click", function(e) {
+
+      divs.forEach((option) => {
+        option.classList.remove("contribute-active")
+      })
+
+      e.currentTarget.classList.add("contribute-active");
       this.querySelector("input").click()
     })
   })
