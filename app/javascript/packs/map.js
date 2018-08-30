@@ -333,8 +333,10 @@ if (!window.location.search.includes("query")){
 }; // if map present
 
  if(window.location.pathname == "/performances"){
-   const cardsContainer = document.querySelector('.cards-container');
-   mapElement.style.height = ($( window ).height() - cardsContainer.clientHeight - 60) + "px";
+   $( document ).ready(function() {
+    const cardsContainer = document.querySelector('.cards-container');
+    mapElement.style.height = ($( window ).height() - cardsContainer.clientHeight - 60) + "px";
+});
  }
 
 autocomplete();

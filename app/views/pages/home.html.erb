@@ -1,47 +1,55 @@
-<div class="banner" style="background-image: linear-gradient(-190deg, rgba(76,51,35,-0.5) 0%, rgba(0,0,10, 0.5) 100%), url('<%= image_path 'new_banner.jpg' %>');">
+<div class="home-wrapper">
+  <div class="banner-two">
+  </div>
+  <div class="banner" style="background-image: linear-gradient(-190deg, rgba(76,51,35,-0.5) 0%, rgba(0,0,10, 0.5) 100%), url('<%= image_path 'new_banner.jpg' %>');">
+    <div class="hidden-banner-images">
+      <div class="image-banner-options" data-src="<%= image_path("new_banner.jpg") %>" alt=""></div>
+      <div class="image-banner-options" data-src="<%= image_path("banner_2.jpg") %>" alt=""></div>
+      <div class="image-banner-options" data-src="<%= image_path("banner_3.jpg") %>" alt=""></div>
+    </div>
 
-<div class="hidden-banner-images"></div>
+    <div class="banner-content-home">
 
-  <div class="banner-content-home">
-
-    <%= image_tag '', class: 'logo-img' %>
-    <h1>Live performance now.</h1><br>
-    <p><i>Get to know the coolest street artists near you and come to see their performances.</i></p>
+      <%= image_tag '', class: 'logo-img' %>
+      <h1>Live performance now.</h1><br>
+      <p><i>Get to know the coolest street artists near you and come to see their performances.</i></p>
       <br>
-    <%=link_to "Discover local artists", performances_path, class: 'btn btn-home btn-warning', id: 'geocode' %>
-    <!-- Current location -->
-    <!-- <%= link_to "Start discovery", performances_path, class: 'btn btn-warning', id: 'geocode' %> -->
+      <%=link_to "Discover local artists", performances_path, class: 'btn btn-home btn-warning', id: 'geocode' %>
+      <!-- Current location -->
+      <!-- <%= link_to "Start discovery", performances_path, class: 'btn btn-warning', id: 'geocode' %> -->
+    </div>
+
   </div>
 
-</div>
-
-<div class="wrapper">
-  <div class="container">
+  <div class="wrapper">
+    <div class="container">
       <%= image_tag '1.jpg', width: '100%', class: "left" %>
-     <div class="desc-left">
-      <h2>Search</h2>
-      <p>Uncover exciting new street artists around you at the tap of a button.</p>
+      <div class="desc-left">
+        <h2>Search</h2>
+        <p>Uncover exciting new street artists around you at the tap of a button.</p>
+      </div>
     </div>
- </div>
-</div>
+  </div>
 
 
-<div class="wrapper">
-  <div class="container">
+  <div class="wrapper">
+    <div class="container">
       <%= image_tag '2.jpg', width: '100%', class: "right" %>
-     <div class="desc-right">
-      <h2>Discover</h2>
-      <p>Browse different performances and find what you like best.</p>
+      <div class="desc-right">
+        <h2>Discover</h2>
+        <p>Browse different performances and find what you like best.</p>
+      </div>
     </div>
- </div>
-</div>
+  </div>
 
-<div class="wrapper">
-  <div class="container">
+  <div class="wrapper">
+    <div class="container">
       <%= image_tag '3.jpg', width: '100%', class: "left" %>
-     <div class="desc-left">
-      <h2>Support</h2>
-      <p>Show your support for local artists by sharing performances to social media, and even contribute.</p>
-     </div>
- </div>
+      <div class="desc-left">
+        <h2>Support</h2>
+        <p>Show your support for local artists by sharing performances to social media, and even contribute.</p>
+      </div>
+    </div>
+  </div>
+
 </div>
