@@ -104,7 +104,6 @@
         <%= simple_form_for [ @performance, @comment ], url: performance_comment_index_path(@performance.id), remote: true do |form| %>
           <%= form.hidden_field :performance_id, :value => @performance.id, html: { id: "performance_"} %>
           <%= form.input :comment_text, as: :text, label: false %>
-         <!--  <%= form.button :submit, "Add Comment", class:"fasc fas fa-comment-lines" %> -->
            <%#= button_tag type: 'submit', class:"socialbtns " do %>
            <%= form.button :submit, 'Post', class: 'comment-button' %>
             <!-- <i class="comment-button fasc fas fa-comment-dots" aria-hidden="true"><p class="icon-text">Comment</p></i> -->

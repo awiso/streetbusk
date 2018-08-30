@@ -58,10 +58,17 @@ a, a:hover {
     // border: 1px solid #6c8089;
 }
 
-.attend-button, .contribute-button, .comment-button{
+.attend-button, .contribute-button {
     color: orange !important;
     background-color: #6c8089 !important;
     border: 1px solid #6c8089;
+}
+
+.comment-button{
+    color: white !important;
+    background-color: #6c8089 !important;
+    border: 1px solid #6c8089;
+    border-radius: 5px;
 }
 
 .attend-button:hover, .contribute-button:hover, .comment-button:hover{
