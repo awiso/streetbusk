@@ -1,27 +1,44 @@
-require 'date'
+# require 'date'
 
 puts 'Remove performances...'
 Performance.destroy_all
 puts 'Remove genres...'
 Genre.destroy_all
-puts 'Remove users...'
+puts 'Remove users (and artists)...'
 User.destroy_all
 
 puts "Generate users"
 
-User.new(email: 'john@beatles.com', password: '123123', avatar: nil, name: 'John Lennon', artist: true, artist_name: 'John', default_performance_photo: 'sample', social_media_links: 'www.twitter.com').save
-
-User.new(email: 'paul@beatles.com', password: '123123', avatar: nil, name: 'Paul McCartney', artist: true, artist_name: 'Paul', default_performance_photo: 'sample', social_media_links: 'www.twitter.com').save
-
-User.new(email: 'george@beatles.com', password: '123123', avatar: nil, name: 'George Harrison', artist: true, artist_name: 'George', default_performance_photo: 'sample', social_media_links: 'www.twitter.com').save
+names = %w(AlexD AlexW Camille Chris Clara Constantin Diego Emily FabianB FabianK Gabriel Ginny Hien Iain Ileana JanC JanS Jascha Jinyong Julian Louis Malcom Matt Matti)
 
 
-User.new(email: 'ringo@beatles.com', password: '123123', avatar: nil, name: 'Ringo Starr', artist: true, artist_name: 'Ringo', default_performance_photo: 'sample', social_media_links: 'www.twitter.com').save
+names.each do |name|
+  new_user = User.new()
+  new_user.email = "#{name.downcase}@streetbusk.com"
+  new_user.password = '123123'
+  new_user.avatar = Rails.root.join("app/assets/images/faces/#{name}.png").open
+  new_user.name = name
+  new_user.artist = false
+  new_user.save!
+end
 
-john = User.first
-ringo = User.last
+puts "Generate artists"
 
-User.new(email: 'fan@beatles.com', avatar: 'sample', name: 'Fan', artist: false).save
+artist_names = %w(Alice ClaraM Dimitri Sandrine Bryan Phillip Rich Arbi Martin Andy)
+
+artist_names.each do |name|
+  new_user = User.new()
+  new_user.email = "#{name.downcase}@streetbusk.com"
+  new_user.password = '123123'
+  new_user.avatar = Rails.root.join("app/assets/images/artists/#{name}.png").open  
+  new_user.name = name
+  new_user.artist = true
+  new_user.artist_name = name
+  new_user.default_performance_photo = "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-0.3.5&s=264727722bf2479d73380e1170bb3f48&auto=format&fit=crop&w=1050&q=80"
+  new_user.soundcloud = ''
+  new_user.youtube = '' 
+  new_user.save!
+end
 
 puts "Generate genres"
 
@@ -40,31 +57,21 @@ Genre.create!(name: "Uncategorizable", performance_type: "Music")
 
 puts "Generate performances"
 
-johnsPerf = Performance.create(location: 'Berlin', start_time: Date.today, end_time: Date.tomorrow, description: 'asdf', photo: 'ebhatafs9tqo8fycolwg.jpg')
-johnsPerf.user = john
-johnsPerf.genre = Genre.first
-johnsPerf.save!
-p johnsPerf.valid?
+places = ['Prenzlauerberg, Berlin', 'Fleamarket at Mauerpark', 'Max-Schmeling-Halle', 'Mauergarten, Berlin', 'Falkplatz', 'Gleimviertel, 10437 Berlin', 'Friedrich-Ludwig-Jahn-Sportpark', 'Eberswalder Straße', 'Alexanderplatz, Berlin', 'Kreuzberg, Berlin']
+genres = Genre.all.to_a
 
-ringosPerf = Performance.create(location: 'London', start_time: Date.today, end_time: Date.tomorrow, description: 'asdf', photo: 'ebhatafs9tqo8fycolwg.jpg')
-ringosPerf.user = ringo
-ringosPerf.genre = Genre.last
-ringosPerf.save!
+count = 0
+places.each do |place|
+  new_performance = Performance.new()
+  new_performance.user = User.where(artist_name: artist_names[count]).first
+  new_performance.location = place
+  new_performance.start_time = DateTime.now
+  new_performance.end_time = DateTime.tomorrow
+  new_performance.description = "Come join me at #{place} for an amazing performance! 😁"
+  new_performance.genre = genres[count]
+  new_performance.photo = Rails.root.join("app/assets/images/performances/#{count}.jpg").open  
+  new_performance.save!
+  count += 1
+end
 
 puts "Done!"
-
-
-
-puts "generate performances"
-bruce_performance = Performance.create!(location: "Kottbusser Damm 95, 10967 Berlin", start_time: DateTime.new(2018,9,8,14,5,6), end_time: DateTime.new(2018,9,8,15,5,6), description: "Hey guys! I'm playing at the corner of Kottsbusser street, come join!", genre: rock, photo: bruce.default_performance_photo, user: bruce)
-adam_performance = Performance.create!(location: "10178 Berlin", start_time: DateTime.new(2018,9,8,18,5,6), end_time: DateTime.new(2019,9,8,15,5,6), description: "I'm dancing for a whole year underneath the World Time Clock. Viva la dance!", genre: breakdance, photo: "https://farm8.static.flickr.com/7076/7384070338_899d94847c_b.jpg", user: adam)
-
-contributions = [1,2,3,4,5,10,15,20,50]
-
-
-
-#puts "generate performances"
-#bruce_performance = Performance.create!(location: "Kottbusser Damm 95, 10967 Berlin", start_time: DateTime.new(2018,9,8,14,5,6), end_time: DateTime.new(2018,9,8,15,5,6), description: "Hey guys! I'm playing at the corner of Kottsbusser street, come join!", genre: rock, photo: bruce.default_performance_photo, user: bruce)
-#adam_performance = Performance.create!(location: "10178 Berlin", start_time: DateTime.new(2018,9,8,18,5,6), end_time: DateTime.new(2019,9,8,15,5,6), description: "I'm dancing for a whole year underneath the World Time Clock. Viva la dance!", genre: breakdance, photo: "https://farm8.static.flickr.com/7076/7384070338_899d94847c_b.jpg", user: adam)
-
-contributions = [1,2,3,4,5,10,15,20,50]
