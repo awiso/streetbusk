@@ -7,7 +7,7 @@ class Performance < ApplicationRecord
   validates :location, presence: true
   validates :start_time, presence: true
   validates :end_time, presence: true
-  validates :description, presence: true
+  validates :description, presence: true, length: { maximum: 80 }
   validates :genre, presence: true
   # Geocode
   geocoded_by :location
