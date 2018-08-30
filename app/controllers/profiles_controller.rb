@@ -56,7 +56,7 @@ class ProfilesController < ApplicationController
   end
 
   def get_social_media_array
-    if @user.social_media_links
+    if @user.social_media_links.present?
       return @user.social_media_links.split("$%$")
     else
       return nil
