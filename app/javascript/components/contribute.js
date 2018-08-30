@@ -9,5 +9,16 @@ function displayModal() {
   }
 }
 
+function radioButton() {
+  const divs = document.querySelectorAll(".contribute-option");  console.log(divs);
+  // convert divs into array
+  divs.forEach((div) => {
+    div.addEventListener("click", function(e) {
+      this.querySelector("input").click()
+    })
+  })
+}
 
-export { displayModal };
+export { displayModal, radioButton };
+
+

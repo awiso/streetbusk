@@ -83,12 +83,12 @@
 }
 
 .card-description p {
-  font-size: 14px;
+  font-size: 18px;
   opacity: 0.7;
   font-weight: lighter;
   margin-bottom: 4px;
   @media (max-width: 400px){
-    font-size: 12px;
+    font-size: 15px;
   }
 }
 
@@ -118,15 +118,15 @@
 }
 
 .card-time{
-  display: inline-block;
+  //display: inline-block;
 }
 
 .card-time-container{
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-end;
+  justify-content: flex-start;
   .card-time-grow{
-    flex-grow: 1;
+    //flex-grow: 1;
   }
 }
 
