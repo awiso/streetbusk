@@ -10,7 +10,7 @@ function bannerTransitions(){
       imageSources.push(div.dataset.src);
     })
 
-    setInterval(changebgImage, 6000);
+    setInterval(changebgImage, 9000);
     let counter = 0;
     function changebgImage(){
 
