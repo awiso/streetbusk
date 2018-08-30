@@ -366,4 +366,24 @@
   }
 }
 
+.modal-footer{
+  button{
+    border: none !important;
+    background-color: none !important;
+  }
+}
+
+#contribution_amount_1,
+#contribution_amount_2,
+#contribution_amount_5,
+#contribution_amount_10{
+  visibility: hidden;
+}
+
+label {
+    cursor: pointer;
+}
+input:checked + label {
+    color: orange;
+}
 
