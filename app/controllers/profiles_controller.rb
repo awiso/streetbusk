@@ -5,7 +5,7 @@ class ProfilesController < ApplicationController
     @user = User.find(params[:id])
     @performances = @user.performances
     @playing_now = playing_now?
-    @social_media_links = @user.social_media_links.split("$%$")
+    @social_media_links = get_social_media_array
     @contribution = Contribution.new
     if @performances.length > 0
       @performance = @performances.last
@@ -25,7 +25,7 @@ class ProfilesController < ApplicationController
     @user = User.find(params[:id])
     authorize @user
     @user.update(user_params)
-    @user.social_media_links = get_social_media_links
+    @user.social_media_links = params_social_media_links
     if @user.save
       redirect_to profile_path(@user)
     else
@@ -46,13 +46,21 @@ class ProfilesController < ApplicationController
     end
   end
 
-  def get_social_media_links
+  def params_social_media_links
     social_media = params.require(:social_media).permit(:yt, :in, :tw, :fb)
     social_media_links = []
     social_media.each do |l|
       social_media_links << l[1]
     end
     social_media_links.join("$%$")
+  end
+
+  def get_social_media_array
+    if @user.social_media_links
+      return @user.social_media_links.split("$%$")
+    else
+      return nil
+    end
   end
 
 end
