@@ -34,8 +34,6 @@
 
       <p><%= @user.artist_description %></p>
 
-       <div class="card">
-         <div class="card-bg-img" style="background-image: url('<%= cl_image_path(performance.photo_url, crop: :fill, secure: true) %>')"></div>
       <% if policy(@user).edit? %>
       <%= link_to 'Edit Profile', edit_profile_path(@user), class: 'btn btn-success' %>
       <% end %>
