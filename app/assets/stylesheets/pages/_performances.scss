@@ -15,3 +15,14 @@
 .main-container{
   height: 100vh;
 }
+
+.performances-index{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 65px;
+}
+
+.map-container{
+  flex-grow: 1;
+ height: 100vh;
+}

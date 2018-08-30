@@ -12,14 +12,12 @@ function bannerTransitions(){
 
     setInterval(changebgImage, 6000);
     let counter = 0;
-    console.log(imageSources)
     function changebgImage(){
 
       if(counter===imageSources.length-1){counter=0;}
       else{counter++;}
-
       banner.fadeOut(750, function(){
-        $(this).css("background-image", "url(" + imageSources[counter].src + ")").fadeIn(750);
+        $(this).css("background-image", "url(" + imageSources[counter] + ")").fadeIn(750);
       });
 
     }
