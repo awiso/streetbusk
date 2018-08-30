@@ -1,8 +1,8 @@
 
 function addAttendee(attendHTML, user_detail){
-  const attendanceList = document.querySelectorAll('.attend-item');
+  const attendanceList = document.querySelectorAll('.attend-overlap');
   const noAttendP = document.querySelector('.no-attend');
-    attendanceList[attendanceList.length - 1].insertAdjacentHTML('beforebegin', attendHTML);
+    attendanceList[attendanceList.length - 1].insertAdjacentHTML('afterend', attendHTML);
     if (noAttendP){
       noAttendP.style.display = "none";
     }

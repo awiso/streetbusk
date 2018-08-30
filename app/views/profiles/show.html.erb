@@ -19,7 +19,7 @@
         <div>
           <% if current_user.present? %>
               <button type="button" class="socialbtns" data-toggle="modal" data-target="#contribute-modal" id="contribute-button" data-modal="<%= @contribution.errors.messages.any? %>">
-                <i class=" fasc fas fa-hand-holding-usd contribute-button" aria-hidden="true"><p class="icon-text" style="font-size: 14px !important;">Contribute</p></i>
+                <i class=" fasc fas fa-hand-holding-usd contribute-button" aria-hidden="true"><p class="icon-text" style="font-size: 18px !important;">Contribute</p></i>
               </button>
           <% else %>
             <p class="italic">Please sign in to <strong>attend</strong> or to <strong>contribute</strong></p>
@@ -35,13 +35,12 @@
       <p><%= @user.artist_description %></p>
 
       <% if policy(@user).edit? %>
-      <%= link_to 'Edit Profile', edit_profile_path(@user), class: 'btn btn-success' %>
+      <%= link_to 'Edit Profile', edit_profile_path(@user), class: 'btn btn-warning btn-home btn-height-adjust'%>
       <% end %>
   </div>
 
   <div class="container">
     <h4>  <%= @user.artist_name %>‘s previous performances</h4>
-  </div>
   <!-- Previous performances of tee artist -->
   <div class="">
     <div class="swiper-container" data-slider="artist_show">
@@ -71,6 +70,9 @@
     </div>
 
   </div>
+</div>
+
+
 
   <div class="container">
     <% if @social_media_links.present? %>
