@@ -44,15 +44,15 @@
               <div class="card-bg-img" style="background-image: url('<%= cl_image_path(performance.photo_url, crop: :fill, secure: true) %>')"></div>
 
               <div class="card-description">
-                <p><i class="fas fa-user"></i>&nbsp;<strong> <%= performance.user.artist_name %> </strong></p>
-                <p><i class="fas fa-map-pin"></i> &nbsp; <i><strong> <%= performance.location.split(',').first.truncate(20) %></strong></i></p>
+                <p><i class="fas fa-user"></i>&nbsp;<%= performance.user.artist_name %></p>
+                <p><i class="fas fa-map-pin"></i> &nbsp;<%= performance.location.split(',').first.truncate(20) %></p>
 
                 <% start_time = performance.start_time %>
                 <% end_time = performance.end_time %>
                 <div class="card-time-container card-time">
                   <!-- <p class="card-time"><i class="far fa-clock"></i> <strong><%= start_time.strftime("%a %m/%d/%y")  %></strong></p> -->
                   <!-- <p class="card-time-grow"></p> -->
-                  <p class="card-time"><i class="far fa-clock"></i>&nbsp;<strong>  Until <%= end_time.strftime("%-I %p") %></strong></p>
+                  <p class="card-time"><i class="far fa-clock"></i>&nbsp; Until <%= end_time.strftime("%-I %p") %></p>
                 </div>
               </div>
             </div>

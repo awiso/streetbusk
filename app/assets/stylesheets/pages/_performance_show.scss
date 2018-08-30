@@ -59,9 +59,14 @@
   text-shadow: 1px 1px rgba(0,0,0,0.5);
   color: white;
   position: absolute;
-  top: 8%;
+  top: 23%;
   left: 50%;
   transform: translateX(-50%);
+
+  p{
+    font-weight: 100 !important;
+    font-size: 17px; 
+  }
 
   @media(orientation: portrait) and (min-width: 1000px){
     transform: translate(-50%, 0%);
@@ -81,7 +86,7 @@
     }
     li{
       text-align: left;
-      padding: 10px;
+      padding: 1px;
     }
   }
 
@@ -127,7 +132,7 @@
     background-repeat: no-repeat;
     background-position: center center;
     width: 100vw;
-    height: calc(50vh - 30px);
+    height: calc(60vh - 30px);
     min-height: 52vh;
     z-index: 1;
     text-shadow: 1px 1px rgba(0,0,0,0.5);
@@ -324,4 +329,3 @@ input:checked + label {
 .contribute-active{
   background-color: #e5e5e5;
 }
-
