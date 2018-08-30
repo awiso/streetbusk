@@ -6,10 +6,12 @@ puts 'Remove genres...'
 Genre.destroy_all
 puts 'Remove users (and artists)...'
 User.destroy_all
+puts 'Remove attendances...'
+Attendance.destroy_all
 
 puts "Generate users"
 
-names = %w(AlexD AlexW Camille Chris Clara Constantin Diego Emily FabianB FabianK Gabriel Ginny Hien Iain Ileana JanC JanS Jascha Jinyong Julian Louis Malcom Matt Matti)
+names = %w(AlexD AlexW Camille Chris Clara Constantin Diego Emily FabianB FabianK Gabriel Ginny Hien Iain Ileana JanC JanS Jascha Jinyong Julian Louis Malcom Matt Matti Max Mike Nicolas Noah Oriane Pascal Pierre Stephane Steven Taylor Umberto Zuza)
 
 
 names.each do |name|
@@ -22,22 +24,24 @@ names.each do |name|
   new_user.save!
 end
 
+puts "there are now #{User.count} users!"
+
 puts "Generate artists"
 
 artist_names = %w(Alice ClaraM Dimitri Sandrine Bryan Phillip Rich Arbi Martin Andy)
 
 artist_names.each do |name|
-  new_user = User.new()
-  new_user.email = "#{name.downcase}@streetbusk.com"
-  new_user.password = '123123'
-  new_user.avatar = Rails.root.join("app/assets/images/artists/#{name}.png").open  
-  new_user.name = name
-  new_user.artist = true
-  new_user.artist_name = name
-  new_user.default_performance_photo = "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-0.3.5&s=264727722bf2479d73380e1170bb3f48&auto=format&fit=crop&w=1050&q=80"
-  new_user.soundcloud = ''
-  new_user.youtube = '' 
-  new_user.save!
+  new_artist = User.new()
+  new_artist.email = "#{name.downcase}@streetbusk.com"
+  new_artist.password = '123123'
+  new_artist.avatar = Rails.root.join("app/assets/images/artists/#{name}.png").open  
+  new_artist.name = name
+  new_artist.artist = true
+  new_artist.artist_name = name
+  new_artist.default_performance_photo = "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-0.3.5&s=264727722bf2479d73380e1170bb3f48&auto=format&fit=crop&w=1050&q=80"
+  new_artist.soundcloud = ''
+  new_artist.youtube = '' 
+  new_artist.save!
 end
 
 puts "Generate genres"
@@ -72,6 +76,28 @@ places.each do |place|
   new_performance.photo = Rails.root.join("app/assets/images/performances/#{count}.jpg").open  
   new_performance.save!
   count += 1
+end
+
+puts "Generate attendances"
+
+fans = User.all.where(artist: false).where.not(email: 'alexw@streetbusk.com').shuffle
+p fans.length
+
+comments = ['Super cool show!', 'Wow so cool! 😱', 'Amazing performance guys - thank you 😘', 'So sick!', 'Take my money!!', 'Pls marry me!!', 'I love your performance', 'Meh', 'O M G !!', '❤️']
+
+Performance.all.to_a.each do |perf|
+  3.times do 
+    person = fans.pop
+    com = Comment.new()
+    com.user = person
+    com.performance = perf
+    com.comment_text = comments.sample
+    com.save!
+    att = Attendance.new()
+    att.user = person
+    att.performance = perf
+    att.save!
+  end
 end
 
 puts "Done!"
