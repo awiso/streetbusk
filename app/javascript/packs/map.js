@@ -4,39 +4,63 @@ import { mySwiper, getActiveSlide, animateActiveSlide } from './performance_slid
 
 const mapElement = document.getElementById('map');
 const styles = [
-{
+    {
         "featureType": "all",
-        "elementType": "geometry",
+        "elementType": "geometry.fill",
         "stylers": [
             {
-                "hue": "#ff4400"
-            },
+                "weight": "2.00"
+            }
+        ]
+    },
+    {
+        "featureType": "all",
+        "elementType": "geometry.stroke",
+        "stylers": [
             {
-                "saturation": -68
-            },
+                "color": "#9c9c9c"
+            }
+        ]
+    },
+    {
+        "featureType": "all",
+        "elementType": "labels.text",
+        "stylers": [
             {
-                "lightness": -4
-            },
+                "visibility": "on"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape",
+        "elementType": "all",
+        "stylers": [
             {
-                "gamma": 0.72
+                "color": "#f2f2f2"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "#ffffff"
             }
         ]
     },
     {
         "featureType": "landscape.man_made",
-        "elementType": "geometry",
+        "elementType": "geometry.fill",
         "stylers": [
             {
-                "hue": "#0077ff"
-            },
-            {
-                "gamma": 3.1
+                "color": "#ffffff"
             }
         ]
     },
     {
         "featureType": "poi",
-        "elementType": "labels.text",
+        "elementType": "all",
         "stylers": [
             {
                 "visibility": "off"
@@ -44,7 +68,55 @@ const styles = [
         ]
     },
     {
-        "featureType": "poi",
+        "featureType": "road",
+        "elementType": "all",
+        "stylers": [
+            {
+                "saturation": -100
+            },
+            {
+                "lightness": 45
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "#eeeeee"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "color": "#7b7b7b"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "labels.text.stroke",
+        "stylers": [
+            {
+                "color": "#ffffff"
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "simplified"
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
         "elementType": "labels.icon",
         "stylers": [
             {
@@ -53,116 +125,11 @@ const styles = [
         ]
     },
     {
-        "featureType": "poi.attraction",
-        "elementType": "labels",
-        "stylers": [
-            {
-                "visibility": "off"
-            }
-        ]
-    },
-    {
-        "featureType": "poi.business",
-        "elementType": "geometry.stroke",
-        "stylers": [
-            {
-                "visibility": "off"
-            }
-        ]
-    },
-    {
-        "featureType": "poi.government",
-        "elementType": "labels.text",
-        "stylers": [
-            {
-                "visibility": "off"
-            }
-        ]
-    },
-    {
-        "featureType": "poi.medical",
-        "elementType": "labels",
-        "stylers": [
-            {
-                "visibility": "off"
-            }
-        ]
-    },
-    {
-        "featureType": "poi.park",
+        "featureType": "transit",
         "elementType": "all",
         "stylers": [
             {
-                "hue": "#44ff00"
-            },
-            {
-                "saturation": -23
-            }
-        ]
-    },
-    {
-        "featureType": "poi.place_of_worship",
-        "elementType": "labels",
-        "stylers": [
-            {
                 "visibility": "off"
-            }
-        ]
-    },
-    {
-        "featureType": "poi.school",
-        "elementType": "labels",
-        "stylers": [
-            {
-                "visibility": "off"
-            }
-        ]
-    },
-    {
-        "featureType": "poi.sports_complex",
-        "elementType": "labels",
-        "stylers": [
-            {
-                "visibility": "off"
-            }
-        ]
-    },
-    {
-        "featureType": "transit",
-        "elementType": "labels.text.stroke",
-        "stylers": [
-            {
-                "saturation": -64
-            },
-            {
-                "hue": "#ff9100"
-            },
-            {
-                "lightness": 16
-            },
-            {
-                "gamma": 0.47
-            },
-            {
-                "weight": 2.7
-            }
-        ]
-    },
-    {
-        "featureType": "transit.line",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "lightness": -48
-            },
-            {
-                "hue": "#ff5e00"
-            },
-            {
-                "gamma": 1.2
-            },
-            {
-                "saturation": -23
             }
         ]
     },
@@ -171,13 +138,19 @@ const styles = [
         "elementType": "all",
         "stylers": [
             {
-                "hue": "#00ccff"
+                "color": "#46bcec"
             },
             {
-                "gamma": 0.44
-            },
+                "visibility": "on"
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "geometry.fill",
+        "stylers": [
             {
-                "saturation": -33
+                "color": "#c8d7d4"
             }
         ]
     },
@@ -186,16 +159,7 @@ const styles = [
         "elementType": "labels.text.fill",
         "stylers": [
             {
-                "hue": "#007fff"
-            },
-            {
-                "gamma": 0.77
-            },
-            {
-                "saturation": 65
-            },
-            {
-                "lightness": 99
+                "color": "#070707"
             }
         ]
     },
@@ -204,28 +168,7 @@ const styles = [
         "elementType": "labels.text.stroke",
         "stylers": [
             {
-                "gamma": 0.11
-            },
-            {
-                "weight": 5.6
-            },
-            {
-                "saturation": 99
-            },
-            {
-                "hue": "#0091ff"
-            },
-            {
-                "lightness": -86
-            }
-        ]
-    },
-    {
-        "featureType": "road",
-        "elementType": "labels",
-        "stylers": [
-            {
-                "visibility": "off"
+                "color": "#ffffff"
             }
         ]
     }
@@ -255,10 +198,12 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
   });
 
   const icons = {
-          active: 'https://maps.google.com/mapfiles/ms/icons/orange.png',
-          regular: 'https://maps.google.com/mapfiles/ms/icons/blue.png',
-          person: 'https://icon-icons.com/icons2/403/PNG/32/user-orange_40489.png'
-        };
+        //   active: 'https://maps.google.com/mapfiles/ms/icons/orange.png',
+        //   regular: 'https://maps.google.com/mapfiles/ms/icons/blue.png',
+        active: {url: 'http://res.cloudinary.com/djvp4os8m/image/upload/v1535652658/mark_active.svg', scaledSize: new google.maps.Size(50, 50) },
+        regular: {url: 'http://res.cloudinary.com/djvp4os8m/image/upload/v1535652658/mark_inactive.svg', scaledSize: new google.maps.Size(50, 50) },
+        person: 'https://icon-icons.com/icons2/403/PNG/32/user-orange_40489.png'
+    };
 
   let mapMarkers = [];
   markers.forEach((marker, index) => {
@@ -270,15 +215,15 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
       lng: marker.lng,
       icon: index == 0 ? icons["active"]: icons["regular"],
       click: (function (marker) {
-            return function () {
+          return function () {
               changeMarkerColor(index);
               if (mySwiper){
-                mySwiper.slideTo(marker.index, 500);
-              }
-              animateActiveSlide(index);
+                  mySwiper.slideTo(marker.index, 500);
+                }
+                animateActiveSlide(index);
             };
         })(marker)
-      });
+    });
     mapMarkers.push(mapMarker);
     map.addMarker(mapMarker);
   });
