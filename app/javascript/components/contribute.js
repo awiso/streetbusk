@@ -10,7 +10,7 @@ function displayModal() {
 }
 
 function radioButton() {
-  const divs = document.querySelectorAll(".contribute-option");  console.log(divs);
+  const divs = document.querySelectorAll(".contribute-option");
   // convert divs into array
   divs.forEach((div) => {
     div.addEventListener("click", function(e) {

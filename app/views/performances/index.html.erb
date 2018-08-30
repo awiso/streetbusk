@@ -38,7 +38,7 @@
        <%= link_to performance_path(performance) do %>
 
        <div class="card"  data-index=<%= index %>>
-         <div class="card-bg-img" style="background-image: url('<%= cl_image_path(performance.photo_url, crop: :fill) %>')"></div>
+         <div class="card-bg-img" style="background-image: url('<%= cl_image_path(performance.photo_url, crop: :fill, secure: true) %>')"></div>
 
          <div class="card-description">
           <p><i class="fas fa-user"></i>&nbsp;<strong> <%= performance.user.artist_name %> </strong></p>
@@ -64,3 +64,4 @@
 </div>
 <!-- Footer for mobile device -->
 <%= render 'shared/footer' %>
+

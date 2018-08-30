@@ -2,7 +2,7 @@
 <div class="banner-half-page" style="background-image: linear-gradient(-190deg, rgba(130,130,130,0.5) 0%, rgba(0,0,10, 0.5) 100%), url('<%= image_path '7.jpg' %>');">
 
   <div class="banner-content">
-    <div class="avatar-on-banner" style="background-image: url('<%= cl_image_path @contribution.artist.avatar, crop: :fill %>')"></div>
+    <div class="avatar-on-banner" style="background-image: url('<%= cl_image_path @contribution.artist.avatar, crop: :fill, secure: true %>')"></div>
     <h3 class='banner-font'><%= @contribution.artist.artist_name %></h3><br>
   </div>
 
@@ -10,7 +10,7 @@
 
 <!-- Container half page -->
 <div class="container container-half-page container-off-white text-center">
-  <h4 class="header-orange">Review your Contribution</h4>
+  <h4>Review your Contribution</h4>
 
 
   <div>
@@ -25,7 +25,7 @@
   <!-- Stripe payment -->
   <div class="padding-top">
     <%= form_tag contribution_payments_path(@contribution) do %>
-    <h4 class="header-orange">Choose a payment method</h4>
+    <h4>Choose a payment method</h4>
     <div>
 
       <i class="far fa-credit-card icon-padding icon-big-black"></i>

@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row flex-align-center">
     <div class="col-xs-4">
-      <div class="avatar-on-banner" style="background-image: url('<%= cl_image_path @user.avatar, crop: :fill %>')"></div>
+      <div class="avatar-on-banner" style="background-image: url('<%= cl_image_path @user.avatar, crop: :fill, secure: true %>')"></div>
     </div>
     <div class="col-xs-4">
         <p class='profile-artist-name'><%= @user.artist_name %></p>
@@ -24,7 +24,7 @@
        <%= link_to performance_path(performance) do %>
 
        <div class="card">
-         <div class="card-bg-img" style="background-image: url('<%= cl_image_path(performance.photo_url, crop: :fill) %>')"></div>
+         <div class="card-bg-img" style="background-image: url('<%= cl_image_path(performance.photo_url, crop: :fill, secure: true) %>')"></div>
 
          <div class="card-description">
           <p><i class="fas fa-map-pin"></i> &nbsp; <i><%= performance.location %></i></p>

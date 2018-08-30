@@ -5,7 +5,7 @@
   <div class="performance-photo-bg" style="background-image: linear-gradient(-180deg, rgba(0, 0, 0, 0.6) 0%, rgba(6, 35, 61,0.6) 50%), url('<%= cl_image_path @performance.photo_url, crop: :fill %>')">
     <div class="artist-overlay-card">
       <div class="artist-performance-desc">
-        <div class="performance-avatar" style="background-image: url('<%= cl_image_path @performance.user.avatar, crop: :fill %>')"></div>
+        <div class="performance-avatar" style="background-image: url('<%= cl_image_path @performance.user.avatar, crop: :fill, secure: true %>')"></div>
           <h2><%= link_to @performance.user.artist_name, profile_path(@performance.user) %></h2>
       </div>
       <p class="italic"><%= @performance.description.truncate(80) %></p>
@@ -182,3 +182,5 @@
     </div>
   </div>
 </div>
+
+
