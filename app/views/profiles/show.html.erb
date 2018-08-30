@@ -42,13 +42,12 @@
 
 
 <!-- SocialMedia -->
-    <div class="container">
+    <!-- <div class="container">
       <% if @social_media_links.present? %>
       <h4>Social Media Links</h4>
         <% if @social_media_links[0] %>
-        <a href="<%= @social_media_links[0] %>">
+        <%= link_to 'youtube', @social_media_links[0] %>
           <div class="youtube-icon social_media_icon"></div>
-        </a>
         <% end %>
         <% if @social_media_links[1] %>
         <a href="<%= @social_media_links[1] %>">
@@ -67,7 +66,7 @@
         <% end %>
       <% end %>
 
-    </div>
+    </div> -->
 
 
   <div class="container">
