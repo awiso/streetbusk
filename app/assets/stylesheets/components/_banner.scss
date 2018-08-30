@@ -23,9 +23,15 @@
   }
 }
 
-.banner-content h1 {
+.banner-content-home h1 {
   font-size: 50px;
 }
+
+.banner-content-home  h1, .banner-content-home p {
+  text-shadow: 1px 1px black;
+}
+
+
 
 .banner-half-page{
   background-size: cover !important;
