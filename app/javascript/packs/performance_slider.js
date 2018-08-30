@@ -21,8 +21,9 @@ const swiperOptions2 = {
   freeModeMomentumRatio: 0.1,
   slidesPerView: 1,
   autoHeight: true,
-  spaceBetween: spaceBetweenValue(),
-  slidesOffsetAfter: spaceBetweenValue()
+  spaceBetween: spaceBetweenValueWContainer(),
+  slidesOffsetBefore: -35,
+
 }
 
 if (swiperContainer){
@@ -65,6 +66,19 @@ function spaceBetweenValue(){
     let noOfCardsPerView = windowWidth / cardWidth
     let spaceBetween = -((noOfCardsPerView - 1) * cardWidth) + 40;
     return spaceBetween;
+  }
+}
+
+function spaceBetweenValueWContainer(){
+  if(cards[0]){
+    let container = document.querySelector('.container');
+    if(container){
+      let cardWidth = cards[0].clientWidth;
+      let containerWidth = container.clientWidth;
+      let noOfCardsPerView = containerWidth / cardWidth;
+      let spaceBetween = -((noOfCardsPerView - 1) * cardWidth) + 40;
+      return spaceBetween;
+    }
   }
 }
 

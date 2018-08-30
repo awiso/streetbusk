@@ -60,6 +60,9 @@
     .signup-navitem-active{
       color: black;
     }
+    @media(max-width: 700px){
+      top: 27%;
+    }
   }
 
   .signup-content{
@@ -71,6 +74,9 @@
     transition: opacity 1s ease;
     label{
       margin-bottom: 20px;
+    }
+    input[type="submit"]{
+      margin-top: 35px;
     }
   }
 
@@ -120,4 +126,5 @@
     width: 60%;
   }
 }
+
 }

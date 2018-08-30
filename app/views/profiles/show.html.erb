@@ -19,7 +19,7 @@
         <div>
           <% if current_user.present? %>
               <button type="button" class="socialbtns" data-toggle="modal" data-target="#contribute-modal" id="contribute-button" data-modal="<%= @contribution.errors.messages.any? %>">
-                <i class=" fasc fas fa-hand-holding-usd contribute-button" aria-hidden="true"><p class="icon-text" style="font-size: 14px !important;">Contribute</p></i>
+                <i class=" fasc fas fa-hand-holding-usd contribute-button" aria-hidden="true"><p class="icon-text" style="font-size: 18px !important;">Contribute</p></i>
               </button>
           <% else %>
             <p class="italic">Please sign in to <strong>attend</strong> or to <strong>contribute</strong></p>
@@ -35,18 +35,48 @@
       <p><%= @user.artist_description %></p>
 
       <% if policy(@user).edit? %>
-      <%= link_to 'Edit Profile', edit_profile_path(@user), class: 'btn btn-success' %>
+      <%= link_to 'Edit Profile', edit_profile_path(@user), class: 'btn btn-warning btn-home btn-height-adjust'%>
       <% end %>
   </div>
 
+
+
+<!-- SocialMedia -->
+    <div class="container">
+      <% if @social_media_links.present? %>
+      <h4>Social Media Links</h4>
+        <% if @social_media_links[0] %>
+        <a href="<%= @social_media_links[0] %>">
+          <div class="youtube-icon social_media_icon"></div>
+        </a>
+        <% end %>
+        <% if @social_media_links[1] %>
+        <a href="<%= @social_media_links[1] %>">
+          <div class="instagram-icon social_media_icon"></div>
+        </a>
+        <% end %>
+        <% if @social_media_links[2] %>
+        <a href="<%= @social_media_links[2] %>">
+          <div class="twitter-icon social_media_icon"></div>
+        </a>
+        <% end %>
+        <% if @social_media_links[3] %>
+        <a href="<%= @social_media_links[3] %>">
+          <div class="facebook-icon social_media_icon"></div>
+        </a>
+        <% end %>
+      <% end %>
+
+    </div>
+
+
   <div class="container">
     <h4>  <%= @user.artist_name %>‘s previous performances</h4>
-  </div>
   <!-- Previous performances of tee artist -->
   <div class="">
     <div class="swiper-container" data-slider="artist_show">
         <!-- Additional required wrapper -->
-        <div class="swiper-wrapper">
+        <div class="swiper-wrapper" style="margin-bottom: 30px;">
             <!-- Slides -->
             <% @performances.each do |performance| %>
                  <div class="swiper-slide">
@@ -71,40 +101,15 @@
     </div>
 
   </div>
+</div>
 
-  <div class="container">
-    <% if @social_media_links.present? %>
-    <h4>Social Media Links</h4>
-      <% if @social_media_links[0] %>
-      <a href="<%= @social_media_links[0] %>">
-        <div class="youtube-icon social_media_icon"></div>
-      </a>
-      <% end %>
-      <% if @social_media_links[1] %>
-      <a href="<%= @social_media_links[1] %>">
-        <div class="instagram-icon social_media_icon"></div>
-      </a>
-      <% end %>
-      <% if @social_media_links[2] %>
-      <a href="<%= @social_media_links[2] %>">
-        <div class="twitter-icon social_media_icon"></div>
-      </a>
-      <% end %>
-      <% if @social_media_links[3] %>
-      <a href="<%= @social_media_links[3] %>">
-        <div class="facebook-icon social_media_icon"></div>
-      </a>
-      <% end %>
-    <% end %>
 
-  </div>
 
-  <!-- Social Media-->
+  <!-- Showcase-->
   <div class="profile-showcase">
     <% if @user.youtube.present? || @user.soundcloud.present? %>
     <h4> Showcase</h4>
     <div class="media-container">
-    <h4> Social Media: </h4>
       <% if @user.youtube.present? %>
       <p>Check me out on YouYube</p>
       <iframe src="<%= @user.youtube %>" frameborder="0"></iframe>

@@ -15,7 +15,7 @@
     <div class="signup-content">
       <%= label_tag("user[email]", "What's your email?") %>
       <%= text_field_tag("user[email]", nil, :class => 'form-control', :autocomplete => 'off') %>
-      <%= submit_tag("Continue", :class => "btn btn-danger signup-continue") %>
+      <%= submit_tag("Continue", :class => "btn btn-danger  btn-home btn-height-adjust signup-continue") %>
     </div>
   </div>
   <div class="signup-view">
@@ -24,22 +24,22 @@
       <%= password_field_tag("user[password]", nil, :class => 'form-control', :autocomplete => 'off') %>
       <%= label_tag("user[password_confirmation]", "Confirm Password") %>
       <%= password_field_tag("user[password_confirmation]", nil, :class => 'form-control', :autocomplete => 'off') %>
-      <%= f.button :submit, "Continue", class: "btn-danger signup-continue" %>
+      <%= f.button :submit, "Continue", class: "btn-danger  btn-home btn-height-adjust signup-continue" %>
     </div>
   </div>
   <div class="signup-view">
     <div class="signup-content">
       <%= f.input :avatar, label: "Upload an avatar (optional)" %>
       <%= f.input :avatar_cache, as: :hidden %>
-      <%= f.button :submit, "Continue", class: "btn-danger signup-continue" %>
+      <%= f.button :submit, "Continue", class: "btn-danger  btn-home btn-height-adjust signup-continue" %>
     </div>
   </div>
   <div class="signup-view">
     <div class="signup-content">
       <p>Are you an artist?</p>
       <%= hidden_field_tag "user[artist]", "", :class => 'signup-artist-hidden' %>
-      <%= f.button :submit, "Yes", class: "btn-danger signup-continue signup-split" %>
-      <%= f.button :submit, "No", class: "btn-danger signup-continue signup-split" %>
+      <%= f.button :submit, "Yes", class: "btn-danger  btn-home btn-height-adjust signup-continue signup-split" %>
+      <%= f.button :submit, "No", class: "btn-danger  btn-home btn-height-adjust signup-continue signup-split" %>
     </div>
   </div>
 
@@ -47,20 +47,20 @@
     <div class="signup-content">
       <%= label_tag("user[artist_name]", "What's your artist alias?") %>
       <%= text_field_tag("user[artist_name]", nil, :class => 'form-control', :autocomplete => 'off') %>
-      <%= f.button :submit, "Continue", class: "btn-danger signup-continue" %>
+      <%= f.button :submit, "Continue", class: "btn-danger  btn-home btn-height-adjust signup-continue" %>
     </div>
   </div>
   <div class="signup-view">
     <div class="signup-content">
       <%= label_tag("genre", "What's the genre?") %>
       <%= text_field_tag("genre", nil, :class => 'form-control', :autocomplete => 'off') %>
-      <%= f.button :submit, "Continue", class: "btn-danger signup-continue" %>
+      <%= f.button :submit, "Continue", class: "btn-danger  btn-home btn-height-adjust signup-continue" %>
     </div>
   </div>
   <div class="signup-view">
     <div class="signup-content">
       <p>You're all done!</p>
-      <%= f.button :submit, "Continue", class: "btn-danger" %>
+      <%= f.button :submit, "Continue", class: "btn-danger btn-home btn-height-adjust " %>
     </div>
   </div>
   <% end %>

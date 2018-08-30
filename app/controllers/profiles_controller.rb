@@ -17,7 +17,7 @@ class ProfilesController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    @social_media_links = @user.social_media_links.split("$%$")
+    @social_media_links = get_social_media_array
     authorize @user
   end
 
