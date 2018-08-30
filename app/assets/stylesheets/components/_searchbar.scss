@@ -15,8 +15,8 @@
 }
 
 .search-bar-icon {
-  position: absolute;
-  left: 35px;
+  position: relative;
+  left: 48px;
 }
 
 .search-icon{
@@ -52,6 +52,8 @@
   border-radius: 5px;
   border: 1px solid #80808061;
   padding-left: 35px;
+  border: none;
+  border-bottom: 1px solid grey;
 }
 
 .search-field{
