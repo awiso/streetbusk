@@ -9,6 +9,17 @@
   height: calc(100vh - 60px);
 }
 
+.banner-two{
+  position: absolute;
+  height: calc(100vh - 60px);
+  width: 100%;
+  z-index: -1;
+}
+
+.home-wrapper{
+  position: relative;
+}
+
 .banner-content-home {
   position: relative;
   font-size: 17px;
