@@ -3,7 +3,7 @@
 import Swiper from 'swiper';
 
 const swiperContainer = document.querySelector('.swiper-container');
-const performanceCards = document.querySelectorAll('.card');
+const cards = document.querySelectorAll('.card');
 
 const swiperOptions = {
   freeMode: true,
@@ -15,13 +15,32 @@ const swiperOptions = {
   autoHeight: true
 };
 
-if (swiperContainer){
-  var mySwiper = new Swiper('.swiper-container', swiperOptions);
+const swiperOptions2 = {
+  freeMode: true,
+  freeModeSticky: true,
+  freeModeMomentumRatio: 0.1,
+  slidesPerView: 1,
+  autoHeight: true,
+  spaceBetween: spaceBetweenValue(),
+  slidesOffsetAfter: spaceBetweenValue()
+}
 
-  window.addEventListener('resize', () => {
-    mySwiper.destroy();
-    mySwiper = new Swiper('.swiper-container', swiperOptions);
-  })
+if (swiperContainer){
+  if(swiperContainer.dataset.slider=="performances_index"){
+    var mySwiper = new Swiper('.swiper-container', swiperOptions);
+
+    window.addEventListener('resize', () => {
+      mySwiper.destroy();
+      mySwiper = new Swiper('.swiper-container', swiperOptions);
+    })
+  }
+  else{
+    var mySwiper2 = new Swiper('.swiper-container', swiperOptions2);
+    window.addEventListener('resize', () => {
+      mySwiper2.destroy();
+      mySwiper2 = new Swiper('.swiper-container', swiperOptions2);
+    })
+  }
 }
 
 function getActiveSlide(){
@@ -30,7 +49,7 @@ function getActiveSlide(){
 }
 
 function animateActiveSlide(index){
-  let cardActive = Array.from(performanceCards).find((card) => {
+  let cardActive = Array.from(cards).find((card) => {
     return card.dataset.index == index
   })
   performanceCards.forEach((card) => {
@@ -40,8 +59,8 @@ function animateActiveSlide(index){
 }
 
 function spaceBetweenValue(){
-  if(performanceCards[0]){
-    let cardWidth = performanceCards[0].clientWidth;
+  if(cards[0]){
+    let cardWidth = cards[0].clientWidth;
     let windowWidth = $(window).width();
     let noOfCardsPerView = windowWidth / cardWidth
     let spaceBetween = -((noOfCardsPerView - 1) * cardWidth) + 40;

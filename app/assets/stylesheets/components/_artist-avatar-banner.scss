@@ -1,0 +1,56 @@
+.artist-avatar{
+  height: 10vw;
+  min-height: 50px;
+  width: 10vw;
+  min-width: 50px;
+  max-width: 120px;
+  max-height: 120px;
+  display: inline-block;
+  background-position: center center;
+  background-size: cover;
+  border-radius: 50%;
+  margin: 1rem 2rem;
+  flex-basis: 10vw;
+  flex-shrink: 0;
+  @media (max-width: 400px){
+    margin-left: 10px;
+  }
+}
+
+.artist-desc{
+  display: flex;
+  align-items: center;
+
+  h2{
+      text-align: left;
+      display: inline-block;
+      margin: 0;
+      a{
+        color: white;
+        transition: all 1s ease;
+        &:hover{
+          text-decoration: none;
+          opacity: 0.6;
+        }
+      }
+        @media(max-width: 680px){
+          font-size: 34px;
+        }
+        @media(max-width: 400px){
+          font-size: 28px;
+        }
+
+  }
+}
+
+.artist-under-desc{
+  display:flex;
+  justify-content: flex-start;
+  p{
+    margin-right: 5%;
+  }
+  .fasc{
+    height: 30px;
+    padding-top: 2px;
+  }
+}

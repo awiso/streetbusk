@@ -1,0 +1,34 @@
+.back-link{
+  &:hover{
+    text-decoration:none;
+    color: #6c8089;
+  }
+}
+.back-arrow{
+  display: block;
+  font-size: 32px;
+  color: #6c8089;
+  opacity: 0.6;
+  &:hover{
+    color: white;
+  }
+}
+
+.performance-back{
+  position: absolute;
+  left: 20px;
+  top: 20px;
+
+  @media(max-width: 400px){
+    right: 10px;
+    top: 10px;
+  }
+  @media(max-width:310px){
+    right: 5px;
+    top: 5px;
+  }
+}
+
+.profile-back-arrow{
+  margin-right: 5px;
+}
