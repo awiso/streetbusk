@@ -20,7 +20,6 @@ function bannerTransitions(){
 
       banner.fadeOut(750, function(){
         $(this).css("background-image", "url(" + imageSources[counter].src + ")").fadeIn(750);
-        console.log($(this))
       });
 
     }

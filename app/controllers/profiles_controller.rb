@@ -59,7 +59,7 @@ class ProfilesController < ApplicationController
     if @user.social_media_links.present?
       return @user.social_media_links.split("$%$")
     else
-      return nil
+      return []
     end
   end
 
