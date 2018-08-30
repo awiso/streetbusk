@@ -7,14 +7,25 @@
   text-align: center;
   background-position: center;
   height: calc(100vh - 60px);
+  background-color: rgba(0,0,0,0);
 }
 
-.banner-two{
+.banner-two, {
   position: absolute;
   height: calc(100vh - 60px);
   width: 100%;
   z-index: -1;
   background-color: #0c0600;
+  background-position: center;
+  background-size: cover !important;
+}
+.banner-three{
+  height: calc(100vh - 60px);
+  width: 100%;
+  z-index: -2;
+  background-color: #0c0600;
+  position: absolute;
+
 }
 
 .home-wrapper{
@@ -23,7 +34,7 @@
 
 .banner-content-home {
   position: relative;
-  font-size: 17px;
+  font-size: 19px;
   left: 0px;
   top: 20px;
   color: white;

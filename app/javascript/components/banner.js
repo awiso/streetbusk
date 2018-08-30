@@ -1,6 +1,6 @@
 function bannerTransitions(){
   const bannerImages = document.querySelectorAll('.image-banner-options');
-  const banner = $('.banner');
+  const banner = $('.banner-two');
   if(bannerImages){
     let imageSources = [];
 

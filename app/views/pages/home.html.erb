@@ -1,7 +1,10 @@
 <div class="home-wrapper">
-  <div class="banner-two">
+  <div class="banner-two" style="background-image: linear-gradient(-190deg, rgba(76,51,35,-0.5) 0%, rgba(0,0,10, 0.5) 100%), url('<%= image_path 'new_banner.jpg' %>');">
   </div>
-  <div class="banner" style="background-image: linear-gradient(-190deg, rgba(76,51,35,-0.5) 0%, rgba(0,0,10, 0.5) 100%), url('<%= image_path 'new_banner.jpg' %>');">
+  <div class="banner-three">
+
+  </div>
+  <div class="banner">
     <div class="hidden-banner-images">
       <div class="image-banner-options" data-src="<%= image_path("new_banner.jpg") %>" alt=""></div>
       <div class="image-banner-options" data-src="<%= image_path("banner_2.jpg") %>" alt=""></div>
@@ -13,7 +16,7 @@
 
       <%= image_tag '', class: 'logo-img' %>
       <h1>Live performance now.</h1><br>
-      <p><i>Get to know the coolest street artists near you and come to see their performances.</i></p>
+      <p>Get to know the coolest street artists near you and come to see their performances.</p>
       <br>
       <%=link_to "Discover local artists", performances_path, class: 'btn btn-home btn-warning', id: 'geocode' %>
       <!-- Current location -->
