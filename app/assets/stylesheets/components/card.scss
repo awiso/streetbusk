@@ -4,7 +4,7 @@
 }
 
 .cards-container{
-  margin-top: 10px;
+  margin-top: 1%;
 }
 
 .card-active{
@@ -22,7 +22,7 @@
 .card {
   box-sizing: border-box;
   height: auto;
-  margin: 15px 0px 10px 37px;
+  margin: 1% 0px 15px 37px;
   border-radius: 3px;
   box-shadow: 5px 5px 19px 3px rgba(45, 45, 45, 0.15), 0 5px 10px rgba(0, 0, 0, 0);
   background-color: #ffffff;
@@ -83,12 +83,12 @@
 }
 
 .card-description p {
-  font-size: 18px;
+  font-size: 16px;
   opacity: 0.7;
   font-weight: lighter;
-  margin-bottom: 4px;
+  margin-bottom: 1px;
   @media (max-width: 400px){
-    font-size: 16px;
+    font-size: 15px;
   }
 }
 

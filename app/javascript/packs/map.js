@@ -340,7 +340,7 @@ if (!window.location.search.includes("query")){
 
  if(window.location.pathname == "/performances"){
    const cardsContainer = document.querySelector('.cards-container');
-   mapElement.style.height = ($( window ).height() - cardsContainer.clientHeight - 80) + "px";
+   mapElement.style.height = ($( window ).height() - cardsContainer.clientHeight - 60) + "px";
  }
 
 autocomplete();
