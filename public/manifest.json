@@ -1,0 +1,8 @@
+{
+  "name": "Busk",
+  "short_name": "Busk",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#fff",
+  "description": "Live performances now!"
+}
