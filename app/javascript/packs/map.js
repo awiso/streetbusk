@@ -334,17 +334,17 @@ if (!window.location.search.includes("query")){
 
  if(window.location.pathname == "/performances"){
    const cardsContainer = document.querySelector('.cards-container');
-   if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-     $( document ).ready(function() {
-       mapElement.style.height = ($( window ).height() - cardsContainer.clientHeight) + "px";
-     });
-
-  }
-  else{
+  //  if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+  //    $( document ).ready(function() {
+  //      mapElement.style.height = ($( window ).height() - cardsContainer.clientHeight) + "px";
+  //    });
+  //
+  // }
+  // else{
     $( document ).ready(function() {
-      mapElement.style.height = ($( window ).height() - cardsContainer.clientHeight - 60) + "px";
+      mapElement.style.height = ($( window ).height() - cardsContainer.clientHeight - 80) + "px";
     });
-  }
+  // }
  }
 
 autocomplete();
