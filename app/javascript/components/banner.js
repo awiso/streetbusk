@@ -1,6 +1,6 @@
 function bannerTransitions(){
   const bannerImages = document.querySelectorAll('.image-banner-options');
-  const banner = document.querySelector('.banner');
+  const banner = $('.banner');
   if(bannerImages){
     let imageSources = [];
 
@@ -10,15 +10,17 @@ function bannerTransitions(){
       imageSources.push(div.dataset.src);
     })
 
-    setInterval(changebgImage, 2000);
-    let counter = 0
-    console.log(counter)
+    setInterval(changebgImage, 6000);
+    let counter = 0;
+    console.log(imageSources)
     function changebgImage(){
 
-      if(counter===backgroundimages.length-1){counter=0;}
+      if(counter===imageSources.length-1){counter=0;}
       else{counter++;}
+
       banner.fadeOut(750, function(){
         $(this).css("background-image", "url(" + imageSources[counter].src + ")").fadeIn(750);
+        console.log($(this))
       });
 
     }
@@ -26,4 +28,4 @@ function bannerTransitions(){
   }
 }
 
-export default bannerTransitions
+export { bannerTransitions }
