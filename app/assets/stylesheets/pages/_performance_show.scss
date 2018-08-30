@@ -20,7 +20,7 @@
   }
 
   p, li{
-    font-size: 18px;
+    font-size: 18px !important;
     padding: 4px;
     // @media(max-width: 800px){
     //   font-size: 16px;
@@ -293,6 +293,9 @@
 }
 
 .comments{
+  .comment-date {
+    font-size: 10px;
+  }
   h3 {
     margin-top: 0;
   }
@@ -304,6 +307,7 @@
   button {
     border: 0;
     padding: 0;
+    background: rgba(255,255,255,0);
   }
   margin-bottom: 70px;
    .comment-avatar{
@@ -381,3 +385,4 @@ label {
 input:checked + label {
     color: orange;
 }
+
