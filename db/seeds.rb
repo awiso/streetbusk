@@ -28,17 +28,18 @@ puts "there are now #{User.count} users!"
 puts "Generate artists"
 
 artist_names = %w(Alice ClaraM Dimitri Sandrine Bryan Phillip Rich Arbi Martin Andy Flora)
+aliases = ['Alice Clavel','Clara Morgen','Dimitri Bosch','Sandeine Aryal','Bryan David','Phillip vHS','Rich O.G.','Arby, man of the Party','Martin D F','Andy Baranov','Flora Pup']
 
 videos = ['https://www.youtube.com/embed/HxJhYpTIrl8']
 songs = ['https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/37032471&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"']
-artist_names.each do |name|
+artist_names.each_with_index do |name, i|
   new_artist = User.new()
   new_artist.email = "#{name.downcase}@streetbusk.com"
   new_artist.password = '123123'
   new_artist.avatar = Rails.root.join("app/assets/images/artists/#{name}.png").open  
   new_artist.name = name
   new_artist.artist = true
-  new_artist.artist_name = name
+  new_artist.artist_name = aliases[i]
   new_artist.default_performance_photo = "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-0.3.5&s=264727722bf2479d73380e1170bb3f48&auto=format&fit=crop&w=1050&q=80"
   new_artist.soundcloud = songs[0]
   new_artist.youtube = videos[0]
@@ -69,7 +70,7 @@ genres = Genre.all.to_a
 count = 0
 places.each do |place|
   new_performance = Performance.new()
-  new_performance.user = User.where(artist_name: artist_names[count]).first
+  new_performance.user = User.where(name: artist_names[count]).first
   new_performance.location = place
   new_performance.start_time = DateTime.now
   new_performance.end_time = DateTime.tomorrow
@@ -80,11 +81,13 @@ places.each do |place|
   count += 1
 end
 
+puts "Generate extra performances"
+
 artist_names.each do |artist|
   count = 6
   2.times do
     perf = Performance.new()
-    perf.user = User.where(artist_name: artist).first
+    perf.user = User.where(name: artist).first
     perf.location = nil
     perf.start_time = DateTime.now
     perf.end_time = DateTime.tomorrow
@@ -99,9 +102,9 @@ end
 puts "Generate attendances"
 
 fans = User.all.where(artist: false).where.not(email: 'alexw@streetbusk.com').shuffle
-p fans.length
 
 comments = ['Super cool show!', 'Wow so cool! 😱', 'Amazing performance guys - thank you 😘', 'So sick!', 'Take my money!!', 'Pls marry me!!', 'I love your performance', 'Meh', 'O M G !!', '❤️', 'I wanna have yo babies 😍', 'you are truly gifted my friend!', 'hey call me sometime 😉', 'are you guys going on tour soon?', 'u rock 🤘', 'eyyyy bb u got skills']
+
 
 Performance.all.where.not('performances.location' => nil).to_a.each do |perf|
   3.times do 
