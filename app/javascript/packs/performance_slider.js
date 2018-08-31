@@ -53,7 +53,7 @@ function animateActiveSlide(index){
   let cardActive = Array.from(cards).find((card) => {
     return card.dataset.index == index
   })
-  performanceCards.forEach((card) => {
+  cards.forEach((card) => {
     card.classList.remove('card-active');
   })
   cardActive.classList.add('card-active');

@@ -7,6 +7,7 @@ class ProfilesController < ApplicationController
     @playing_now = playing_now?
     @social_media_links = get_social_media_array
     @contribution = Contribution.new
+    @profile_banner = @user.performances.last.photo || image_path("4.jpg")
     if @performances.length > 0
       @performance = @performances.last
     else

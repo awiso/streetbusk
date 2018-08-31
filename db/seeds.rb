@@ -86,7 +86,7 @@ puts "Generate attendances"
 fans = User.all.where(artist: false).where.not(email: 'alexw@streetbusk.com').shuffle
 p fans.length
 
-comments = ['Super cool show!', 'Wow so cool! 😱', 'Amazing performance guys - thank you 😘', 'So sick!', 'Take my money!!', 'Pls marry me!!', 'I love your performance', 'Meh', 'O M G !!', '❤️', 'I wanna have yo babies 😍', 'you are truly gifted my friend!']
+comments = ['Super cool show!', 'Wow so cool! 😱', 'Amazing performance guys - thank you 😘', 'So sick!', 'Take my money!!', 'Pls marry me!!', 'I love your performance', 'Meh', 'O M G !!', '❤️', 'I wanna have yo babies 😍', 'you are truly gifted my friend!', 'hey call me sometime 😉', 'are you guys going on tour soon?', 'u rock 🤘', 'eyyyy bb u got skills']
 
 Performance.all.to_a.each do |perf|
   3.times do 
