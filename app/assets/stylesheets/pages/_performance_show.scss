@@ -176,6 +176,7 @@
       color: white;
       position: relative;
       transform: translateY(-30%);
+      padding-bottom: 20px;
       &:focus{
         border: none;
       }
@@ -197,6 +198,7 @@
     bottom: 25px;
     left: 50%;
     bottom: -3px;
+    bottom: -17px;
     transform: translate(-50%, 50%);
     margin: 0px;
     display: flex;
