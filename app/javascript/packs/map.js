@@ -277,8 +277,8 @@ if (!window.location.search.includes("query")){
 
 }; // if map present
 
- if(window.location.pathname == "/performances"){
-   const cardsContainer = document.querySelector('.cards-container');
+const cardsContainer = document.querySelector('#cards-performances');
+ if(mapElement && cardsContainer){
   //  if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
   //    $( document ).ready(function() {
   //      mapElement.style.height = ($( window ).height() - cardsContainer.clientHeight) + "px";

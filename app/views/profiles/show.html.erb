@@ -1,72 +1,45 @@
 <div class="profile-show">
-
-  <div class="container">
   <!-- Top Section: General Infos about the artist -->
-  <div class="artist-desc" style="justify-content: flex-start; align-items: flex-start;">
+  <div class="profile-bg" style="background-image: url(<%= @profile_banner %>)">
+  <div class="profile-overlay-wrapper">
+    <div class="artist-desc" style="justify-content: flex-start; align-items: flex-start;">
 
-    <div class="artist-avatar profile-avatar" style="background-image: url('<%= cl_image_path @user.avatar, crop: :fill %>'); "></div>
-    <div >
-      <h2><%= @user.artist_name %></h2>
-      <div class="artist-under-desc" >
-        <% if @playing_now %>
+      <div class="artist-avatar profile-avatar" style="background-image: url('<%= cl_image_path @user.avatar, crop: :fill %>'); "></div>
+      <div >
+        <h2><%= @user.artist_name %></h2>
+        <div class="artist-under-desc" >
+          <% if @playing_now %>
           <% if @user.performances.last.genre.performance_type == "Music" %>
-            <p class="green">Playing now</p>
+          <p class="green">Playing now</p>
           <% else %>
-            <p class="green">Performing now</p>
+          <p class="green">Performing now</p>
           <% end %>
-        <% end %>
-
-        <div>
-          <% if current_user.present? %>
-              <button type="button" class="socialbtns" data-toggle="modal" data-target="#contribute-modal" id="contribute-button" data-modal="<%= @contribution.errors.messages.any? %>">
-                <i class=" fasc fas fa-hand-holding-usd contribute-button" aria-hidden="true"><p class="icon-text" style="font-size: 18px !important;">Contribute</p></i>
-              </button>
-          <% else %>
+          <% end %>
+          <div>
+            <% if current_user.present? %>
+            <button type="button" class="socialbtns" data-toggle="modal" data-target="#contribute-modal" id="contribute-button" data-modal="<%= @contribution.errors.messages.any? %>">
+              <i class=" fasc fas fa-hand-holding-usd contribute-button" aria-hidden="true"><p class="icon-text" style="font-size: 18px !important;">Contribute</p></i>
+            </button>
+            <% else %>
             <p class="italic">Please sign in to <strong>attend</strong> or to <strong>contribute</strong></p>
-        <% end %>
+            <% end %>
+          </div>
+
         </div>
 
       </div>
-
     </div>
+
+
+    <p><%= @user.artist_description %></p>
+
+    <% if policy(@user).edit? %>
+    <%= link_to 'Edit Profile', edit_profile_path(@user), class: 'btn btn-warning btn-home btn-height-adjust'%>
+    <% end %>
+    
   </div>
 
-
-      <p><%= @user.artist_description %></p>
-
-      <% if policy(@user).edit? %>
-      <%= link_to 'Edit Profile', edit_profile_path(@user), class: 'btn btn-warning btn-home btn-height-adjust'%>
-      <% end %>
   </div>
-
-
-
-<!-- SocialMedia -->
-    <div class="container">
-      <% if @social_media_links.present? %>
-      <h4>Social Media Links</h4>
-        <% if @social_media_links[0] %>
-        <a href="<%= @social_media_links[0] %>">
-          <div class="youtube-icon social_media_icon"></div>
-        </a>
-        <% end %>
-        <% if @social_media_links[1] %>
-        <a href="<%= @social_media_links[1] %>">
-          <div class="instagram-icon social_media_icon"></div>
-        </a>
-        <% end %>
-        <% if @social_media_links[2] %>
-        <a href="<%= @social_media_links[2] %>">
-          <div class="twitter-icon social_media_icon"></div>
-        </a>
-        <% end %>
-        <% if @social_media_links[3] %>
-        <a href="<%= @social_media_links[3] %>">
-          <div class="facebook-icon social_media_icon"></div>
-        </a>
-        <% end %>
-      <% end %>
-    </div>
 
 
   <div class="container">
@@ -108,19 +81,55 @@
   <div class="profile-showcase">
     <% if @user.youtube.present? || @user.soundcloud.present? %>
     <h4> Showcase</h4>
-    <div class="media-container">
+    <div class="media-container container">
       <% if @user.youtube.present? %>
       <p>Check me out on YouYube</p>
-      <iframe src="<%= @user.youtube %>" frameborder="0"></iframe>
+      <div class="aspect-ratio">
+        <iframe src="<%= @user.youtube %>" frameborder="0"></iframe>
+      </div>
       <% end %>
 
       <% if @user.soundcloud.present? %>
       <p>Check me out on Soundcloud</p>
-      <iframe src="<%= @user.soundcloud %>" frameborder="0"></iframe>
+
+      <div class="aspect-ratio">
+        <iframe src="<%= @user.soundcloud %>" frameborder="0"></iframe>
+
+      </div>
       <% end %>
     </div>
     <% end %>
   </div>
+
+
+  <!-- SocialMedia -->
+      <div class="container">
+        <% if @social_media_links.present? %>
+        <h4>Social Media Links</h4>
+          <% if @social_media_links[0] %>
+          <a href="<%= @social_media_links[0] %>">
+            <div class="youtube-icon social_media_icon"></div>
+          </a>
+          <% end %>
+          <% if @social_media_links[1] %>
+          <a href="<%= @social_media_links[1] %>">
+            <div class="instagram-icon social_media_icon"></div>
+          </a>
+          <% end %>
+          <% if @social_media_links[2] %>
+          <a href="<%= @social_media_links[2] %>">
+            <div class="twitter-icon social_media_icon"></div>
+          </a>
+          <% end %>
+          <% if @social_media_links[3] %>
+          <a href="<%= @social_media_links[3] %>">
+            <div class="facebook-icon social_media_icon"></div>
+          </a>
+          <% end %>
+        <% end %>
+      </div>
+
+
 
     <br>
 
