@@ -7,7 +7,7 @@ class ProfilesController < ApplicationController
     @playing_now = playing_now?
     @social_media_links = get_social_media_array
     @contribution = Contribution.new
-    @profile_banner = @user.performances.last.photo || image_path("4.jpg")
+    @profile_banner = @user.performances.last&.photo
     if @performances.length > 0
       @performance = @performances.last
     else
@@ -40,10 +40,12 @@ class ProfilesController < ApplicationController
   end
 
   def playing_now?
-    if DateTime.now > @performances.last.start_time && DateTime.now < @performances.last.end_time
-      true
-    else
-      false
+    if @performances.any?
+      if DateTime.now > @performances.last.start_time && DateTime.now < @performances.last.end_time
+        true
+      else
+        false
+      end
     end
   end
 

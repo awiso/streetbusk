@@ -1,7 +1,7 @@
 <div class="profile-show">
   <!-- Top Section: General Infos about the artist -->
-  <div class="profile-bg" style="background-image: linear-gradient(-120deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0,0.6) 50%), url(<%= @profile_banner %>)">
-  <div class="profile-overlay-wrapper">
+  <div class="profile-bg" style="background-image: linear-gradient(-120deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0,0.6) 50%), url(<%= @profile_banner.nil? ? image_path("4.jpg") : @profile_banner %>)">
+  <div class="profile-overlay-wrapper container">
     <div class="artist-desc" style="justify-content: flex-start; align-items: flex-start;">
 
       <div class="artist-avatar profile-avatar" style="background-image: url('<%= cl_image_path @user.avatar, crop: :fill %>'); "></div>
@@ -15,65 +15,63 @@
           <p class="green">Performing now</p>
           <% end %>
           <% end %>
-          <div>
-            <% if current_user.present? %>
-            <button type="button" class="socialbtns" data-toggle="modal" data-target="#contribute-modal" id="contribute-button" data-modal="<%= @contribution.errors.messages.any? %>">
-              <i class=" fasc fas fa-hand-holding-usd contribute-button" aria-hidden="true"><p class="icon-text" style="font-size: 18px !important;">Contribute</p></i>
-            </button>
-            <% else %>
-            <p class="italic">Please sign in to <strong>attend</strong> or to <strong>contribute</strong></p>
-            <% end %>
-          </div>
-
         </div>
-
       </div>
+
     </div>
 
 
     <p><%= @user.artist_description %></p>
 
-    <% if policy(@user).edit? %>
-    <%= link_to 'Edit Profile', edit_profile_path(@user), class: 'btn btn-warning btn-home btn-height-adjust'%>
-    <% end %>
 
   </div>
 
   </div>
-
 
   <div class="container">
+
+    <div class="profile-contribute">
+      <% if current_user.present? %>
+      <button type="button" class="socialbtns" data-toggle="modal" data-target="#contribute-modal" id="contribute-button" data-modal="<%= @contribution.errors.messages.any? %>">
+        <i class=" fasc fas fa-hand-holding-usd contribute-button" aria-hidden="true"><p class="icon-text" style="font-size: 18px !important;">Contribute</p></i>
+      </button>
+      <% else %>
+      <p class="italic">Please sign in to <strong>attend</strong> or to <strong>contribute</strong></p>
+      <% end %>
+    </div>
+
     <h4>  <%= @user.artist_name %>‘s previous performances</h4>
-  <!-- Previous performances of tee artist -->
-  <div class="">
-    <div class="swiper-container" data-slider="artist_show">
+    <!-- Previous performances of tee artist -->
+    <div class="">
+      <div class="swiper-container" data-slider="artist_show">
         <!-- Additional required wrapper -->
         <div class="swiper-wrapper" style="margin-bottom: 30px;">
-            <!-- Slides -->
-            <% @performances.each do |performance| %>
-                 <div class="swiper-slide">
-                   <%= link_to performance_path(performance) do %>
-                   <div class="card">
-                     <div class="card-bg-img" style="background-image: url('<%= cl_image_path(performance.photo_url, crop: :fill) %>')"></div>
-                     <div class="card-description">
-                      <p><i class="fas fa-map-pin"></i> &nbsp; <i><%= performance.location %></i></p>
-                      <% start_time = performance.start_time %>
-                      <% end_time = performance.end_time %>
-                      <div class="card-time-container card-time">
-                        <p class="card-time"><i class="far fa-clock"></i> <strong><%= start_time.strftime("%a %m/%d/%y")  %></strong></p>
-                      </div>
-                    </div>
-                  </div>
-                  <% end %>
+          <!-- Slides -->
+          <% @performances.each do |performance| %>
+          <div class="swiper-slide">
+            <%= link_to performance_path(performance) do %>
+            <div class="card">
+              <div class="card-bg-img" style="background-image: url('<%= cl_image_path(performance.photo_url, crop: :fill) %>')"></div>
+              <div class="card-description">
+                <p><i class="fas fa-map-pin"></i> &nbsp; <i><%= performance.location.truncate(23) %></i></p>
+                <% start_time = performance.start_time %>
+                <% end_time = performance.end_time %>
+                <div class="card-time-container card-time">
+                  <p class="card-time"><i class="far fa-clock"></i> <strong><%= start_time.strftime("%a %m/%d/%y")  %></strong></p>
                 </div>
-              <% end %>
+              </div>
+            </div>
+            <% end %>
+          </div>
+          <% end %>
 
         </div>
 
-    </div>
+      </div>
 
+    </div>
   </div>
-</div>
+
 
 
 
@@ -106,6 +104,8 @@
       <div class="container">
         <% if @social_media_links.present? %>
         <h4>Social Media Links</h4>
+        <div class="social-media-container">
+
           <% if @social_media_links[0] %>
           <a href="<%= @social_media_links[0] %>">
             <div class="youtube-icon social_media_icon"></div>
@@ -129,9 +129,17 @@
         <% end %>
       </div>
 
+      </div>
+
 
 
     <br>
+  <div class="container">
+    <% if policy(@user).edit? %>
+    <%= link_to 'Edit Profile', edit_profile_path(@user), class: 'btn btn-warning btn-home btn-height-adjust'%>
+    <% end %>  
+  </div>
+
 
 <div class="container">
   <%= link_to performances_path, class: 'back-link' do %>
@@ -190,7 +198,8 @@
           </div>
 
           <%= f.input :message %>
-          <%= f.input :artist_id, as: :hidden, input_html: { value: @performance.user.id } %>
+
+          <%= f.input :artist_id, as: :hidden, input_html: { value: @user.id } %>
 
         </div>
         <div class="modal-footer">
