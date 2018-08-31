@@ -16,8 +16,8 @@ function bannerTransitions(){
 
       if(counter===imageSources.length-1){counter=0;}
       else{counter++;}
-      banner.fadeOut(750, function(){
-        $(this).css("background-image", "url(" + imageSources[counter] + ")").fadeIn(750);
+      banner.fadeOut(600, function(){
+        $(this).css("background-image", "url(" + imageSources[counter] + ")").fadeIn(400);
       });
 
     }
