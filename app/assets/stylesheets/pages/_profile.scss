@@ -25,23 +25,17 @@
 }
 
 .profile-overlay-wrapper{
-  width: 95%;
-  margin: auto;
   position: absolute;
   top: 15%;
-  left: 50%;
-  transform: translate(-50%, 0%);
-  @media(min-width: 550px){
-    width: 90%;
-  }
-  @media(min-width: 700px){
-    width: 80%;
-  }
+
   h2{
     margin-bottom: 5px;
   }
   i{
     height: 45px;
+  }
+  p{
+    margin-top: 10px;
   }
 }
 
@@ -105,4 +99,10 @@
 .btn-height-adjust{
   height: 40px !important;
   padding-top: 7px !important;
+}
+
+.profile-contribute{
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
 }
