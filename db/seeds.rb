@@ -27,7 +27,7 @@ puts "there are now #{User.count} users!"
 
 puts "Generate artists"
 
-artist_names = %w(Alice ClaraM Dimitri Sandrine Bryan Phillip Rich Arbi Martin Andy)
+artist_names = %w(Alice ClaraM Dimitri Sandrine Bryan Phillip Rich Arbi Martin Andy Flora)
 
 videos = ['https://www.youtube.com/embed/2PaPNWVQcco', 'https://www.youtube.com/embed/0EKilrvi8Qc', 'https://www.youtube.com/embed/7zuzyrWRdqE', 'https://www.youtube.com/embed/gIBT88O_S_4', 'https://www.youtube.com/embed/-0gED3rn2Tc', 'https://www.youtube.com/embed/vTNo8EXP0gA']
 songs = ['https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/423847089&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true', 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/87353468&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true']
@@ -41,8 +41,8 @@ artist_names.each do |name|
   new_artist.artist = true
   new_artist.artist_name = name
   new_artist.default_performance_photo = "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-0.3.5&s=264727722bf2479d73380e1170bb3f48&auto=format&fit=crop&w=1050&q=80"
-  new_artist.soundcloud = songs.pop || ''
-  new_artist.youtube = videos.pop || ''
+  new_artist.soundcloud = songs[0]
+  new_artist.youtube = videos[0]
   new_artist.social_media_links = 'www.youtube.com$%$www.instagram.com$%$www.twitter.com$%$www.facebook.com'
   new_artist.save!
 end
@@ -64,7 +64,7 @@ Genre.create!(name: "Uncategorizable", performance_type: "Music")
 
 puts "Generate performances"
 
-places = ['Prenzlauerberg, Berlin', 'Fleamarket at Mauerpark', 'Max-Schmeling-Halle', 'Mauergarten, Berlin', 'Falkplatz', 'Gleimviertel, 10437 Berlin', 'Friedrich-Ludwig-Jahn-Sportpark', 'Eberswalder Straße', 'Alexanderplatz, Berlin', 'Kreuzberg, Berlin']
+places = ['Prenzlauerberg, Berlin', 'Mauerpark', 'Bernauer Strasse, Berlin', 'Falkplatz', 'Alexanderplatz, Berlin', 'Strelitzer Str. 50, Berlin', 'Kreuzberg, Berlin', 'Checkpoint Charlie', 'Deutscher Dom', 'Brandenburger Tor', 'Factory Berlin']
 genres = Genre.all.to_a
 
 count = 0
@@ -74,7 +74,7 @@ places.each do |place|
   new_performance.location = place
   new_performance.start_time = DateTime.now
   new_performance.end_time = DateTime.tomorrow
-  new_performance.description = "Come join me at #{place} for an amazing performance! 😁"
+  new_performance.description = "Come to #{place.split(',').first} to watch! 😁"
   new_performance.genre = genres[count]
   new_performance.photo = Rails.root.join("app/assets/images/performances/#{count}.jpg").open  
   new_performance.save!
