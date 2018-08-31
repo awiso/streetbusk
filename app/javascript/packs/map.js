@@ -203,7 +203,7 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
         // active: {url: 'http://res.cloudinary.com/djvp4os8m/image/upload/v1535652658/mark_active.svg', scaledSize: new google.maps.Size(50, 50) },
         // regular: {url: 'http://res.cloudinary.com/djvp4os8m/image/upload/v1535652658/mark_inactive.svg', scaledSize: new google.maps.Size(50, 50) },
         active: {url: 'https://res.cloudinary.com/djvp4os8m/image/upload/v1535705045/main-pin.png', scaledSize: new google.maps.Size(40, 40) },
-        regular: {url: 'http://res.cloudinary.com/djvp4os8m/image/upload/v1535705052/map-pin.png', scaledSize: new google.maps.Size(40, 40) },
+        regular: {url: 'https://res.cloudinary.com/djvp4os8m/image/upload/v1535705052/map-pin.png', scaledSize: new google.maps.Size(40, 40) },
         person: 'https://icon-icons.com/icons2/403/PNG/32/user-orange_40489.png'
     };
 
@@ -251,20 +251,22 @@ function changeMarkerColor(index){
   mapMarkers[index].setZIndex(999);
 }
 
-if (!window.location.search.includes("query")){
-  navigator.geolocation.getCurrentPosition(function(position) {
-    map.setCenter(position.coords.latitude, position.coords.longitude);
-    map.setZoom(12);
-    const currentLocMarker = map.createMarker({
-      lat:position.coords.latitude,
-      lng: position.coords.longitude,
-      icon: icons["person"]
-    })
-    map.addMarker(currentLocMarker);
-  }, function() {
-    alert("Your browser does not support geolocation");
-  });
-}
+document.addEventListener("DOMContentLoaded", function(event) {
+  if (!window.location.search.includes("query")){
+    navigator.geolocation.getCurrentPosition(function(position) {
+      map.setCenter(position.coords.latitude, position.coords.longitude);
+      map.setZoom(12);
+      const currentLocMarker = map.createMarker({
+        lat:position.coords.latitude,
+        lng: position.coords.longitude,
+        icon: icons["person"]
+      })
+      map.addMarker(currentLocMarker);
+    }, function() {
+      alert("Your browser does not support geolocation");
+    });
+  }
+});
 
 //Unmark to use old one
   // old one
