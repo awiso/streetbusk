@@ -190,7 +190,7 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
 
   const image = {
     url: "http://www.pngall.com/wp-content/uploads/2017/05/Map-Marker-Free-Download-PNG-180x180.png",
-    scaledSize: new google.maps.Size(40, 40)
+    scaledSize: new google.maps.Size(15, 15)
   };
 
   markers.forEach(function(marker) {
@@ -200,8 +200,10 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
   const icons = {
         //   active: 'https://maps.google.com/mapfiles/ms/icons/orange.png',
         //   regular: 'https://maps.google.com/mapfiles/ms/icons/blue.png',
-        active: {url: 'http://res.cloudinary.com/djvp4os8m/image/upload/v1535652658/mark_active.svg', scaledSize: new google.maps.Size(50, 50) },
-        regular: {url: 'http://res.cloudinary.com/djvp4os8m/image/upload/v1535652658/mark_inactive.svg', scaledSize: new google.maps.Size(50, 50) },
+        // active: {url: 'http://res.cloudinary.com/djvp4os8m/image/upload/v1535652658/mark_active.svg', scaledSize: new google.maps.Size(50, 50) },
+        // regular: {url: 'http://res.cloudinary.com/djvp4os8m/image/upload/v1535652658/mark_inactive.svg', scaledSize: new google.maps.Size(50, 50) },
+        active: {url: 'https://res.cloudinary.com/djvp4os8m/image/upload/v1535705045/main-pin.png', scaledSize: new google.maps.Size(40, 40) },
+        regular: {url: 'http://res.cloudinary.com/djvp4os8m/image/upload/v1535705052/map-pin.png', scaledSize: new google.maps.Size(40, 40) },
         person: 'https://icon-icons.com/icons2/403/PNG/32/user-orange_40489.png'
     };
 
