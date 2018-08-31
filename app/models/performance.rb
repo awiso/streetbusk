@@ -4,7 +4,7 @@ class Performance < ApplicationRecord
   has_many :attendances, dependent: :destroy
   has_many :comments, dependent: :destroy
   # Validations
-  validates :location, presence: true
+  # validates :location, presence: true
   validates :start_time, presence: true
   validates :end_time, presence: true
   validates :description, presence: true, length: { maximum: 80 }

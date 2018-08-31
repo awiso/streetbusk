@@ -53,7 +53,16 @@
             <div class="card">
               <div class="card-bg-img" style="background-image: url('<%= cl_image_path(performance.photo_url, crop: :fill) %>')"></div>
               <div class="card-description">
-                <p><i class="fas fa-map-pin"></i> &nbsp; <i><%= performance.location.truncate(23) %></i></p>
+
+                <p><i class="fas fa-map-pin"></i> &nbsp; <i>
+                
+                <% if performance.location.present? %>
+                  <%= performance.location.split(',').first.truncate(20) %>
+                <% else %>
+                  <%= "Berlin" %>
+                <% end %>
+                
+                </i></p>
                 <% start_time = performance.start_time %>
                 <% end_time = performance.end_time %>
                 <div class="card-time-container card-time">

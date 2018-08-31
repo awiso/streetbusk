@@ -29,9 +29,8 @@ puts "Generate artists"
 
 artist_names = %w(Alice ClaraM Dimitri Sandrine Bryan Phillip Rich Arbi Martin Andy Flora)
 
-videos = ['https://www.youtube.com/embed/2PaPNWVQcco', 'https://www.youtube.com/embed/0EKilrvi8Qc', 'https://www.youtube.com/embed/7zuzyrWRdqE', 'https://www.youtube.com/embed/gIBT88O_S_4', 'https://www.youtube.com/embed/-0gED3rn2Tc', 'https://www.youtube.com/embed/vTNo8EXP0gA']
-songs = ['https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/423847089&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true', 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/87353468&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true']
-
+videos = ['https://www.youtube.com/embed/HxJhYpTIrl8']
+songs = ['https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/37032471&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"']
 artist_names.each do |name|
   new_artist = User.new()
   new_artist.email = "#{name.downcase}@streetbusk.com"
@@ -81,6 +80,22 @@ places.each do |place|
   count += 1
 end
 
+artist_names.each do |artist|
+  count = 6
+  2.times do
+    perf = Performance.new()
+    perf.user = User.where(artist_name: artist).first
+    perf.location = nil
+    perf.start_time = DateTime.now
+    perf.end_time = DateTime.tomorrow
+    perf.description = 'xyz'
+    perf.genre = genres[0]
+    perf.photo = Rails.root.join("app/assets/images/performances/#{count}.jpg").open
+    perf.save!
+    count += 1
+  end
+end
+
 puts "Generate attendances"
 
 fans = User.all.where(artist: false).where.not(email: 'alexw@streetbusk.com').shuffle
@@ -88,7 +103,7 @@ p fans.length
 
 comments = ['Super cool show!', 'Wow so cool! 😱', 'Amazing performance guys - thank you 😘', 'So sick!', 'Take my money!!', 'Pls marry me!!', 'I love your performance', 'Meh', 'O M G !!', '❤️', 'I wanna have yo babies 😍', 'you are truly gifted my friend!', 'hey call me sometime 😉', 'are you guys going on tour soon?', 'u rock 🤘', 'eyyyy bb u got skills']
 
-Performance.all.to_a.each do |perf|
+Performance.all.where.not('performances.location' => nil).to_a.each do |perf|
   3.times do 
     person = fans.pop
     com = Comment.new()

@@ -26,7 +26,7 @@ class PerformancesController < ApplicationController
       sql_query = "location ILIKE :query"
       @performances = Performance.where(sql_query, query: "%#{params[:query]}%")
     else
-      @performances = Performance.all
+      @performances = Performance.all.where.not('performances.location' => nil)
     end
 
     @markers = @performances.map.with_index do |performance, index|
