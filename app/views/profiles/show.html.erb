@@ -146,7 +146,7 @@
   <div class="container">
     <% if policy(@user).edit? %>
     <%= link_to 'Edit Profile', edit_profile_path(@user), class: 'btn btn-warning btn-home btn-height-adjust'%>
-    <% end %>  
+    <% end %>
   </div>
 
 
@@ -212,8 +212,8 @@
 
         </div>
         <div class="modal-footer">
-          <%= button_tag type: 'submit', class:"socialbtns" do %>
-          <i class=" fasc fas fa-hand-holding-usd contribute-button" aria-hidden="true"><p class="icon-text" style="font-size: 14px !important;">Contribute</p></i>
+          <%= button_tag type: 'submit', class:"socialbtns button-fix" do %>
+          <i class=" fasc fas fa-hand-holding-usd contribute-button" aria-hidden="true"><p class="icon-text" style="font-size: 18px !important;">Contribute</p></i>
           <% end %>
         </div>
         <% end %>

@@ -176,6 +176,7 @@
       color: white;
       position: relative;
       transform: translateY(-30%);
+      padding-bottom: 20px;
       &:focus{
         border: none;
       }
@@ -197,6 +198,7 @@
     bottom: 25px;
     left: 50%;
     bottom: -3px;
+    bottom: -17px;
     transform: translate(-50%, 50%);
     margin: 0px;
     display: flex;
@@ -221,7 +223,7 @@
       display:flex;
     }
     .attend-overlap{
-      box-shadow: 0px 9px 20px 4px rgba(0,0,0,0.5);
+      box-shadow: 0px 5px 20px 4px rgba(0,0,0,0.5);
       margin-right: -25px;
       height: 65px;
       width: 65px;
