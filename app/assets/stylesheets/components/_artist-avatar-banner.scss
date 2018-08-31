@@ -12,15 +12,14 @@
   margin: 1rem 2rem;
   flex-basis: 10vw;
   flex-shrink: 0;
-  @media (max-width: 400px){
-    margin-left: 10px;
+  @media (max-width: 340px){
+    margin-left: 0px;
   }
 }
 
 .artist-desc{
   display: flex;
   align-items: center;
-  margin-left: 13px;
 
   h2{
       text-align: left;
