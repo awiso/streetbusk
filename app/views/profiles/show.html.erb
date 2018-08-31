@@ -1,6 +1,6 @@
 <div class="profile-show">
   <!-- Top Section: General Infos about the artist -->
-  <div class="profile-bg" style="background-image: url(<%= @profile_banner %>)">
+  <div class="profile-bg" style="background-image: linear-gradient(-120deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0,0.6) 50%), url(<%= @profile_banner %>)">
   <div class="profile-overlay-wrapper">
     <div class="artist-desc" style="justify-content: flex-start; align-items: flex-start;">
 
@@ -36,7 +36,7 @@
     <% if policy(@user).edit? %>
     <%= link_to 'Edit Profile', edit_profile_path(@user), class: 'btn btn-warning btn-home btn-height-adjust'%>
     <% end %>
-    
+
   </div>
 
   </div>
